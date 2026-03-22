@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estudio Jurídico Montero & Asociados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --black:#08090A;--off-black:#0E1012;--dark:#141618;--dark2:#1C1E21;
+      --gold:#B8975A;--gold-light:#D4B47A;--gold-pale:rgba(184,151,90,0.1);
+      --white:#F8F6F0;--cream:#F2EFE8;--muted:#7A7060;
+      --border:rgba(184,151,90,0.15);--red:#8B1A1A;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Jost',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;background:rgba(8,9,10,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{display:flex;align-items:center;gap:1rem;text-decoration:none}
+    .nav-logo-icon{width:38px;height:38px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:600;color:var(--gold);letter-spacing:0.05em}
+    .nav-logo-text{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400;color:var(--white);letter-spacing:0.08em}
+    .nav-logo-text span{color:var(--gold)}
+    .nav-links{display:flex;gap:2.5rem;list-style:none}
+    .nav-links a{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+    .nav-links a:hover{color:var(--gold)}
+    .nav-cta{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0.65rem 1.6rem;text-decoration:none;transition:background 0.2s}
+    .nav-cta:hover{background:var(--gold-light)}
+
+    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:7rem 2rem 4rem;position:relative;overflow:hidden;background:var(--black)}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(184,151,90,0.05) 0%,transparent 55%)}
+    .hero-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(184,151,90,0.03) 80px);background-size:100% 80px}
+    .hero-content{position:relative;z-index:1;max-width:800px}
+    .hero-eyebrow{display:flex;align-items:center;gap:1rem;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+    .hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,9vw,8rem);font-weight:300;line-height:0.95;letter-spacing:-0.01em;margin-bottom:2rem}
+    .hero-title .line2{color:var(--gold);font-style:italic}
+    .hero-title .line3{-webkit-text-stroke:1px rgba(255,255,255,0.15);color:transparent;font-style:italic}
+    .hero-desc{font-size:0.95rem;font-weight:300;color:var(--muted);max-width:420px;line-height:1.85;margin-bottom:3rem}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem}
+    .btn-gold{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:1rem 2.5rem;text-decoration:none;transition:background 0.2s;display:inline-block}
+    .btn-gold:hover{background:var(--gold-light)}
+    .btn-border{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);padding:1rem 2rem;text-decoration:none;transition:all 0.2s;display:inline-block}
+    .btn-border:hover{border-color:var(--gold);background:var(--gold-pale)}
+    .hero-credentials{display:flex;gap:3rem;flex-wrap:wrap}
+    .cred-item{display:flex;flex-direction:column}
+    .cred-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--gold)}
+    .cred-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-top:0.2rem}
+
+    #areas{padding:6rem 2rem;background:var(--off-black)}
+    .section-eyebrow{display:flex;align-items:center;gap:1rem;font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+    .section-eyebrow::before{content:'I.';font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-style:italic}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.15;margin-bottom:3rem}
+    .section-title em{font-style:italic;color:var(--gold)}
+    .areas-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border)}
+    .area-card{background:var(--off-black);padding:2.5rem 2rem;display:flex;align-items:flex-start;gap:2rem;transition:background 0.3s;border-left:3px solid transparent}
+    .area-card:hover{background:var(--dark);border-left-color:var(--gold)}
+    .area-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(184,151,90,0.12);line-height:1;flex-shrink:0;font-style:italic}
+    .area-content{}
+    .area-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:0.6rem}
+    .area-desc{font-size:0.82rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:1rem}
+    .area-tags{display:flex;gap:0.5rem;flex-wrap:wrap}
+    .a-tag{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);padding:0.2rem 0.6rem}
+
+    #estudio{padding:6rem 2rem;background:var(--black)}
+    .estudio-grid{display:grid;grid-template-columns:1fr;gap:4rem;margin-top:3rem}
+    .estudio-img{height:420px;background:linear-gradient(145deg,var(--off-black),var(--dark));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-left:3px solid var(--gold)}
+    .estudio-img::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(184,151,90,0.04) 60px)}
+    .estudio-icon{font-size:7rem;opacity:0.15;position:relative;z-index:1}
+    .estudio-text p{font-size:0.92rem;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:1.2rem}
+    .equipo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:2rem}
+    .equipo-card{background:var(--dark);padding:1.5rem}
+    .equipo-avatar{width:48px;height:48px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold);margin-bottom:0.8rem}
+    .equipo-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400;margin-bottom:0.2rem}
+    .equipo-rol{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}
+
+    #testimonios{padding:6rem 2rem;background:var(--off-black)}
+    .testi-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:3rem}
+    .testi-card{background:var(--dark);padding:2.5rem;border-top:2px solid var(--gold);position:relative}
+    .testi-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:5rem;color:rgba(184,151,90,0.15);position:absolute;top:-1rem;left:1.5rem;line-height:1}
+    .testi-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;line-height:1.75;color:var(--white);margin-bottom:1.5rem;padding-top:1rem;font-weight:300}
+    .testi-autor{display:flex;align-items:center;gap:1rem}
+    .testi-avatar{width:40px;height:40px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold)}
+    .testi-name{font-size:0.85rem;font-weight:500;color:var(--white)}
+    .testi-cargo{font-size:0.7rem;color:var(--muted);margin-top:0.1rem}
+
+    #faq{padding:6rem 2rem;background:var(--black)}
+    .faq-list{max-width:680px;margin:3rem auto 0}
+    .faq-item{border-bottom:1px solid var(--border)}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;cursor:pointer;font-size:0.92rem;font-weight:400;color:var(--white);gap:1rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem}
+    .faq-icon{font-size:1.2rem;color:var(--gold);flex-shrink:0;transition:transform 0.3s}
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+    .faq-a{font-size:0.85rem;line-height:1.8;color:var(--muted);font-weight:300;padding-bottom:1.5rem;display:none}
+    .faq-item.open .faq-a{display:block}
+
+    #contacto{padding:6rem 2rem;background:var(--off-black)}
+    .contacto-grid{display:grid;grid-template-columns:1fr;gap:4rem;margin-top:3rem}
+    .contacto-info-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:1rem;font-style:italic}
+    .contacto-info p{font-size:0.88rem;color:var(--muted);line-height:1.85;margin-bottom:2rem;font-weight:300}
+    .contacto-datos{list-style:none;display:flex;flex-direction:column;gap:1rem}
+    .contacto-dato{display:flex;gap:1rem;font-size:0.85rem;color:var(--muted)}
+    .contacto-dato strong{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);min-width:90px}
+    .form-law{display:flex;flex-direction:column;gap:1rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .form-field{display:flex;flex-direction:column;gap:0.4rem}
+    .form-field label{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted)}
+    .form-field input,.form-field textarea,.form-field select{font-family:'Jost',sans-serif;font-size:0.88rem;font-weight:300;background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:0.85rem 1rem;color:var(--white);outline:none;transition:border-color 0.2s;resize:none;appearance:none;border-radius:0}
+    .form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--gold)}
+    .form-field textarea{min-height:90px}
+    .form-field select option{background:var(--dark)}
+    .form-submit{font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);background:var(--gold);border:none;cursor:pointer;padding:1rem 2.2rem;transition:background 0.2s;align-self:flex-start;margin-top:0.5rem}
+    .form-submit:hover{background:var(--gold-light)}
+    #form-status{font-size:0.82rem;margin-top:0.5rem;min-height:1.2rem}
+
+    footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 2rem 1.5rem}
+    .footer-top{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-bottom:2.5rem}
+    .footer-logo-area{}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--white);margin-bottom:0.6rem}
+    .footer-logo span{color:var(--gold);font-style:italic}
+    .footer-tagline{font-size:0.75rem;color:rgba(255,255,255,0.3);line-height:1.7;max-width:240px}
+    .footer-col-title{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+    .footer-col-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+    .footer-col-links a{font-size:0.75rem;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+    .footer-col-links a:hover{color:var(--gold)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-copy{font-size:0.68rem;color:rgba(255,255,255,0.2)}
+    .footer-made{font-size:0.68rem;color:rgba(255,255,255,0.2)}
+    .footer-made a{color:rgba(184,151,90,0.5);text-decoration:none}
+
+    #wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s;text-decoration:none}
+    #wa-float:hover{transform:scale(1.1)}
+    #wa-float::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,0.3);animation:wa-pulse 2s ease-out infinite}
+    @keyframes wa-pulse{0%{transform:scale(1);opacity:0.8}100%{transform:scale(1.5);opacity:0}}
+
+    @media(min-width:768px){
+      nav{padding:1.2rem 4rem}
+      #hero,#areas,#estudio,#testimonios,#faq,#contacto,footer{padding-left:4rem;padding-right:4rem}
+      .areas-grid{grid-template-columns:repeat(2,1fr)}
+      .estudio-grid{grid-template-columns:1fr 1fr;align-items:center}
+      .testi-grid{grid-template-columns:repeat(3,1fr)}
+      .contacto-grid{grid-template-columns:1fr 1.2fr}
+      .footer-top{grid-template-columns:2fr 1fr 1fr}
+    }
+    @media(max-width:767px){.nav-links{display:none}}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">M&A</div>
+      <div class="nav-logo-text">Montero <span>&</span> Asociados</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#areas">Áreas</a></li>
+      <li><a href="#estudio">El estudio</a></li>
+      <li><a href="#testimonios">Clientes</a></li>
+      <li><a href="#faq">Info</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Primera consulta</a>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Estudio Jurídico · Buenos Aires, Argentina</p>
+      <h1 class="hero-title">
+        <div>Derecho</div>
+        <div class="line2">al servicio</div>
+        <div class="line3">de sus intereses</div>
+      </h1>
+      <p class="hero-desc">Más de 25 años representando a empresas, familias y profesionales en las áreas más complejas del derecho argentino.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-gold">Primera consulta</a>
+        <a href="#areas" class="btn-border">Áreas de práctica</a>
+      </div>
+      <div class="hero-credentials">
+        <div class="cred-item"><div class="cred-num">25+</div><div class="cred-label">Años de trayectoria</div></div>
+        <div class="cred-item"><div class="cred-num">500+</div><div class="cred-label">Casos resueltos</div></div>
+        <div class="cred-item"><div class="cred-num">4</div><div class="cred-label">Abogados especializados</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="areas">
+    <p class="section-eyebrow">Especialidades</p>
+    <h2 class="section-title">Áreas de <em>práctica</em></h2>
+    <div class="areas-grid">
+      <div class="area-card"><div class="area-num">01</div><div class="area-content"><div class="area-name">Derecho Comercial</div><p class="area-desc">Contratos, societario, M&A, franquicias y relaciones comerciales complejas entre empresas.</p><div class="area-tags"><span class="a-tag">Contratos</span><span class="a-tag">Societario</span><span class="a-tag">M&A</span></div></div></div>
+      <div class="area-card"><div class="area-num">02</div><div class="area-content"><div class="area-name">Derecho Laboral</div><p class="area-desc">Representación de empleadores y empleados. Despidos, accidentes de trabajo y negociaciones colectivas.</p><div class="area-tags"><span class="a-tag">Despidos</span><span class="a-tag">ART</span><span class="a-tag">Convenios</span></div></div></div>
+      <div class="area-card"><div class="area-num">03</div><div class="area-content"><div class="area-name">Derecho de Familia</div><p class="area-desc">Divorcios, alimentos, tenencia, herencias y sucesiones. Acuerdos extrajudiciales y mediación.</p><div class="area-tags"><span class="a-tag">Divorcio</span><span class="a-tag">Herencias</span><span class="a-tag">Tenencia</span></div></div></div>
+      <div class="area-card"><div class="area-num">04</div><div class="area-content"><div class="area-name">Derecho Inmobiliario</div><p class="area-desc">Compraventas, locaciones, expensas, consorcios y desalojos. Asesoramiento integral en operaciones inmobiliarias.</p><div class="area-tags"><span class="a-tag">Compraventa</span><span class="a-tag">Locaciones</span><span class="a-tag">Consorcio</span></div></div></div>
+      <div class="area-card"><div class="area-num">05</div><div class="area-content"><div class="area-name">Derecho Penal Económico</div><p class="area-desc">Defensa en casos de estafa, fraude, lavado de activos y delitos contra la propiedad intelectual.</p><div class="area-tags"><span class="a-tag">Estafa</span><span class="a-tag">Fraude</span><span class="a-tag">Defensa</span></div></div></div>
+      <div class="area-card"><div class="area-num">06</div><div class="area-content"><div class="area-name">Derecho Tributario</div><p class="area-desc">Planificación fiscal, impugnación de determinaciones de AFIP y defensa ante ejecuciones fiscales.</p><div class="area-tags"><span class="a-tag">AFIP</span><span class="a-tag">Fiscal</span><span class="a-tag">Tributario</span></div></div></div>
+    </div>
+  </section>
+
+  <section id="estudio">
+    <p class="section-eyebrow">Quiénes somos</p>
+    <h2 class="section-title">Un estudio con <em>historia</em></h2>
+    <div class="estudio-grid">
+      <div class="estudio-img"><div class="estudio-icon">⚖️</div></div>
+      <div class="estudio-text">
+        <p>Montero & Asociados fue fundado en 1999 con la convicción de que el derecho debe estar al alcance de quienes lo necesitan, con la calidad que merecen.</p>
+        <p>Nuestro equipo combina experiencia en tribunales con un enfoque moderno orientado a la resolución eficiente de conflictos.</p>
+        <div class="equipo-grid">
+          <div class="equipo-card"><div class="equipo-avatar">RM</div><div class="equipo-name">Dr. Ricardo Montero</div><div class="equipo-rol">Socio fundador · Derecho comercial</div></div>
+          <div class="equipo-card"><div class="equipo-avatar">AM</div><div class="equipo-name">Dra. Ana Montero</div><div class="equipo-rol">Socia · Derecho de familia</div></div>
+          <div class="equipo-card"><div class="equipo-avatar">PG</div><div class="equipo-name">Dr. Pablo García</div><div class="equipo-rol">Asociado · Derecho laboral</div></div>
+          <div class="equipo-card"><div class="equipo-avatar">LR</div><div class="equipo-name">Dra. Laura Ríos</div><div class="equipo-rol">Asociada · Derecho tributario</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonios">
+    <p class="section-eyebrow">Lo que dicen</p>
+    <h2 class="section-title">Clientes que nos <em>confían</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card"><p class="testi-text">En una situación muy difícil con un socio, el Dr. Montero encontró una solución que nunca imaginé. Discreción y eficiencia total.</p><div class="testi-autor"><div class="testi-avatar">JL</div><div><div class="testi-name">Jorge L.</div><div class="testi-cargo">Empresario · Cliente desde 2015</div></div></div></div>
+      <div class="testi-card"><p class="testi-text">Me ayudaron en mi divorcio con una sensibilidad y profesionalismo que no esperaba. Siempre disponibles cuando los necesité.</p><div class="testi-autor"><div class="testi-avatar">MF</div><div><div class="testi-name">María F.</div><div class="testi-cargo">Cliente particular</div></div></div></div>
+      <div class="testi-card"><p class="testi-text">Llevamos 10 años trabajando con el estudio para todos nuestros contratos y disputas laborales. Una relación de total confianza.</p><div class="testi-autor"><div class="testi-avatar">CR</div><div><div class="testi-name">Carlos R.</div><div class="testi-cargo">Director de RRHH · Empresa mediana</div></div></div></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <p class="section-eyebrow" style="justify-content:center;display:flex">Preguntas frecuentes</p>
+    <h2 class="section-title" style="text-align:center">Información <em>importante</em></h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Cuánto cuesta la primera consulta? <span class="faq-icon">+</span></div><div class="faq-a">La primera consulta de 30 minutos es gratuita. En ella evaluamos su caso y le indicamos las opciones disponibles y los honorarios correspondientes.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Atienden urgencias? <span class="faq-icon">+</span></div><div class="faq-a">Sí. Contamos con una línea de urgencias para clientes activos del estudio. Para nuevos clientes, responderemos dentro de las 24 horas hábiles siguientes.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Trabajan con honorarios fijos o porcentuales? <span class="faq-icon">+</span></div><div class="faq-a">Dependiendo del tipo de caso, trabajamos con honorarios fijos mensuales, por acto o porcentuales sobre el resultado. Lo acordamos en la primera reunión de manera transparente.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Pueden representarme si estoy en otra provincia? <span class="faq-icon">+</span></div><div class="faq-a">Sí, tenemos experiencia en causas federales y en coordinación con estudios del interior. La consulta inicial puede realizarse de forma remota.</div></div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <p class="section-eyebrow">Consulta inicial</p>
+    <h2 class="section-title">Protejamos sus <em>intereses</em></h2>
+    <div class="contacto-grid">
+      <div>
+        <h3 class="contacto-info-title">Primera consulta gratuita</h3>
+        <p>Analizamos su caso y le informamos las opciones disponibles sin cargo ni compromiso.</p>
+        <ul class="contacto-datos">
+          <li class="contacto-dato"><strong>Respuesta</strong>Dentro de 24 horas hábiles</li>
+          <li class="contacto-dato"><strong>WhatsApp</strong>+54 9 11 0000-0000</li>
+          <li class="contacto-dato"><strong>Dirección</strong>Av. de Mayo 1234, 8° piso, CABA</li>
+          <li class="contacto-dato"><strong>Horario</strong>Lun–Vie 9:00 a 18:00</li>
+          <li class="contacto-dato"><strong>Matrícula</strong>CPACF T° 45 F° 234</li>
+        </ul>
+      </div>
+      <div>
+        <form id="lawForm" onsubmit="return false;" class="form-law">
+          <div class="form-row">
+            <div class="form-field"><label>Nombre completo</label><input type="text" id="l-nombre" placeholder="Su nombre"/></div>
+            <div class="form-field"><label>Teléfono o email</label><input type="text" id="l-contacto" placeholder="Cómo contactarle"/></div>
+          </div>
+          <div class="form-field">
+            <label>Área jurídica</label>
+            <select id="l-area">
+              <option value="">Seleccione un área</option>
+              <option value="Comercial">Derecho comercial</option>
+              <option value="Laboral">Derecho laboral</option>
+              <option value="Familia">Derecho de familia</option>
+              <option value="Inmobiliario">Derecho inmobiliario</option>
+              <option value="Penal">Derecho penal económico</option>
+              <option value="Tributario">Derecho tributario</option>
+              <option value="Otro">Otro / No sé</option>
+            </select>
+          </div>
+          <div class="form-field"><label>Describa su situación</label><textarea id="l-mensaje" placeholder="Cuéntenos brevemente su caso. Toda la información es confidencial."></textarea></div>
+          <button type="button" class="form-submit" id="l-btn" onclick="enviarLaw()">Solicitar consulta gratuita →</button>
+          <p id="form-status"></p>
+          <p style="font-size:0.68rem;color:var(--muted);margin-top:0.8rem;line-height:1.6">La información provista es estrictamente confidencial y está protegida por el secreto profesional.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-logo-area">
+        <div class="footer-logo">Montero <span>&</span> Asociados</div>
+        <p class="footer-tagline">Estudio jurídico en Buenos Aires. Derecho comercial, laboral, familiar e inmobiliario desde 1999.</p>
+      </div>
+      <div><p class="footer-col-title">Áreas</p><ul class="footer-col-links"><li><a href="#">Derecho comercial</a></li><li><a href="#">Derecho laboral</a></li><li><a href="#">Derecho de familia</a></li><li><a href="#">Derecho tributario</a></li></ul></div>
+      <div><p class="footer-col-title">Contacto</p><ul class="footer-col-links"><li><a href="#">WhatsApp</a></li><li><a href="#">Consulta gratuita</a></li><li><a href="#">Av. de Mayo 1234, CABA</a></li><li><a href="#">Lun–Vie 9:00–18:00</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Montero & Asociados. Todos los derechos reservados. CPACF T° 45 F° 234.</span>
+      <span class="footer-made">Diseño web por <a href="https://nexoweb.pages.dev" target="_blank">Nexo Web</a></span>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5491100000000?text=Hola%2C%20quisiera%20una%20consulta%20jur%C3%ADdica%20gratuita" target="_blank" id="wa-float" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    function toggleFaq(el){el.parentElement.classList.toggle('open')}
+    async function enviarLaw(){
+      var btn=document.getElementById('l-btn'),status=document.getElementById('form-status');
+      var nombre=document.getElementById('l-nombre').value.trim(),contacto=document.getElementById('l-contacto').value.trim(),area=document.getElementById('l-area').value,mensaje=document.getElementById('l-mensaje').value.trim();
+      if(!nombre||!contacto||!area){status.style.color='#B8975A';status.textContent='Complete los campos obligatorios.';return}
+      btn.textContent='Enviando...';btn.disabled=true;status.textContent='';
+      try{
+        var r=await fetch('https://formspree.io/f/xpqynaqq',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({nombre,contacto,area,mensaje})});
+        if(r.ok){status.style.color='#B8975A';status.textContent='Consulta recibida. Le contactaremos dentro de las 24 horas hábiles.';document.getElementById('l-nombre').value='';document.getElementById('l-contacto').value='';document.getElementById('l-area').value='';document.getElementById('l-mensaje').value=''}
+        else throw new Error();
+      }catch(e){status.style.color='#8B1A1A';status.textContent='Error al enviar. Contáctenos por WhatsApp.'}
+      btn.textContent='Solicitar consulta gratuita';btn.disabled=false;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estudio Fernández & Asociados — Contadores Públicos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#0D1B2A;--navy2:#142236;--navy3:#1C2E45;
+      --blue:#1A6BB5;--blue-light:#2E86D4;--blue-pale:#EBF3FB;
+      --white:#FAFCFF;--cream:#F5F7FA;--muted:#6B7A8D;
+      --border:rgba(26,107,181,0.12);--gold:#C9A55A;--dark:#0A1520;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--navy);overflow-x:hidden}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;background:rgba(250,252,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .nav-logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none}
+    .nav-logo-icon{width:36px;height:36px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:700;color:var(--white)}
+    .nav-logo-text{font-size:1rem;font-weight:700;color:var(--navy);letter-spacing:-0.01em}
+    .nav-logo-text span{color:var(--blue)}
+    .nav-links{display:flex;gap:2.5rem;list-style:none}
+    .nav-links a{font-size:0.78rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s;letter-spacing:0.02em}
+    .nav-links a:hover{color:var(--blue)}
+    .nav-cta{font-size:0.78rem;font-weight:600;color:var(--white);background:var(--blue);padding:0.65rem 1.6rem;text-decoration:none;transition:background 0.2s;border-radius:4px}
+    .nav-cta:hover{background:var(--navy)}
+
+    #hero{min-height:100vh;display:grid;grid-template-columns:1fr;padding-top:72px;position:relative;overflow:hidden}
+    .hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 2rem;position:relative;z-index:1}
+    .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,var(--navy3) 100%)}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(26,107,181,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(26,107,181,0.06) 1px,transparent 1px);background-size:50px 50px}
+    .hero-glow{position:absolute;top:-20%;right:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(26,107,181,0.12) 0%,transparent 65%)}
+    .hero-badge{display:inline-flex;align-items:center;gap:0.6rem;font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#7AB8E8;border:1px solid rgba(122,184,232,0.25);padding:0.4rem 1rem;border-radius:20px;margin-bottom:2rem}
+    .hero-badge::before{content:'';width:6px;height:6px;background:#7AB8E8;border-radius:50%;animation:blink 2s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+    .hero-title{font-family:'Lora',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:600;line-height:1.1;color:var(--white);margin-bottom:1.5rem}
+    .hero-title em{font-style:italic;color:#7AB8E8}
+    .hero-desc{font-size:0.95rem;font-weight:300;color:rgba(255,255,255,0.55);max-width:480px;line-height:1.85;margin-bottom:3rem}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-blue{font-size:0.78rem;font-weight:600;color:var(--white);background:var(--blue);padding:1rem 2.2rem;text-decoration:none;border-radius:4px;transition:background 0.2s;display:inline-block}
+    .btn-blue:hover{background:var(--blue-light)}
+    .btn-border-w{font-size:0.78rem;font-weight:500;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.2);padding:1rem 2rem;text-decoration:none;border-radius:4px;transition:all 0.2s;display:inline-block}
+    .btn-border-w:hover{border-color:#7AB8E8;color:#7AB8E8}
+    .hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,0.08);flex-wrap:wrap}
+    .stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:600;color:#7AB8E8}
+    .stat-label{font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:0.2rem;letter-spacing:0.05em}
+
+    #servicios{padding:5rem 2rem;background:var(--white)}
+    .section-label{font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem}
+    .section-label::before{content:'';width:20px;height:2px;background:var(--blue)}
+    .section-title{font-family:'Lora',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:600;color:var(--navy);margin-bottom:3rem;line-height:1.2}
+    .section-title em{font-style:italic;color:var(--blue)}
+    .servicios-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+    .servicio-card{background:var(--cream);padding:2rem;border-left:3px solid transparent;transition:all 0.3s;border-radius:0 4px 4px 0}
+    .servicio-card:hover{background:var(--blue-pale);border-left-color:var(--blue);transform:translateX(4px)}
+    .servicio-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:0.8rem}
+    .servicio-icon{font-size:1.6rem}
+    .servicio-name{font-family:'Lora',serif;font-size:1.1rem;font-weight:600;color:var(--navy)}
+    .servicio-desc{font-size:0.82rem;color:var(--muted);line-height:1.7;font-weight:300}
+    .servicio-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1rem}
+    .s-tag{font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);background:rgba(26,107,181,0.08);padding:0.2rem 0.6rem;border-radius:20px}
+
+    #nosotros{padding:5rem 2rem;background:var(--cream)}
+    .nosotros-grid{display:grid;grid-template-columns:1fr;gap:4rem;margin-top:2rem}
+    .nosotros-img{background:linear-gradient(135deg,var(--navy),var(--navy3));height:380px;display:flex;align-items:center;justify-content:center;border-radius:4px;position:relative;overflow:hidden}
+    .nosotros-img::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(26,107,181,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(26,107,181,0.08) 1px,transparent 1px);background-size:40px 40px}
+    .nosotros-icon{font-size:6rem;position:relative;z-index:1;opacity:0.6}
+    .nosotros-text p{font-size:0.92rem;font-weight:300;color:var(--muted);line-height:1.85;margin-bottom:1.2rem}
+    .valores-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+    .valor-item{background:var(--white);padding:1.2rem;border-radius:4px;border-top:2px solid var(--blue)}
+    .valor-title{font-weight:600;font-size:0.88rem;color:var(--navy);margin-bottom:0.3rem}
+    .valor-desc{font-size:0.75rem;color:var(--muted)}
+
+    #horarios{padding:5rem 2rem;background:var(--navy)}
+    #horarios .section-label{color:#7AB8E8}
+    #horarios .section-label::before{background:#7AB8E8}
+    #horarios .section-title{color:var(--white)}
+    #horarios .section-title em{color:#7AB8E8}
+    .horarios-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.05);margin-top:2rem}
+    .horario-card{background:var(--navy2);padding:2rem}
+    .horario-dia{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:#7AB8E8;margin-bottom:0.5rem;font-weight:600}
+    .horario-hora{font-family:'Lora',serif;font-size:1.5rem;font-weight:400;color:var(--white)}
+    .horario-nota{font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:0.3rem}
+
+    #contacto{padding:5rem 2rem;background:var(--white)}
+    .contacto-grid{display:grid;grid-template-columns:1fr;gap:3rem}
+    .contacto-info-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:600;color:var(--navy);margin-bottom:1rem}
+    .contacto-info p{font-size:0.88rem;color:var(--muted);line-height:1.85;margin-bottom:2rem;font-weight:300}
+    .contacto-datos{list-style:none;display:flex;flex-direction:column;gap:0.8rem}
+    .contacto-dato{display:flex;gap:1rem;font-size:0.85rem;color:var(--muted)}
+    .contacto-dato strong{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);min-width:80px}
+    .form-pro{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .form-field{display:flex;flex-direction:column;gap:0.4rem}
+    .form-field label{font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+    .form-field input,.form-field textarea,.form-field select{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:300;background:var(--cream);border:1px solid var(--border);padding:0.85rem 1rem;color:var(--navy);outline:none;transition:border-color 0.2s;resize:none;appearance:none;border-radius:4px}
+    .form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--blue);background:var(--blue-pale)}
+    .form-field textarea{min-height:90px}
+    .form-field select option{background:var(--white)}
+    .form-submit{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;font-weight:600;color:var(--white);background:var(--blue);border:none;cursor:pointer;padding:1rem 2.2rem;transition:background 0.2s;align-self:flex-start;border-radius:4px;margin-top:0.5rem}
+    .form-submit:hover{background:var(--navy)}
+    #form-status{font-size:0.82rem;margin-top:0.5rem;min-height:1.2rem}
+
+    footer{background:var(--navy);padding:1.8rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-logo{display:flex;align-items:center;gap:0.6rem}
+    .footer-logo-icon{width:28px;height:28px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:var(--white)}
+    .footer-logo-text{font-size:0.88rem;font-weight:600;color:var(--white)}
+    footer p{font-size:0.7rem;color:rgba(255,255,255,0.3)}
+    .footer-links{display:flex;gap:1.5rem}
+    .footer-links a{font-size:0.7rem;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+    .footer-links a:hover{color:#7AB8E8}
+    .footer-nexo{font-size:0.7rem;color:rgba(255,255,255,0.25)}
+    .footer-nexo a{color:var(--blue-light);text-decoration:none}
+
+    #wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s;text-decoration:none}
+    #wa-float:hover{transform:scale(1.1)}
+    #wa-float::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,0.3);animation:wa-pulse 2s ease-out infinite}
+    @keyframes wa-pulse{0%{transform:scale(1);opacity:0.8}100%{transform:scale(1.5);opacity:0}}
+
+    @media(min-width:768px){
+      nav{padding:1.2rem 4rem}
+      #hero{grid-template-columns:1fr}
+      .hero-left{padding:5rem 4rem}
+      #servicios,#nosotros,#horarios,#contacto,footer{padding-left:4rem;padding-right:4rem}
+      .servicios-grid{grid-template-columns:repeat(3,1fr)}
+      .nosotros-grid{grid-template-columns:1fr 1fr;align-items:center}
+      .contacto-grid{grid-template-columns:1fr 1.2fr}
+    }
+    @media(max-width:767px){.nav-links{display:none}}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">F&A</div>
+      <div class="nav-logo-text">Fernández <span>&</span> Asociados</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#nosotros">El estudio</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Consulta gratuita</a>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-left">
+      <div class="hero-badge">Contadores Públicos · CABA, Argentina</div>
+      <h1 class="hero-title">Tu empresa en<br/><em>orden fiscal</em><br/>y contable</h1>
+      <p class="hero-desc">Más de 20 años asesorando empresas, pymes y profesionales en CABA. Liquidación de sueldos, impuestos, balances y asesoramiento integral.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-blue">Consulta gratuita</a>
+        <a href="#servicios" class="btn-border-w">Ver servicios</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">20+</div><div class="stat-label">Años de experiencia</div></div>
+        <div><div class="stat-num">300+</div><div class="stat-label">Clientes activos</div></div>
+        <div><div class="stat-num">24h</div><div class="stat-label">Tiempo de respuesta</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <p class="section-label">Lo que hacemos</p>
+    <h2 class="section-title">Nuestros <em>servicios</em></h2>
+    <div class="servicios-grid">
+      <div class="servicio-card">
+        <div class="servicio-top"><div><div class="servicio-icon">📊</div><div class="servicio-name">Liquidación de sueldos</div></div></div>
+        <p class="servicio-desc">Gestión completa de nómina, AFIP, ANSES y obra social. Cumplimiento total de la normativa laboral vigente.</p>
+        <div class="servicio-tags"><span class="s-tag">Nómina</span><span class="s-tag">AFIP</span><span class="s-tag">ANSES</span></div>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-top"><div><div class="servicio-icon">💼</div><div class="servicio-name">Impuestos y AFIP</div></div></div>
+        <p class="servicio-desc">Declaraciones juradas, IVA, Ganancias, Ingresos Brutos y monotributo. Planificación fiscal para optimizar tu carga impositiva.</p>
+        <div class="servicio-tags"><span class="s-tag">IVA</span><span class="s-tag">Ganancias</span><span class="s-tag">IIBB</span></div>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-top"><div><div class="servicio-icon">📋</div><div class="servicio-name">Balances y estados contables</div></div></div>
+        <p class="servicio-desc">Elaboración de estados contables, balances anuales y memoria para presentación en organismos y bancos.</p>
+        <div class="servicio-tags"><span class="s-tag">Balance</span><span class="s-tag">Estados</span><span class="s-tag">Auditoría</span></div>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-top"><div><div class="servicio-icon">🏢</div><div class="servicio-name">Constitución de sociedades</div></div></div>
+        <p class="servicio-desc">Asesoramiento y trámites para SRL, SA y otras figuras jurídicas. Inscripción en IGJ y AFIP.</p>
+        <div class="servicio-tags"><span class="s-tag">SRL</span><span class="s-tag">SA</span><span class="s-tag">IGJ</span></div>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-top"><div><div class="servicio-icon">💰</div><div class="servicio-name">Monotributo</div></div></div>
+        <p class="servicio-desc">Alta, recategorización y baja de monotributo. Asesoramiento sobre cuándo conviene pasar a responsable inscripto.</p>
+        <div class="servicio-tags"><span class="s-tag">Monotributo</span><span class="s-tag">RI</span></div>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-top"><div><div class="servicio-icon">📈</div><div class="servicio-name">Asesoramiento financiero</div></div></div>
+        <p class="servicio-desc">Análisis de costos, proyecciones, flujo de fondos y planificación financiera para pymes y emprendimientos.</p>
+        <div class="servicio-tags"><span class="s-tag">Finanzas</span><span class="s-tag">Pymes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <p class="section-label">El estudio</p>
+    <h2 class="section-title">Más de 20 años<br/><em>al lado de tu empresa</em></h2>
+    <div class="nosotros-grid">
+      <div class="nosotros-img"><div class="nosotros-icon">📊</div></div>
+      <div class="nosotros-text">
+        <p>Fernández & Asociados es un estudio contable con sede en CABA especializado en pymes, comercios y profesionales independientes. Nuestro equipo de contadores está matriculado en el CPCECABA.</p>
+        <p>Trabajamos con total transparencia y cumplimiento normativo, ayudando a nuestros clientes a crecer con bases sólidas.</p>
+        <div class="valores-grid">
+          <div class="valor-item"><div class="valor-title">Transparencia</div><p class="valor-desc">Sin letra chica</p></div>
+          <div class="valor-item"><div class="valor-title">Cumplimiento</div><p class="valor-desc">Siempre al día</p></div>
+          <div class="valor-item"><div class="valor-title">Respuesta</div><p class="valor-desc">Menos de 24 horas</p></div>
+          <div class="valor-item"><div class="valor-title">Experiencia</div><p class="valor-desc">+20 años en el rubro</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="horarios">
+    <p class="section-label">Estamos disponibles</p>
+    <h2 class="section-title">Horarios de <em>atención</em></h2>
+    <div class="horarios-grid">
+      <div class="horario-card"><div class="horario-dia">Lunes a Viernes</div><div class="horario-hora">9:00 — 18:00</div><div class="horario-nota">Presencial y online</div></div>
+      <div class="horario-card"><div class="horario-dia">Sábados</div><div class="horario-hora">9:00 — 13:00</div><div class="horario-nota">Solo online / WhatsApp</div></div>
+      <div class="horario-card"><div class="horario-dia">Urgencias fiscales</div><div class="horario-hora">Consultar</div><div class="horario-nota">Según disponibilidad</div></div>
+      <div class="horario-card"><div class="horario-dia">Respuesta WhatsApp</div><div class="horario-hora">24 horas</div><div class="horario-nota">Días hábiles</div></div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <p class="section-label">Hablemos</p>
+    <h2 class="section-title">Consulta <em>gratuita</em></h2>
+    <div class="contacto-grid">
+      <div>
+        <h3 class="contacto-info-title">Primera consulta sin cargo</h3>
+        <p>Analizamos tu situación y te decimos exactamente qué necesitás. Sin compromiso.</p>
+        <ul class="contacto-datos">
+          <li class="contacto-dato"><strong>Respuesta</strong>Menos de 24 horas hábiles</li>
+          <li class="contacto-dato"><strong>WhatsApp</strong>+54 9 11 0000-0000</li>
+          <li class="contacto-dato"><strong>Dirección</strong>Av. Corrientes 1234, Of. 5, CABA</li>
+          <li class="contacto-dato"><strong>Horario</strong>Lun–Vie 9:00 a 18:00</li>
+        </ul>
+      </div>
+      <div>
+        <form id="contForm" onsubmit="return false;" class="form-pro">
+          <div class="form-row">
+            <div class="form-field"><label>Nombre</label><input type="text" id="c-nombre" placeholder="Tu nombre"/></div>
+            <div class="form-field"><label>Email o WhatsApp</label><input type="text" id="c-contacto" placeholder="Cómo te contactamos"/></div>
+          </div>
+          <div class="form-field">
+            <label>¿Qué necesitás?</label>
+            <select id="c-servicio">
+              <option value="">Seleccioná un servicio</option>
+              <option value="Sueldos">Liquidación de sueldos</option>
+              <option value="Impuestos">Impuestos y AFIP</option>
+              <option value="Balance">Balances y estados contables</option>
+              <option value="Sociedad">Constitución de sociedad</option>
+              <option value="Monotributo">Monotributo</option>
+              <option value="Asesoramiento">Asesoramiento general</option>
+            </select>
+          </div>
+          <div class="form-field"><label>Contanos tu situación</label><textarea id="c-mensaje" placeholder="¿Cuál es tu actividad? ¿Tenés empleados? ¿Sos monotributista?"></textarea></div>
+          <button type="button" class="form-submit" id="c-btn" onclick="enviarCont()">Solicitar consulta gratuita →</button>
+          <p id="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">
+      <div class="footer-logo-icon">F&A</div>
+      <div class="footer-logo-text">Fernández & Asociados</div>
+    </div>
+    <p>© 2025 · Contadores Públicos Matriculados · CPCECABA</p>
+    <div class="footer-links">
+      <a href="#">LinkedIn</a>
+      <a href="#">WhatsApp</a>
+    </div>
+    <span class="footer-nexo">Diseño web por <a href="https://nexoweb.pages.dev" target="_blank">Nexo Web</a></span>
+  </footer>
+
+  <a href="https://wa.me/5491100000000?text=Hola%2C%20quiero%20una%20consulta%20contable%20gratuita" target="_blank" id="wa-float" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    async function enviarCont(){
+      var btn=document.getElementById('c-btn'),status=document.getElementById('form-status');
+      var nombre=document.getElementById('c-nombre').value.trim(),contacto=document.getElementById('c-contacto').value.trim(),servicio=document.getElementById('c-servicio').value,mensaje=document.getElementById('c-mensaje').value.trim();
+      if(!nombre||!contacto||!servicio){status.style.color='#1A6BB5';status.textContent='Completá los campos obligatorios.';return}
+      btn.textContent='Enviando...';btn.disabled=true;status.textContent='';
+      try{
+        var r=await fetch('https://formspree.io/f/xpqynaqq',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({nombre,contacto,servicio,mensaje})});
+        if(r.ok){status.style.color='#1A6BB5';status.textContent='Consulta recibida. Te contactamos en menos de 24 horas.';document.getElementById('c-nombre').value='';document.getElementById('c-contacto').value='';document.getElementById('c-servicio').value='';document.getElementById('c-mensaje').value=''}
+        else throw new Error();
+      }catch(e){status.style.color='#c0392b';status.textContent='Error. Contactanos por WhatsApp.'}
+      btn.textContent='Solicitar consulta gratuita';btn.disabled=false;
+    }
+  </script>
+</body>
+</html>

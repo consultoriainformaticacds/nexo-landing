@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Comparativa de Modelos — Nexo Web</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--black:#0A0A0A;--off-black:#111110;--dark:#1A1A18;--white:#F8F8F5;--muted:#888880;--accent:#C8F135;--border:rgba(255,255,255,0.08);--m1:#8AB840;--m15:#4090C8;--m2:#C8F135;--m3:#E8A050}
+    html{scroll-behavior:smooth}
+    body{font-family:'Instrument Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+
+    nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;background:rgba(10,10,10,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--white);text-decoration:none}
+    .nav-logo span{color:var(--accent)}
+    .nav-sub{font-size:0.72rem;color:var(--muted);letter-spacing:0.05em}
+    .nav-cta{font-family:'Syne',sans-serif;font-size:0.75rem;font-weight:700;color:var(--black);background:var(--accent);padding:0.6rem 1.4rem;text-decoration:none;transition:background 0.2s}
+    .nav-cta:hover{background:#A8D020}
+
+    .hero{padding:4rem 2rem;background:var(--off-black);border-bottom:1px solid var(--border)}
+    .hero-tag{font-size:0.7rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+    .hero-tag::before{content:'//';opacity:0.5}
+    .hero-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem}
+    .hero-desc{font-size:0.95rem;font-weight:300;color:var(--muted);max-width:600px;line-height:1.8}
+
+    .models-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);padding:0}
+    .model-card{background:var(--off-black);padding:2.5rem 2rem;position:relative;overflow:hidden}
+    .model-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+    .model-card.m1::before{background:var(--m1)}
+    .model-card.m15::before{background:var(--m15)}
+    .model-card.m2::before{background:var(--m2)}
+    .model-card.m3::before{background:var(--m3)}
+    .model-num{font-family:'Syne',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;margin-bottom:1.2rem}
+    .m1 .model-num{color:var(--m1)}
+    .m15 .model-num{color:var(--m15)}
+    .m2 .model-num{color:var(--m2)}
+    .m3 .model-num{color:var(--m3)}
+    .model-name{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.5rem}
+    .model-niche{font-size:0.75rem;color:var(--muted);margin-bottom:1.5rem;font-weight:300}
+    .model-price{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;margin-bottom:0.3rem}
+    .m1 .model-price{color:var(--m1)}
+    .m15 .model-price{color:var(--m15)}
+    .m2 .model-price{color:var(--m2)}
+    .m3 .model-price{color:var(--m3)}
+    .model-usd{font-size:0.78rem;color:var(--muted);margin-bottom:1.5rem}
+    .model-entrega{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:20px;display:inline-block;margin-bottom:1.5rem}
+    .m1 .model-entrega{background:rgba(138,184,64,0.15);color:var(--m1)}
+    .m15 .model-entrega{background:rgba(64,144,200,0.15);color:var(--m15)}
+    .m2 .model-entrega{background:rgba(200,241,53,0.15);color:var(--m2)}
+    .m3 .model-entrega{background:rgba(232,160,80,0.15);color:var(--m3)}
+    .model-features{list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.5rem}
+    .feature-item{display:flex;align-items:center;gap:0.7rem;font-size:0.82rem;color:var(--white)}
+    .feature-item.no{color:var(--muted)}
+    .feature-dot{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;flex-shrink:0}
+    .feature-dot.yes.c1{background:rgba(138,184,64,0.2);color:var(--m1)}
+    .feature-dot.yes.c15{background:rgba(64,144,200,0.2);color:var(--m15)}
+    .feature-dot.yes.c2{background:rgba(200,241,53,0.2);color:var(--m2)}
+    .feature-dot.yes.c3{background:rgba(232,160,80,0.2);color:var(--m3)}
+    .feature-dot.no{background:rgba(255,255,255,0.05);color:var(--muted)}
+    .model-ideal{background:rgba(255,255,255,0.04);padding:1rem;border-radius:4px;font-size:0.78rem;color:var(--muted);line-height:1.6;border-left:2px solid}
+    .m1 .model-ideal{border-color:var(--m1)}
+    .m15 .model-ideal{border-color:var(--m15)}
+    .m2 .model-ideal{border-color:var(--m2)}
+    .m3 .model-ideal{border-color:var(--m3)}
+    .model-ideal strong{color:var(--white);display:block;margin-bottom:0.3rem;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase}
+
+    .table-section{padding:4rem 2rem;background:var(--dark)}
+    .section-title{font-family:'Syne',sans-serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:2rem}
+    .compare-table{width:100%;border-collapse:collapse;font-size:0.82rem}
+    .compare-table th{padding:0.8rem 1rem;text-align:center;font-family:'Syne',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+    .compare-table th:first-child{text-align:left;color:var(--muted)}
+    .compare-table th.h1{color:var(--m1)}
+    .compare-table th.h15{color:var(--m15)}
+    .compare-table th.h2{color:var(--m2)}
+    .compare-table th.h3{color:var(--m3)}
+    .compare-table td{padding:0.75rem 1rem;border-bottom:1px solid rgba(255,255,255,0.04);text-align:center;color:var(--muted)}
+    .compare-table td:first-child{text-align:left;color:var(--white);font-weight:400}
+    .compare-table tr:hover td{background:rgba(255,255,255,0.02)}
+    .compare-table tr:nth-child(even) td{background:rgba(255,255,255,0.01)}
+    .yes1{color:var(--m1)!important;font-weight:600}
+    .yes15{color:var(--m15)!important;font-weight:600}
+    .yes2{color:var(--m2)!important;font-weight:600}
+    .yes3{color:var(--m3)!important;font-weight:600}
+    .no-val{color:rgba(255,255,255,0.2)!important}
+    .price-row td{font-family:'Syne',sans-serif!important;font-weight:800!important;font-size:1rem!important}
+
+    .cta-section{padding:4rem 2rem;background:var(--accent);text-align:center}
+    .cta-section h2{font-family:'Syne',sans-serif;font-size:clamp(1.5rem,4vw,3rem);font-weight:800;color:var(--black);margin-bottom:1rem;letter-spacing:-0.02em}
+    .cta-section p{font-size:0.95rem;color:rgba(0,0,0,0.6);margin-bottom:2rem}
+    .btn-dark{font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:700;color:var(--accent);background:var(--black);padding:1rem 2.5rem;text-decoration:none;transition:background 0.2s;display:inline-block}
+    .btn-dark:hover{background:var(--off-black)}
+
+    footer{background:var(--black);border-top:1px solid var(--border);padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-logo{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--white)}
+    .footer-logo span{color:var(--accent)}
+    footer p{font-size:0.72rem;color:var(--muted)}
+
+    @media(min-width:768px){
+      nav,table-section,.cta-section,footer{padding-left:4rem;padding-right:4rem}
+      .hero{padding:4rem}
+      .models-grid{grid-template-columns:repeat(4,1fr)}
+      .table-section{padding:4rem}
+      .cta-section{padding:5rem 4rem}
+      footer{padding:2rem 4rem}
+    }
+    @media(max-width:767px){
+      .models-grid{grid-template-columns:1fr}
+      .compare-table{font-size:0.72rem}
+      .compare-table th,.compare-table td{padding:0.5rem}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div>
+      <a class="nav-logo" href="#">Nexo<span>.</span></a>
+      <div class="nav-sub">Comparativa de modelos 2025</div>
+    </div>
+    <a href="https://nexoweb.pages.dev" target="_blank" class="nav-cta">Ver nuestra web →</a>
+  </nav>
+
+  <div class="hero">
+    <p class="hero-tag">Modelos de servicio</p>
+    <h1 class="hero-title">Nuestros 4 modelos<br/>de sitio web</h1>
+    <p class="hero-desc">Tenemos una solución para cada tipo de negocio y presupuesto. Desde una landing rápida hasta una web premium con todas las funcionalidades.</p>
+  </div>
+
+  <div class="models-grid">
+
+    <!-- M1 -->
+    <div class="model-card m1">
+      <p class="model-num">MODELO 01</p>
+      <h2 class="model-name">Landing Page Simple</h2>
+      <p class="model-niche">Ejemplo: Psicóloga / Profesional independiente</p>
+      <div class="model-price">$150.000</div>
+      <p class="model-usd">ARS · equivale a U$S 100</p>
+      <span class="model-entrega">Entrega en 5 días</span>
+      <ul class="model-features">
+        <li class="feature-item"><div class="feature-dot yes c1">✓</div>1 página continua</li>
+        <li class="feature-item"><div class="feature-dot yes c1">✓</div>Lista de servicios y precios</li>
+        <li class="feature-item"><div class="feature-dot yes c1">✓</div>Formulario de contacto simple</li>
+        <li class="feature-item"><div class="feature-dot yes c1">✓</div>Botón flotante WhatsApp</li>
+        <li class="feature-item"><div class="feature-dot yes c1">✓</div>HTTPS + Hosting incluido</li>
+        <li class="feature-item no"><div class="feature-dot no">✕</div>Nav con múltiples secciones</li>
+        <li class="feature-item no"><div class="feature-dot no">✕</div>Catálogo con CTAs</li>
+        <li class="feature-item no"><div class="feature-dot no">✕</div>Galería / Testimonios / FAQ</li>
+      </ul>
+      <div class="model-ideal"><strong>Ideal para</strong>Profesionales independientes, negocios que arrancan, presupuesto ajustado. Necesitan presencia online rápida.</div>
+    </div>
+
+    <!-- M1.5 -->
+    <div class="model-card m15">
+      <p class="model-num">MODELO 1.5</p>
+      <h2 class="model-name">Landing Estructurada</h2>
+      <p class="model-niche">Ejemplo: Tienda de productos personalizados</p>
+      <div class="model-price">$250.000</div>
+      <p class="model-usd">ARS · equivale a U$S 174</p>
+      <span class="model-entrega">Entrega en 7 días</span>
+      <ul class="model-features">
+        <li class="feature-item"><div class="feature-dot yes c15">✓</div>Catálogo visual con botones</li>
+        <li class="feature-item"><div class="feature-dot yes c15">✓</div>CTAs múltiples estratégicos</li>
+        <li class="feature-item"><div class="feature-dot yes c15">✓</div>Sección "Cómo comprar"</li>
+        <li class="feature-item"><div class="feature-dot yes c15">✓</div>Galería de trabajos</li>
+        <li class="feature-item"><div class="feature-dot yes c15">✓</div>WhatsApp con mensaje prearmado</li>
+        <li class="feature-item"><div class="feature-dot yes c15">✓</div>Optimizada para conversión</li>
+        <li class="feature-item no"><div class="feature-dot no">✕</div>Sección Nosotros</li>
+        <li class="feature-item no"><div class="feature-dot no">✕</div>Testimonios / FAQ</li>
+      </ul>
+      <div class="model-ideal"><strong>Ideal para</strong>Tiendas que venden por WhatsApp, productos personalizados, emprendimientos que quieren maximizar consultas.</div>
+    </div>
+
+    <!-- M2 -->
+    <div class="model-card m2">
+      <p class="model-num">MODELO 02</p>
+      <h2 class="model-name">Web Standard Completa</h2>
+      <p class="model-niche">Ejemplo: Barbería Black Steel</p>
+      <div class="model-price">$360.000</div>
+      <p class="model-usd">ARS · equivale a U$S 250</p>
+      <span class="model-entrega">Entrega en 7 días</span>
+      <ul class="model-features">
+        <li class="feature-item"><div class="feature-dot yes c2">✓</div>Nav fijo con secciones</li>
+        <li class="feature-item"><div class="feature-dot yes c2">✓</div>Hero impactante</li>
+        <li class="feature-item"><div class="feature-dot yes c2">✓</div>Servicios con precios</li>
+        <li class="feature-item"><div class="feature-dot yes c2">✓</div>Sección Nosotros + Valores</li>
+        <li class="feature-item"><div class="feature-dot yes c2">✓</div>Horarios de atención</li>
+        <li class="feature-item"><div class="feature-dot yes c2">✓</div>Formulario completo</li>
+        <li class="feature-item"><div class="feature-dot yes c2">✓</div>2 rondas de cambios</li>
+        <li class="feature-item no"><div class="feature-dot no">✕</div>Galería / Testimonios / FAQ</li>
+      </ul>
+      <div class="model-ideal"><strong>Ideal para</strong>Negocios establecidos: peluquerías, consultorios, gimnasios, estudios. Quieren presencia profesional completa.</div>
+    </div>
+
+    <!-- M3 -->
+    <div class="model-card m3">
+      <p class="model-num">MODELO 03</p>
+      <h2 class="model-name">Web Premium Completa</h2>
+      <p class="model-niche">Ejemplo: Restaurante Raíces</p>
+      <div class="model-price">$500.000+</div>
+      <p class="model-usd">ARS · equivale a U$S 350+</p>
+      <span class="model-entrega">Entrega en 10 días</span>
+      <ul class="model-features">
+        <li class="feature-item"><div class="feature-dot yes c3">✓</div>Todo lo del Standard +</li>
+        <li class="feature-item"><div class="feature-dot yes c3">✓</div>Galería de fotos real</li>
+        <li class="feature-item"><div class="feature-dot yes c3">✓</div>Sección Testimonios</li>
+        <li class="feature-item"><div class="feature-dot yes c3">✓</div>FAQ interactivo</li>
+        <li class="feature-item"><div class="feature-dot yes c3">✓</div>Feed de Instagram</li>
+        <li class="feature-item"><div class="feature-dot yes c3">✓</div>Branding completo</li>
+        <li class="feature-item"><div class="feature-dot yes c3">✓</div>3+ rondas de cambios</li>
+        <li class="feature-item"><div class="feature-dot yes c3">✓</div>"Diseñado por Nexo" en footer</li>
+      </ul>
+      <div class="model-ideal"><strong>Ideal para</strong>Restaurantes, estudios jurídicos, empresas que quieren diferenciarse con imagen premium completa.</div>
+    </div>
+
+  </div>
+
+  <div class="table-section">
+    <h2 class="section-title">Comparativa detallada</h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th class="h1">Landing<br/>Simple</th>
+          <th class="h15">Landing<br/>Estructurada</th>
+          <th class="h2">Web<br/>Standard</th>
+          <th class="h3">Web<br/>Premium</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="price-row">
+          <td>Precio ARS</td>
+          <td class="yes1">$150.000</td>
+          <td class="yes15">$250.000</td>
+          <td class="yes2">$360.000</td>
+          <td class="yes3">$500.000+</td>
+        </tr>
+        <tr><td>Equivale en USD</td><td class="yes1">U$S 100</td><td class="yes15">U$S 174</td><td class="yes2">U$S 250</td><td class="yes3">U$S 350+</td></tr>
+        <tr><td>Tiempo de entrega</td><td>5 días</td><td>7 días</td><td>7 días</td><td>10 días</td></tr>
+        <tr><td>Rondas de cambios</td><td>1</td><td>1</td><td>2</td><td>3+</td></tr>
+        <tr><td>Nav de navegación</td><td>Simple</td><td>Completo</td><td class="yes2">Completo</td><td class="yes3">Completo</td></tr>
+        <tr><td>Hero impactante</td><td>Básico</td><td class="yes15">Con CTA fuerte</td><td class="yes2">Sí</td><td class="yes3">Sí premium</td></tr>
+        <tr><td>Lista / Catálogo de servicios</td><td>Lista simple</td><td class="yes15">Catálogo + CTAs</td><td class="yes2">Cards + precios</td><td class="yes3">Tabs + cards</td></tr>
+        <tr><td>Cómo funciona / Proceso</td><td class="no-val">—</td><td class="yes15">Sí</td><td>Opcional</td><td class="yes3">Sí</td></tr>
+        <tr><td>Sección Nosotros</td><td class="no-val">—</td><td class="no-val">—</td><td class="yes2">Sí</td><td class="yes3">Sí</td></tr>
+        <tr><td>Horarios de atención</td><td class="no-val">—</td><td class="no-val">—</td><td class="yes2">Sí</td><td class="yes3">Sí</td></tr>
+        <tr><td>Galería de fotos</td><td class="no-val">—</td><td class="no-val">—</td><td class="no-val">—</td><td class="yes3">Sí</td></tr>
+        <tr><td>Testimonios</td><td class="no-val">—</td><td class="no-val">—</td><td class="no-val">—</td><td class="yes3">Sí</td></tr>
+        <tr><td>FAQ interactivo</td><td class="no-val">—</td><td class="no-val">—</td><td class="no-val">—</td><td class="yes3">Sí</td></tr>
+        <tr><td>Feed de Instagram</td><td class="no-val">—</td><td class="no-val">—</td><td class="no-val">—</td><td class="yes3">Sí</td></tr>
+        <tr><td>Formulario de contacto</td><td class="yes1">Simple</td><td class="yes15">Completo</td><td class="yes2">Completo</td><td class="yes3">Avanzado</td></tr>
+        <tr><td>Botón WhatsApp flotante</td><td class="yes1">Sí</td><td class="yes15">Sí</td><td class="yes2">Sí</td><td class="yes3">Sí</td></tr>
+        <tr><td>HTTPS + Hosting</td><td class="yes1">Sí</td><td class="yes15">Sí</td><td class="yes2">Sí</td><td class="yes3">Sí</td></tr>
+        <tr><td>Branding personalizado</td><td>Básico</td><td>Básico</td><td class="yes2">Standard</td><td class="yes3">Completo</td></tr>
+        <tr><td>"Diseñado por Nexo" en footer</td><td class="no-val">—</td><td class="no-val">—</td><td class="no-val">—</td><td class="yes3">Sí</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:1.2rem;font-size:0.72rem;color:var(--muted);font-style:italic">* Precios en ARS sujetos al tipo de cambio del día del pago. Base: U$S 1 = $1.435 ARS. Dominio y mantenimiento mensual se cotizan por separado.</p>
+  </div>
+
+  <div class="cta-section">
+    <h2>¿Qué modelo se adapta<br/>a tu negocio?</h2>
+    <p>Escribinos y te asesoramos sin compromiso. Presupuesto en 24 horas.</p>
+    <a href="https://wa.me/5491124632544?text=Hola%2C%20quiero%20consultar%20sobre%20los%20modelos%20de%20web" target="_blank" class="btn-dark">Consultar por WhatsApp →</a>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Nexo<span>.</span></div>
+    <p>© 2025 Nexo Web · Parte de Consultoría Informática CDS · CABA, Argentina</p>
+    <p style="font-size:0.7rem;color:var(--muted)">nexoweb.pages.dev</p>
+  </footer>
+
+</body>
+</html>
