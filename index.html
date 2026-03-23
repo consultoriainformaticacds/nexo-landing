@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NEXO | Conseguí más clientes desde Google</title>
-
   <meta name="description" content="Creamos páginas web que generan clientes desde Google. Diagnóstico gratuito.">
-
   <style>
     body {
       margin: 0;
@@ -14,30 +12,25 @@
       background: #0b1120;
       color: #e2e8f0;
     }
-
     .container {
       max-width: 1100px;
       margin: auto;
       padding: 60px 20px;
     }
-
     h1 {
       font-size: 2.8rem;
       background: linear-gradient(90deg, #22c55e, #4ade80);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     h2 {
       margin-top: 60px;
       color: #ffffff;
     }
-
     p {
       color: #94a3b8;
       line-height: 1.6;
     }
-
     .btn {
       display: inline-block;
       background: #22c55e;
@@ -48,31 +41,26 @@
       font-weight: bold;
       margin-top: 20px;
     }
-
     .btn-outline {
       border: 1px solid #22c55e;
       color: #22c55e;
       background: transparent;
       margin-left: 10px;
     }
-
     .card {
       background: #111827;
       padding: 25px;
       border-radius: 12px;
       margin-top: 20px;
     }
-
     .plans {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
-
     .highlight {
       border: 2px solid #22c55e;
     }
-
     .badge {
       background: #22c55e;
       color: black;
@@ -82,7 +70,6 @@
       display: inline-block;
       margin-bottom: 10px;
     }
-
     .whatsapp {
       position: fixed;
       bottom: 20px;
@@ -94,6 +81,110 @@
       text-decoration: none;
       font-size: 20px;
     }
+
+    /* PORTFOLIO */
+    .portfolio-intro {
+      color: #94a3b8;
+      margin-top: 8px;
+      margin-bottom: 32px;
+    }
+    .portfolio-rubro {
+      margin-bottom: 40px;
+    }
+    .portfolio-rubro-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #22c55e;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .portfolio-rubro-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #1f2937;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .demo-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .demo-card:hover {
+      border-color: #22c55e;
+      transform: translateY(-2px);
+    }
+    .demo-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .demo-card-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f1f5f9;
+    }
+    .demo-card-nivel {
+      font-size: 0.68rem;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .nivel-landing {
+      background: #1e3a2f;
+      color: #4ade80;
+    }
+    .nivel-standard {
+      background: #1e2d3a;
+      color: #60a5fa;
+    }
+    .nivel-premium {
+      background: #2d1e3a;
+      color: #c084fc;
+    }
+    .demo-card-desc {
+      font-size: 0.82rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+    .demo-card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .btn-demo {
+      flex: 1;
+      text-align: center;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-demo:hover { opacity: 0.85; }
+    .btn-demo-ver {
+      background: #1f2937;
+      color: #e2e8f0;
+      border: 1px solid #374151;
+    }
+    .btn-demo-quiero {
+      background: #22c55e;
+      color: #000;
+    }
   </style>
 </head>
 
@@ -102,9 +193,9 @@
 <div class="container">
 
   <!-- HERO -->
-<p style="font-size:0.9rem; opacity:0.6;">
-Más de 10 negocios ya mejoraron su presencia online con este enfoque.
-</p>
+  <p style="font-size:0.9rem; opacity:0.6;">
+    Más de 10 negocios ya mejoraron su presencia online con este enfoque.
+  </p>
   <span class="badge">Diagnóstico gratuito — cupos limitados</span>
   <h1>Conseguí más clientes desde Google sin depender de redes sociales</h1>
   <p>Diseñamos páginas web que convierten visitas en consultas reales todos los días.</p>
@@ -139,49 +230,196 @@ Más de 10 negocios ya mejoraron su presencia online con este enfoque.
     ✔ Optimización básica para Google
   </div>
 
-  <!-- CTA intermedio -->
   <a class="btn" href="https://wa.me/5491124632544?text=Hola!%20Quiero%20más%20clientes">Quiero más clientes</a>
 
-  <!-- DEMO -->
-  <h2>Ejemplo real</h2>
-  <div class="card">
-    <p><strong>Luma Café</strong></p>
-    <p>Ejemplo de landing moderna orientada a generar consultas.</p>
-    <a class="btn" href="https://web-luma-cafe.netlify.app/" target="_blank">Ver demo</a>
-<a class="btn" href="https://wa.me/5491124632544?text=Hola!%20Quiero%20una%20web%20como%20esa">Quiero algo así</a>
+  <!-- PORTFOLIO -->
+  <h2 id="portfolio">Trabajos y demos</h2>
+  <p class="portfolio-intro">Ejemplos reales de lo que hacemos. Cada rubro tiene distintos niveles para que elijas el que mejor se adapta a tu negocio.</p>
+
+  <!-- ESTÉTICA -->
+  <div class="portfolio-rubro">
+    <div class="portfolio-rubro-label">Centro de estética</div>
+    <div class="portfolio-grid">
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <span class="demo-card-name">Lumière · Landing</span>
+          <span class="demo-card-nivel nivel-landing">Modelo 1</span>
+        </div>
+        <p class="demo-card-desc">1 página, servicios, formulario simple y botón WhatsApp. Ideal para arrancar rápido.</p>
+        <div class="demo-card-actions">
+          <a class="btn-demo btn-demo-ver" href="https://nexo-landing.pages.dev/demo-estetica-landing" target="_blank">Ver demo →</a>
+          <a class="btn-demo btn-demo-quiero" href="https://wa.me/5491124632544?text=Hola!%20Vi%20el%20demo%20de%20estética%20landing%20y%20quiero%20algo%20así" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <span class="demo-card-name">Lumière · Standard</span>
+          <span class="demo-card-nivel nivel-standard">Modelo 2</span>
+        </div>
+        <p class="demo-card-desc">Web completa con nav, nosotros, servicios con precios, horarios y formulario.</p>
+        <div class="demo-card-actions">
+          <a class="btn-demo btn-demo-ver" href="https://nexo-landing.pages.dev/demo-estetica-standard" target="_blank">Ver demo →</a>
+          <a class="btn-demo btn-demo-quiero" href="https://wa.me/5491124632544?text=Hola!%20Vi%20el%20demo%20de%20estética%20standard%20y%20quiero%20algo%20así" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <span class="demo-card-name">Lumière · Premium</span>
+          <span class="demo-card-nivel nivel-premium">Modelo 3</span>
+        </div>
+        <p class="demo-card-desc">Galería, testimonios, FAQ interactivo, feed Instagram, footer premium y branding completo.</p>
+        <div class="demo-card-actions">
+          <a class="btn-demo btn-demo-ver" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank">Ver demo →</a>
+          <a class="btn-demo btn-demo-quiero" href="https://wa.me/5491124632544?text=Hola!%20Vi%20el%20demo%20de%20estética%20premium%20y%20quiero%20algo%20así" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIENDA -->
+  <div class="portfolio-rubro">
+    <div class="portfolio-rubro-label">Tienda / Productos personalizados</div>
+    <div class="portfolio-grid">
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <span class="demo-card-name">Vamos Por Más</span>
+          <span class="demo-card-nivel nivel-landing">Modelo 1</span>
+        </div>
+        <p class="demo-card-desc">Catálogo simple de productos con botón de consulta por WhatsApp.</p>
+        <div class="demo-card-actions">
+          <a class="btn-demo btn-demo-ver" href="https://nexo-landing.pages.dev/demo-tienda-standard" target="_blank">Ver demo →</a>
+          <a class="btn-demo btn-demo-quiero" href="https://wa.me/5491124632544?text=Hola!%20Vi%20el%20demo%20de%20tienda%20y%20quiero%20algo%20así" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <span class="demo-card-name">RegaloUnico</span>
+          <span class="demo-card-nivel nivel-premium">Modelo 3</span>
+        </div>
+        <p class="demo-card-desc">Tienda premium con hero impactante, catálogo visual, testimonios y envíos a todo el país.</p>
+        <div class="demo-card-actions">
+          <a class="btn-demo btn-demo-ver" href="https://nexo-landing.pages.dev/demo-tienda-premium" target="_blank">Ver demo →</a>
+          <a class="btn-demo btn-demo-quiero" href="https://wa.me/5491124632544?text=Hola!%20Vi%20el%20demo%20de%20tienda%20premium%20y%20quiero%20algo%20así" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GASTRONOMÍA -->
+  <div class="portfolio-rubro">
+    <div class="portfolio-rubro-label">Gastronomía</div>
+    <div class="portfolio-grid">
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <span class="demo-card-name">Luma Café</span>
+          <span class="demo-card-nivel nivel-landing">Modelo 1</span>
+        </div>
+        <p class="demo-card-desc">Landing moderna para café con menú, horarios y llamada a la acción directa.</p>
+        <div class="demo-card-actions">
+          <a class="btn-demo btn-demo-ver" href="https://web-luma-cafe.netlify.app/" target="_blank">Ver demo →</a>
+          <a class="btn-demo btn-demo-quiero" href="https://wa.me/5491124632544?text=Hola!%20Vi%20el%20demo%20de%20café%20y%20quiero%20algo%20así" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <span class="demo-card-name">Raíces Restaurante</span>
+          <span class="demo-card-nivel nivel-premium">Modelo 3</span>
+        </div>
+        <p class="demo-card-desc">Web completa con carta interactiva, galería, reseñas, FAQ y reservas online.</p>
+        <div class="demo-card-actions">
+          <a class="btn-demo btn-demo-ver" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank">Ver demo →</a>
+          <a class="btn-demo btn-demo-quiero" href="https://wa.me/5491124632544?text=Hola!%20Vi%20el%20demo%20de%20restaurante%20y%20quiero%20algo%20así" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SALUD / PROFESIONALES -->
+  <div class="portfolio-rubro">
+    <div class="portfolio-rubro-label">Salud y profesionales</div>
+    <div class="portfolio-grid">
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <span class="demo-card-name">Psicóloga</span>
+          <span class="demo-card-nivel nivel-standard">Modelo 2</span>
+        </div>
+        <p class="demo-card-desc">Web profesional para psicóloga con servicios, enfoque terapéutico y formulario de turno.</p>
+        <div class="demo-card-actions">
+          <a class="btn-demo btn-demo-ver" href="https://nexo-landing.pages.dev/demo-psicologa" target="_blank">Ver demo →</a>
+          <a class="btn-demo btn-demo-quiero" href="https://wa.me/5491124632544?text=Hola!%20Vi%20el%20demo%20de%20psicóloga%20y%20quiero%20algo%20así" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESTUDIOS PROFESIONALES -->
+  <div class="portfolio-rubro">
+    <div class="portfolio-rubro-label">Estudios profesionales</div>
+    <div class="portfolio-grid">
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <span class="demo-card-name">Estudio Contable</span>
+          <span class="demo-card-nivel nivel-standard">Modelo 2</span>
+        </div>
+        <p class="demo-card-desc">Web para contadores con servicios, equipo, horarios y formulario de consulta.</p>
+        <div class="demo-card-actions">
+          <a class="btn-demo btn-demo-ver" href="https://nexo-landing.pages.dev/demo-estudio-contable" target="_blank">Ver demo →</a>
+          <a class="btn-demo btn-demo-quiero" href="https://wa.me/5491124632544?text=Hola!%20Vi%20el%20demo%20de%20estudio%20contable%20y%20quiero%20algo%20así" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <span class="demo-card-name">Estudio Jurídico</span>
+          <span class="demo-card-nivel nivel-standard">Modelo 2</span>
+        </div>
+        <p class="demo-card-desc">Web para abogados con áreas de práctica, equipo y consulta inicial gratuita.</p>
+        <div class="demo-card-actions">
+          <a class="btn-demo btn-demo-ver" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">Ver demo →</a>
+          <a class="btn-demo btn-demo-quiero" href="https://wa.me/5491124632544?text=Hola!%20Vi%20el%20demo%20de%20estudio%20jurídico%20y%20quiero%20algo%20así" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARBERÍA -->
+  <div class="portfolio-rubro">
+    <div class="portfolio-rubro-label">Barbería / Peluquería</div>
+    <div class="portfolio-grid">
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <span class="demo-card-name">Barbería</span>
+          <span class="demo-card-nivel nivel-standard">Modelo 2</span>
+        </div>
+        <p class="demo-card-desc">Web con servicios, precios, galería de trabajos y reserva de turno por WhatsApp.</p>
+        <div class="demo-card-actions">
+          <a class="btn-demo btn-demo-ver" href="https://nexo-landing.pages.dev/demo-barberia" target="_blank">Ver demo →</a>
+          <a class="btn-demo btn-demo-quiero" href="https://wa.me/5491124632544?text=Hola!%20Vi%20el%20demo%20de%20barbería%20y%20quiero%20algo%20así" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- PLANES -->
   <h2 id="planes">Planes</h2>
-
   <div class="plans">
-
     <div class="card">
       <h3>Base</h3>
-      <p>Web simple + WhatsApp<br>
-      Ideal para empezar a recibir consultas</p>
+      <p>Web simple + WhatsApp<br>Ideal para empezar a recibir consultas</p>
     </div>
-
     <div class="card highlight">
       <h3>Pro</h3>
-      <p>Web completa + SEO básico<br>
-      Diseñada para generar clientes de forma constante</p>
+      <p>Web completa + SEO básico<br>Diseñada para generar clientes de forma constante</p>
     </div>
-
     <div class="card">
       <h3>Premium</h3>
-      <p>Estrategia completa + optimización<br>
-      Para escalar y posicionarte fuerte</p>
+      <p>Estrategia completa + optimización<br>Para escalar y posicionarte fuerte</p>
     </div>
-
   </div>
 
   <!-- CTA FINAL -->
   <h2>Te muestro cómo conseguir más clientes</h2>
   <p>Analizo tu situación actual y te doy mejoras concretas sin costo.</p>
-
   <p><strong>Con solo 1 o 2 clientes nuevos, ya recuperás la inversión.</strong></p>
-
   <a class="btn" href="https://wa.me/5491124632544?text=Hola!%20Quiero%20mejorar%20mi%20captación%20de%20clientes">Hablar por WhatsApp</a>
 
 </div>
@@ -189,34 +427,20 @@ Más de 10 negocios ya mejoraron su presencia online con este enfoque.
 <a class="whatsapp" href="https://wa.me/5491124632544?text=Hola!%20Quiero%20info">💬</a>
 
 <footer style="margin-top: 80px; padding: 40px 20px; text-align: center; border-top: 1px solid #1f2937;">
-
-  <p style="font-size: 1.1rem; margin-bottom: 10px;">
-    NEXO — Soluciones digitales para generar clientes
-  </p>
-
+  <p style="font-size: 1.1rem; margin-bottom: 10px;">NEXO — Soluciones digitales para generar clientes</p>
   <p style="font-size: 0.9rem; opacity: 0.7;">
-    Parte de 
-    <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" style="color:#22c55e; text-decoration:none;">
-      Consultoría Informática CDS
-    </a>
+    Parte de
+    <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" style="color:#22c55e; text-decoration:none;">Consultoría Informática CDS</a>
   </p>
-
-  <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 20px;">
-    © 2026 NEXO. Todos los derechos reservados.
-  </p>
-
-<hr style="margin-top:60px; opacity:0.1;">
-
+  <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 20px;">© 2026 NEXO. Todos los derechos reservados.</p>
+  <hr style="margin-top:60px; opacity:0.1;">
 </footer>
 
-</body>
 <div style="position:fixed;top:0;width:100%;background:#0b1120;padding:10px 20px;text-align:center;z-index:1000;border-bottom:1px solid #1f2937;">
   <a href="https://wa.me/5491124632544?text=Hola!%20Quiero%20un%20diagnóstico%20gratuito" style="color:#22c55e;text-decoration:none;font-weight:bold;">
     👉 Solicitar diagnóstico gratuito por WhatsApp
   </a>
 </div>
 
+</body>
 </html>
-<p style="font-size: 0.9rem; opacity: 0.7;">
-Parte de Consultoría Informática CDS
-</p>
