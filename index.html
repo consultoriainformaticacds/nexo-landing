@@ -185,6 +185,99 @@
       background: #22c55e;
       color: #000;
     }
+
+    /* BLOQUE CDS */
+    .cds-block {
+      margin-top: 60px;
+      background: #0d1929;
+      border: 1px solid rgba(0,212,255,0.15);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .cds-block-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cds-block-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .cds-block-text h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 6px;
+    }
+    .cds-block-text p {
+      font-size: 0.85rem;
+      color: #64748b;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .cds-block-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .cds-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #94a3b8;
+    }
+    .cds-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #00D4FF;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .cds-block-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0,212,255,0.08);
+    }
+    .cds-block-footer p {
+      font-size: 0.82rem;
+      color: #475569;
+      margin: 0;
+    }
+    .btn-cds {
+      display: inline-block;
+      background: transparent;
+      color: #00D4FF;
+      border: 1px solid rgba(0,212,255,0.3);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-cds:hover {
+      background: rgba(0,212,255,0.08);
+      border-color: #00D4FF;
+    }
   </style>
 </head>
 
@@ -396,6 +489,29 @@
           <a class="btn-demo btn-demo-quiero" href="https://wa.me/5491124632544?text=Hola!%20Vi%20el%20demo%20de%20barbería%20y%20quiero%20algo%20así" target="_blank">Lo quiero</a>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- BLOQUE CDS -->
+  <div class="cds-block">
+    <div class="cds-block-top">
+      <div class="cds-block-icon">🔐</div>
+      <div class="cds-block-text">
+        <h3>¿Tu web ya está online? Asegurate de que esté protegida.</h3>
+        <p>Tener una web es el primer paso. El segundo es que nadie la hackee, intercepte tus datos o deje tu negocio expuesto. <strong style="color:#94a3b8;">CDS</strong> audita y protege tu infraestructura digital.</p>
+      </div>
+    </div>
+    <div class="cds-block-items">
+      <div class="cds-item">Auditoría de seguridad web</div>
+      <div class="cds-item">Protección contra ataques</div>
+      <div class="cds-item">Hardening de infraestructura</div>
+      <div class="cds-item">Cámaras y seguridad electrónica</div>
+      <div class="cds-item">Soporte IT para tu negocio</div>
+      <div class="cds-item">Respuesta a incidentes</div>
+    </div>
+    <div class="cds-block-footer">
+      <p>Parte del mismo equipo. Diagnóstico inicial sin costo.</p>
+      <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" class="btn-cds">Conocer CDS →</a>
     </div>
   </div>
 
