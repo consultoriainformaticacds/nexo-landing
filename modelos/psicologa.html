@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Psicóloga en Palermo | Lic. Ana Morales</title>
+
+  <meta name="description" content="Psicóloga en Palermo. Terapia individual, pareja y online. Reservá tu consulta por WhatsApp.">
+  <meta name="keywords" content="psicóloga Palermo, terapia Buenos Aires, psicoterapia CABA">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Psicóloga en Palermo | Lic. Ana Morales">
+  <meta property="og:description" content="Turnos disponibles. Atención profesional.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://tusitio.com/preview.jpg">
+
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--sage:#8A9E8C;--sage-light:#C8D8C9;--sage-pale:#EEF3EE;--cream:#FAF8F4;--dark:#1C2B1E;--muted:#6B7B6D;--border:rgba(138,158,140,0.2);--white:#FFFFFF}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+
+    nav{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 2rem;border-bottom:1px solid var(--border);background:rgba(250,248,244,0.95);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--dark);text-decoration:none}
+    .nav-logo span{color:var(--sage);font-style:italic}
+    .nav-cta{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);background:var(--sage);padding:0.65rem 1.6rem;text-decoration:none;transition:background 0.2s}
+    .nav-cta:hover{background:var(--dark)}
+
+    #hero{background:var(--sage-pale);padding:5rem 2rem;text-align:center;position:relative;overflow:hidden}
+    .hero-deco{position:absolute;top:-4rem;right:-4rem;width:280px;height:280px;border-radius:50%;background:rgba(138,158,140,0.08)}
+    .hero-deco2{position:absolute;bottom:-3rem;left:-3rem;width:200px;height:200px;border-radius:50%;background:rgba(138,158,140,0.06)}
+    .hero-tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage);margin-bottom:1.5rem}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:300;line-height:1.15;margin-bottom:1.2rem;position:relative;z-index:1}
+    .hero-title em{font-style:italic;color:var(--sage)}
+    .hero-desc{font-size:0.95rem;font-weight:300;color:var(--muted);max-width:480px;margin:0 auto 2.5rem;line-height:1.85;position:relative;z-index:1}
+    .hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+    .btn-primary{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);background:var(--sage);padding:1rem 2.5rem;text-decoration:none;transition:background 0.2s;display:inline-block}
+    .btn-primary:hover{background:var(--dark)}
+    .btn-ghost{font-size:0.78rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--dark);border:1px solid var(--border);padding:1rem 2rem;text-decoration:none;transition:all 0.2s;display:inline-block}
+    .btn-ghost:hover{background:var(--sage);color:var(--white);border-color:var(--sage)}
+
+    #servicios{padding:5rem 2rem;background:var(--white)}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;text-align:center;margin-bottom:3rem}
+    .section-title em{font-style:italic;color:var(--sage)}
+    .servicios-list{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:1px;background:var(--border)}
+    .servicio-item{background:var(--white);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:background 0.2s}
+    .servicio-item:hover{background:var(--sage-pale)}
+
+    #sobre{padding:5rem 2rem;background:var(--sage-pale);text-align:center}
+    #sobre p{font-size:0.95rem;font-weight:300;color:var(--muted);max-width:520px;margin:0 auto 2rem;line-height:1.9}
+
+    #cta{background:var(--dark);padding:4rem 2rem;text-align:center}
+    #cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;color:var(--white);margin-bottom:1rem}
+    #cta h2 em{font-style:italic;color:var(--sage-light)}
+    #cta p{font-size:0.88rem;color:rgba(255,255,255,0.5);margin-bottom:2rem;font-weight:300}
+    .btn-light{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--dark);background:var(--sage-light);padding:1rem 2.5rem;text-decoration:none;display:inline-block}
+
+    footer{background:var(--dark);padding:1.5rem 2rem;text-align:center;color:rgba(255,255,255,0.5)}
+
+    #wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none}
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a class="nav-logo">Lic. Ana <span>Morales</span></a>
+  <a href="https://wa.me/5491100000000" class="nav-cta">Reservar consulta</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-deco2"></div>
+
+  <p class="hero-tag">Psicóloga en Palermo · CABA</p>
+
+  <h1 class="hero-title">
+    Empezar terapia puede cambiar tu <em>vida</em>
+  </h1>
+
+  <p class="hero-desc">
+    Atención profesional en ansiedad, estrés y vínculos.
+    Respondemos en menos de 24 horas.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="https://wa.me/5491100000000" class="btn-primary">
+      Reservar por WhatsApp
+    </a>
+  </div>
+</section>
+
+<section id="servicios">
+  <h2 class="section-title">Servicios</h2>
+
+  <div class="servicios-list">
+    <div class="servicio-item"><span>Psicoterapia individual</span><span>$15.000</span></div>
+    <div class="servicio-item"><span>Terapia de pareja</span><span>$20.000</span></div>
+    <div class="servicio-item"><span>Terapia familiar</span><span>$22.000</span></div>
+  </div>
+</section>
+
+<section id="sobre">
+  <h2 class="section-title">Sobre mí</h2>
+  <p>Psicóloga clínica con enfoque en bienestar emocional, vínculos y desarrollo personal.</p>
+</section>
+
+<section id="cta">
+  <h2>Primer paso: <em>hablar</em></h2>
+  <p>Respondemos en menos de 24 horas</p>
+  <a href="https://wa.me/5491100000000" class="btn-light">Escribir ahora</a>
+</section>
+
+<footer>
+  <p>© 2025 · Demo Nexo Web</p>
+</footer>
+
+<a href="https://wa.me/5491100000000" target="_blank" id="wa-float">💬</a>
+
+<!-- SEO estructurado -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Psychologist",
+"name": "Ana Morales",
+"address": {
+  "@type": "PostalAddress",
+  "addressLocality": "Palermo",
+  "addressRegion": "CABA",
+  "addressCountry": "AR"
+},
+"telephone": "+5491100000000"
+}
+</script>
+
+</body>
+</html>
