@@ -1,0 +1,16 @@
+{
+  "name": "nexo-landing",
+  "version": "1.0.0",
+  "description": "Multi-model landing page showcases for web design services",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
