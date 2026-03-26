@@ -27,7 +27,6 @@
     body { background-color: var(--bg); color: var(--text); font-family: 'Mulish', sans-serif; overflow-x: hidden; line-height: 1.6; }
     h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* NAVEGACIÓN */
     nav { position: fixed; top: 0; width: 100%; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 2000; backdrop-filter: blur(15px); background: rgba(11, 17, 32, 0.8); border-bottom: 1px solid var(--glass-border); }
     .nav-logo { font-size: 1.4rem; text-decoration: none; color: #fff; font-weight: 700; }
     .nav-logo span { color: var(--accent); }
@@ -36,17 +35,13 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
 
-    /* HERO */
     #hero { padding: 140px 0 60px; text-align: center; position: relative; }
     .hero-badge { display: inline-block; padding: 6px 16px; background: rgba(34, 197, 94, 0.1); border: 1px solid var(--accent); border-radius: 100px; color: var(--accent); font-size: 0.7rem; font-weight: 700; margin-bottom: 20px; }
     h1 { font-size: clamp(2.5rem, 7vw, 4rem); line-height: 1.1; margin-bottom: 20px; }
     .hero-p { font-size: 1.1rem; color: var(--text-dim); max-width: 600px; margin: 0 auto; }
 
-    /* BANNER PROPUESTA FORMAL */
     .proposal-banner { background: rgba(255,255,255,0.03); border: 1px dashed var(--glass-border); padding: 20px; border-radius: 8px; margin: 40px 0; display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap; }
-    .proposal-banner span { font-size: 0.9rem; font-weight: 600; }
 
-    /* PORTFOLIO GRID */
     .portfolio-section { padding: 60px 0; }
     .rubro-label { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; display: block; }
     .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
@@ -68,14 +63,13 @@
     .demo-card-name { font-size: 1.2rem; font-weight: 700; color: #fff; }
     .demo-card-nivel { font-size: 0.6rem; font-weight: 800; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; background: rgba(255,255,255,0.05); }
     
-    .demo-card-desc { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 25px; height: 40px; }
+    .demo-card-desc { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 25px; min-height: 40px; }
     .demo-card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .btn-demo { text-align: center; text-decoration: none; padding: 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; transition: var(--transition); }
     .btn-demo-ver { border: 1px solid var(--glass-border); color: #fff; }
     .btn-demo-ver:hover { background: #fff; color: #000; }
     .btn-demo-quiero { background: var(--accent); color: #000; }
 
-    /* BLOQUE CDS */
     .cds-block { background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(0, 242, 255, 0.05)); padding: 60px; border-radius: 16px; border: 1px solid rgba(0, 242, 255, 0.2); margin: 80px 0; text-align: center; }
     .btn-cds { background: var(--accent-cds); color: #000; padding: 15px 30px; border-radius: 4px; text-decoration: none; font-weight: 800; display: inline-block; margin-top: 25px; transition: var(--transition); }
 
@@ -105,7 +99,7 @@
       <p class="hero-p">Explorá nuestras demos en vivo. Cada diseño está optimizado para cargar rápido y generar consultas por WhatsApp.</p>
       
       <div class="proposal-banner">
-        <span>📄 Trabajamos con Propuestas Comerciales Formales</span>
+        <span style="font-size: 0.9rem; font-weight: 600;">📄 Trabajamos con Propuestas Comerciales Formales</span>
         <a href="https://wa.me/5491124632544?text=Hola!%20Quiero%20ver%20un%20modelo%20de%20vuestra%20propuesta%20comercial" target="_blank" style="color:var(--accent); text-decoration:none; font-size:0.8rem; font-weight:700;">Solicitar modelo PDF →</a>
       </div>
     </header>
