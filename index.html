@@ -1,98 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo de Modelos | NEXO — Soluciones Digitales</title>
-  <link rel="icon" href="logo-cds.png" type="image/png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Catálogo NEXO | Demos de Suurcursales Digitales en Vivo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Mulish:wght@300;400;700&display=swap" rel="stylesheet" />
   <style>
-    :root { --bg: #0b1120; --bg-card: rgba(30, 41, 59, 0.5); --accent: #22c55e; --accent-cds: #00f2ff; --text: #e2e8f0; --text-dim: #94a3b8; --glass-border: rgba(255, 255, 255, 0.08); --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+    :root { --bg: #0b1120; --card: rgba(30, 41, 59, 0.6); --accent: #22c55e; --text: #e2e8f0; --dim: #94a3b8; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; color-scheme: dark; }
-    body { background-color: var(--bg); color: var(--text); font-family: 'Mulish', sans-serif; overflow-x: hidden; line-height: 1.6; }
-    h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; }
-    nav { position: fixed; top: 0; width: 100%; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 2000; backdrop-filter: blur(15px); background: rgba(11, 17, 32, 0.8); border-bottom: 1px solid var(--glass-border); }
-    .nav-logo { font-size: 1.4rem; text-decoration: none; color: #fff; font-weight: 700; }
-    .nav-logo span { color: var(--accent); }
-    .nav-cta-back { color: var(--text-dim); text-decoration: none; font-size: 0.8rem; font-weight: 700; border: 1px solid var(--glass-border); padding: 8px 16px; border-radius: 4px; }
-    #hero { padding: 140px 0 60px; text-align: center; }
-    .proposal-banner { background: rgba(255,255,255,0.03); border: 1px dashed var(--glass-border); padding: 20px; border-radius: 8px; margin: 40px 5%; text-align: center; }
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 50px 5%; }
-    .demo-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--glass-border); padding: 30px; transition: var(--transition); position: relative; overflow: hidden; }
+    body { background-color: var(--bg); color: var(--text); font-family: 'Mulish', sans-serif; }
+    nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 20px 5%; background: rgba(11, 17, 32, 0.9); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 1000; }
+    .nav-btn-back { color: var(--dim); text-decoration: none; font-weight: 700; border: 1px solid rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 4px; }
+    
+    .main { max-width: 1200px; margin: 0 auto; padding: 140px 5% 60px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 50px; }
+    .rubro-h2 { color: var(--accent); letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; margin-top: 60px; border-bottom: 1px solid var(--accent); width: fit-content; }
+    
+    .demo-card { background: var(--card); border: 1px solid rgba(255,255,255,0.1); padding: 30px; border-radius: 12px; transition: 0.3s; position: relative; }
     .demo-card:hover { border-color: var(--accent); transform: translateY(-8px); }
-    .demo-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(34, 197, 94, 0.1), transparent 40%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
-    .demo-card:hover::before { opacity: 1; }
-    .demo-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-    .demo-card-nivel { font-size: 0.6rem; font-weight: 800; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.05); }
-    .btn-demo { display: inline-block; text-align: center; text-decoration: none; padding: 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; width: 48%; transition: 0.3s; }
-    .btn-ver { border: 1px solid var(--glass-border); color: #fff; }
-    .btn-ver:hover { background: #fff; color: #000; }
-    .btn-quiero { background: var(--accent); color: #000; }
-    .cds-block { background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(0, 242, 255, 0.05)); padding: 60px; border-radius: 16px; border: 1px solid rgba(0, 242, 255, 0.2); margin: 80px 5%; text-align: center; }
-    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 3000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); animation: pulse 2s infinite; text-decoration: none; }
+    .nivel { background: rgba(255,255,255,0.05); padding: 2px 8px; font-size: 0.6rem; border-radius: 4px; font-weight: 700; }
+    .btn-wrap { display: flex; gap: 10px; margin-top: 25px; }
+    .btn-wrap a { flex: 1; text-align: center; text-decoration: none; padding: 12px; font-size: 0.75rem; font-weight: 800; border-radius: 4px; }
+    .v { border: 1px solid var(--text); color: #fff; }
+    .q { background: var(--accent); color: #000; }
+
+    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; animation: pulse 2s infinite; }
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
-  <nav><a class="nav-logo" href="#">NEXO<span>.</span></a><a href="https://nexoweb.pages.dev/" class="nav-cta-back">← Volver a la Agencia</a></nav>
-  <main>
-    <header id="hero"><h1>Elegí el modelo para <span>tu negocio</span></h1></header>
-    <div class="proposal-banner">📄 Trabajamos con Propuestas Comerciales Formales <a href="https://wa.me/5491124632544" target="_blank" style="color:var(--accent); font-weight:700; text-decoration:none; margin-left:10px;">Solicitar PDF →</a></div>
+  <nav><a href="#" style="text-decoration:none; color:#fff; font-size:1.6rem; font-weight:900;">NEXO<span>.</span></a><a href="https://nexoweb.pages.dev/" class="nav-btn-back">← Volver a Agencia</a></nav>
+  
+  <div class="main">
+    <div style="background:rgba(255,255,255,0.03); border:1px dashed var(--accent); padding:20px; border-radius:8px; text-align:center;">📄 Propuestas Comerciales en PDF · Entrega formal · Solicite modelo de prueba por WhatsApp</div>
     
-    <section class="portfolio-grid">
-      <!-- ESTÉTICA -->
-      <article class="demo-card">
-        <div class="demo-card-top"><h3>Lumière Studio</h3><span class="demo-card-nivel">Premium</span></div>
-        <p>Bienestar y Estética de alta gama.</p>
-        <div style="margin-top: 20px;"><a class="btn-demo btn-ver" href="demo-estetica-premium.html" target="_blank">Ver Demo</a><a class="btn-demo btn-quiero" href="https://wa.me/5491124632544">Lo quiero</a></div>
-      </article>
-      <!-- RESTO -->
-      <article class="demo-card">
-        <div class="demo-card-top"><h3>Raíces Resto</h3><span class="demo-card-nivel">Premium</span></div>
-        <p>Gastronomía con reservas online.</p>
-        <div style="margin-top: 20px;"><a class="btn-demo btn-ver" href="demo-restaurante.html" target="_blank">Ver Demo</a><a class="btn-demo btn-quiero" href="https://wa.me/5491124632544">Lo quiero</a></div>
-      </article>
-      <!-- LEGAL -->
-      <article class="demo-card">
-        <div class="demo-card-top"><h3>Fernández & Asoc.</h3><span class="demo-card-nivel">Standard</span></div>
-        <p>Estudio Jurídico profesional.</p>
-        <div style="margin-top: 20px;"><a class="btn-demo btn-ver" href="modelos/estudio-juridico.html" target="_blank">Ver Demo</a><a class="btn-demo btn-quiero" href="https://wa.me/5491124632544">Lo quiero</a></div>
-      </article>
-      <!-- TIENDA -->
-      <article class="demo-card">
-        <div class="demo-card-top"><h3>RegaloUnico</h3><span class="demo-card-nivel">Premium</span></div>
-        <p>Tienda de productos personalizados.</p>
-        <div style="margin-top: 20px;"><a class="btn-demo btn-ver" href="demo-tienda-premium.html" target="_blank">Ver Demo</a><a class="btn-demo btn-quiero" href="https://wa.me/5491124632544">Lo quiero</a></div>
-      </article>
-      <!-- CONTABLE -->
-      <article class="demo-card">
-        <div class="demo-card-top"><h3>Estudio Contable</h3><span class="demo-card-nivel">Standard</span></div>
-        <p>Servicios fiscales y contables.</p>
-        <div style="margin-top: 20px;"><a class="btn-demo btn-ver" href="demo-estudio-contable.html" target="_blank">Ver Demo</a><a class="btn-demo btn-quiero" href="https://wa.me/5491124632544">Lo quiero</a></div>
-      </article>
-      <!-- BARBERIA -->
-      <article class="demo-card">
-        <div class="demo-card-top"><h3>Barbería Elite</h3><span class="demo-card-nivel">Standard</span></div>
-        <p>Reserva de turnos y servicios.</p>
-        <div style="margin-top: 20px;"><a class="btn-demo btn-ver" href="demo-barberia.html" target="_blank">Ver Demo</a><a class="btn-demo btn-quiero" href="https://wa.me/5491124632544">Lo quiero</a></div>
-      </article>
-    </section>
+    <h2 class="rubro-h2">Estética & Spas</h2>
+    <div class="grid">
+      <div class="demo-card"><h4>Lumière Estudio <span class="nivel">Landing</span></h4><p>Página rápida de servicios.</p><div class="btn-wrap"><a href="demo-estetica-landing.html" class="v">Ver Demo</a><a href="https://wa.me/5491124632544" class="q">Quiero esto</a></div></div>
+      <div class="demo-card"><h4>Lumière Estudio <span class="nivel" style="color:#00f2ff">Standard</span></h4><p>Web multi-página completa.</p><div class="btn-wrap"><a href="demo-estetica-standard.html" class="v">Ver Demo</a><a href="https://wa.me/5491124632544" class="q">Quiero esto</a></div></div>
+      <div class="demo-card"><h4>Lumière Estudio <span class="nivel" style="color:#a855f7">Premium</span></h4><p>Diseño corporativo exclusivo.</p><div class="btn-wrap"><a href="demo-estetica-premium.html" class="v">Ver Demo</a><a href="https://wa.me/5491124632544" class="q">Quiero esto</a></div></div>
+    </div>
 
-    <section class="cds-block"><h3>🛡 Seguridad Integrada por CDS</h3><p>Auditamos cada web para tu tranquilidad.</p><a href="https://consultoriainformaticacds.pages.dev/" class="btn-cds">Ver Seguridad →</a></section>
-  </main>
-  <footer><p>© 2026 NEXO · Parte del ecosistema CDS</p></footer>
-  <a id="wa-float" href="https://wa.me/5491124632544" target="_blank"><svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
-      document.querySelectorAll('section, article, .cds-block').forEach(el => { el.classList.add('reveal'); observer.observe(el); });
-      window.addEventListener('mousemove', (e) => { document.querySelectorAll('.demo-card').forEach(card => { const rect = card.getBoundingClientRect(); card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`); card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`); }); });
-    });
-  </script>
+    <h2 class="rubro-h2">Retail & Tiendas</h2>
+    <div class="grid">
+      <div class="demo-card"><h4>Vamos Por Más <span class="nivel">Tienda Catálogo</span></h4><p>Diseño de tienda standard.</p><div class="btn-wrap"><a href="demo-tienda-standard.html" class="v">Ver Demo</a><a href="https://wa.me/5491124632544" class="q">Cotizar</a></div></div>
+      <div class="demo-card"><h4>RegaloUnico <span class="nivel" style="color:#a855f7">Premium Store</span></h4><p>Tienda optimizada con ventas.</p><div class="btn-wrap"><a href="demo-tienda-premium.html" class="v">Ver Demo</a><a href="https://wa.me/5491124632544" class="q">Cotizar</a></div></div>
+    </div>
+
+    <h2 class="rubro-h2">Profesionales & Gastronomía</h2>
+    <div class="grid">
+      <div class="demo-card"><h4>Luma Café <span class="nivel">Resto Bar</span></h4><div class="btn-wrap"><a href="https://web-luma-cafe.netlify.app/" class="v">Demo Live</a><a href="https://wa.me/5491124632544" class="q">Cotizar</a></div></div>
+      <div class="demo-card"><h4>Raíces Resto <span class="nivel">Gastronomía Full</span></h4><div class="btn-wrap"><a href="demo-restaurante.html" class="v">Ver Demo</a><a href="https://wa.me/5491124632544" class="q">Cotizar</a></div></div>
+      <div class="demo-card"><h4>Fernández & Asoc. <span class="nivel">Legal</span></h4><div class="btn-wrap"><a href="modelos/estudio-juridico.html" class="v">Ver Demo</a><a href="https://wa.me/5491124632544" class="q">Cotizar</a></div></div>
+      <div class="demo-card"><h4>Estudio Contable <span class="nivel">Standard</span></h4><div class="btn-wrap"><a href="demo-estudio-contable.html" class="v">Ver Demo</a><a href="https://wa.me/5491124632544" class="q">Cotizar</a></div></div>
+      <div class="demo-card"><h4>Barbería Elite <span class="nivel">Citas/Reserva</span></h4><div class="btn-wrap"><a href="demo-barberia.html" class="v">Ver Demo</a><a href="https://wa.me/5491124632544" class="q">Cotizar</a></div></div>
+    </div>
+
+    <section style="background:rgba(15,23,42,0.9); border:1px solid var(--accent-cds); padding:60px; border-radius:12px; margin:100px 0; text-align:center;">
+      <h3 style="color:var(--accent-cds); margin-bottom:15px">🛡 SISTEMA INTEGRAL CDS</h3>
+      <p style="color:var(--dim); max-width:600px; margin: 0 auto">Auditamos cada demo web para garantizar cero brechas de seguridad antes de cada lanzamiento.</p>
+      <a href="https://consultoriainformaticacds.pages.dev/" style="color:#fff; text-decoration:none; display:inline-block; margin-top:20px; font-weight:800">Ver servicios de Auditoría →</a>
+    </section>
+  </div>
+
+  <footer style="text-align:center; padding:50px; opacity:0.6; font-size:0.8rem">© 2026 Catálogo NEXO Ecosistema. Todos los derechos reservados.</footer>
+  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank"><svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 </body>
 </html>
