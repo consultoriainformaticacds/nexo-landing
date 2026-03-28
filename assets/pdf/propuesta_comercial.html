@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Propuesta Comercial — NEXO Web</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg: #050505; --accent: #22c55e; --text: #ffffff; --dim: #888888; --border: #222; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; padding: 50px; }
+    
+    /* Estilos de Impresión */
+    @media print {
+      body { padding: 0; background: #fff !important; color: #000 !important; }
+      .page-break { page-break-before: always; }
+      .no-print { display: none; }
+      .header, .footer { border-color: #eee !important; }
+      .card { border-color: #eee !important; background: #fafafa !important; color: #000 !important; }
+      .accent-text { color: #16a34a !important; }
+    }
+
+    .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 30px; margin-bottom: 50px; }
+    .logo { font-family: 'Syne'; font-size: 2rem; font-weight: 800; }
+    .logo span { color: var(--accent); }
+    .proposal-id { text-align: right; font-size: 0.8rem; color: var(--dim); text-transform: uppercase; }
+
+    .client-box { margin-bottom: 50px; }
+    .client-box h1 { font-family: 'Syne'; font-size: 2.5rem; margin-bottom: 10px; }
+    
+    .card { background: #0a0a0a; border: 1px solid var(--border); padding: 30px; border-radius: 8px; margin-bottom: 30px; }
+    .card h3 { font-family: 'Syne'; color: var(--accent); margin-bottom: 15px; font-size: 1rem; letter-spacing: 2px; }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th { text-align: left; color: var(--dim); font-size: 0.7rem; text-transform: uppercase; padding: 10px; border-bottom: 1px solid var(--border); }
+    td { padding: 20px 10px; border-bottom: 1px solid var(--border); }
+    .total-row { font-size: 1.5rem; font-weight: 800; font-family: 'Syne'; color: var(--accent); }
+
+    .footer { margin-top: 100px; padding-top: 30px; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--dim); display: flex; justify-content: space-between; }
+    .btn-print { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: #000; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: 800; }
+  </style>
+</head>
+<body>
+
+  <a href="javascript:window.print()" class="btn-print no-print">Descargar como PDF</a>
+
+  <div class="header">
+    <div class="logo">NEXO<span>.</span></div>
+    <div class="proposal-id">
+      Propuesta: #NX-2026-001<br>
+      Fecha: 28/03/2026<br>
+      Válido por: 15 días
+    </div>
+  </div>
+
+  <div class="client-box">
+    <p style="color: var(--accent); font-weight: 700; margin-bottom: 5px;">PREPARADO PARA:</p>
+    <h1>[Nombre del Cliente]</h1>
+    <p style="color: var(--dim);">[Empresa / Rubro del negocio]</p>
+  </div>
+
+  <div class="card">
+    <h3>ALCANCE TÉCNICO</h3>
+    <p>Desarrollo de Arquitectura Digital Pro optimizada para conversión de clientes de alto valor. Incluye diseño UI Premium, integración de WhatsApp Business, Hosting por 12 meses y blindaje de seguridad provisto por CDS Consultoría.</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>DESCRIPCIÓN DEL SERVICIO</th>
+        <th style="text-align: right;">INVERSIÓN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <strong>Arquitectura Web Modelo 02 (Standard)</strong><br>
+          <small style="color: var(--dim);">Diseño de 5 secciones, optimización SEO y CRM de contacto.</small>
+        </td>
+        <td style="text-align: right; font-weight: 600;">U$S 250</td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Protección y Hardening de Servidor (CDS)</strong><br>
+          <small style="color: var(--dim);">Protocolo de seguridad contra inyecciones y ataques DDoS.</small>
+        </td>
+        <td style="text-align: right; font-weight: 600;">BONIFICADO</td>
+      </tr>
+      <tr class="total-row">
+        <td>TOTAL DE INVERSIÓN</td>
+        <td style="text-align: right;">U$S 250</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <div>
+      <strong>NEXO WEB · División Digital de CDS</strong><br>
+      CABA, Argentina<br>
+      consultoriainformaticacds@gmail.com
+    </div>
+    <div style="text-align: right;">
+      Firma Autorizada:<br>
+      <div style="margin-top: 10px; font-family: 'Syne'; font-weight: 800; font-size: 1.2rem;">CDS ADMIN</div>
+    </div>
+  </div>
+
+</body>
+</html>
