@@ -6,6 +6,12 @@
   <title>NEXO | Arquitectura Web & Catálogo de Ecosistemas</title>
   <meta name="description" content="Explora nuestras arquitecturas web premium. Ecosistemas digitales optimizados para generar clientes de alto valor.">
 
+  <meta property="og:title" content="NEXO | Arquitectura Web & Catálogo de Ecosistemas">
+  <meta property="og:description" content="Explora nuestras arquitecturas web premium. Ecosistemas digitales optimizados para generar clientes de alto valor.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nexo-landing.pages.dev/">
+  <meta property="og:image" content="https://nexo-landing.pages.dev/logo-cds.png">
+
   <link rel="icon" href="logo-cds.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -23,7 +29,8 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    /* MEJORA: scroll-padding-top evita que el menú fijo tape los títulos al hacer clic en enlaces internos */
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
     body { background: radial-gradient(circle at top center, #0f172a, var(--bg)); color: var(--text); font-family: 'Mulish', sans-serif; line-height: 1.6; overflow-x: hidden; }
     h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; }
 
@@ -49,12 +56,14 @@
 
     /* PORTFOLIO GRID */
     .rubro-title { color: var(--accent); font-size: 0.8rem; letter-spacing: 3px; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin: 60px 0 30px; display: inline-block; }
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    /* MEJORA: Uso de min() para evitar overflow horizontal en celulares muy pequeños */
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 30px; }
     .demo-card { background: var(--card); border: 1px solid var(--border); padding: 35px; border-radius: 8px; transition: 0.3s; display: flex; flex-direction: column; }
     .demo-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     .demo-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
     .demo-header h3 { color: #fff; font-size: 1.4rem; }
-    .demo-badge { font-size: 0.65rem; background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 4px; font-weight: 700; color: var(--dim); }
+    /* MEJORA: Aumento leve de opacidad de fondo para mejor legibilidad */
+    .demo-badge { font-size: 0.65rem; background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px; font-weight: 700; color: var(--text); }
     .demo-card p { color: var(--dim); font-size: 0.9rem; flex-grow: 1; margin-bottom: 25px; }
     
     .demo-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -74,7 +83,7 @@
     .form-wrapper p { text-align: center; color: var(--dim); margin-bottom: 30px; font-size: 0.95rem; }
     
     .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 8px; letter-spacing: 1px; }
+    .form-group label { display: block; font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 8px; letter-spacing: 1px; cursor: pointer; }
     .form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--border); padding: 15px; color: #fff; font-family: inherit; border-radius: 4px; outline: none; transition: 0.3s; }
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
     .form-group select option { background: var(--bg); color: #fff; }
@@ -95,7 +104,6 @@
     <a href="https://nexoweb.pages.dev/" class="btn-nav">← Volver a la Agencia</a>
   </nav>
 
-  <!-- HERO -->
   <header class="hero">
     <div class="hero-badge">Arquitectura Digital Elite</div>
     <h1>Ecosistemas diseñados para <span>Liderar</span></h1>
@@ -103,10 +111,8 @@
     <a href="#diagnostico" class="cta-button">Solicitar Diagnóstico Formal</a>
   </header>
 
-  <!-- PORTFOLIO / CATÁLOGO COMPLETO -->
   <section>
     
-    <!-- RUBRO 1 -->
     <h2 class="rubro-title">Estética & Bienestar</h2>
     <div class="portfolio-grid">
       <div class="demo-card">
@@ -135,7 +141,6 @@
       </div>
     </div>
 
-    <!-- RUBRO 2 -->
     <h2 class="rubro-title">Gastronomía & Tiendas</h2>
     <div class="portfolio-grid">
       <div class="demo-card">
@@ -172,7 +177,6 @@
       </div>
     </div>
 
-    <!-- RUBRO 3 -->
     <h2 class="rubro-title">Estudios Profesionales</h2>
     <div class="portfolio-grid">
       <div class="demo-card">
@@ -202,7 +206,6 @@
     </div>
   </section>
 
-  <!-- AUTORIDAD CDS -->
   <section>
     <div class="authority-banner">
       <h2 style="color:var(--cds);">Seguridad de Grado Corporativo</h2>
@@ -210,25 +213,23 @@
     </div>
   </section>
 
-  <!-- FORMULARIO DE DIAGNÓSTICO CON EL NUEVO ENDPOINT -->
   <section id="diagnostico" class="diagnostico-section">
     <div class="form-wrapper">
       <h2>Solicitud de Diagnóstico</h2>
       <p>Complete el formulario corporativo. Un especialista evaluará su presencia digital y le enviará una propuesta formal.</p>
       
-      <!-- ENDPOINT ACTUALIZADO A mreoeazp -->
       <form id="nexoForm" action="https://formspree.io/f/mreoeazp" method="POST">
         <div class="form-group">
-          <label>Nombre del Solicitante</label>
-          <input type="text" name="nombre" required placeholder="Ej: Roberto Pérez">
+          <label for="nombre">Nombre del Solicitante</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Ej: Roberto Pérez">
         </div>
         <div class="form-group">
-          <label>Email de Contacto</label>
-          <input type="email" name="email" required placeholder="roberto@empresa.com">
+          <label for="email">Email de Contacto</label>
+          <input type="email" id="email" name="email" required placeholder="roberto@empresa.com">
         </div>
         <div class="form-group">
-          <label>Modelo de Interés</label>
-          <select name="modelo_interes" required>
+          <label for="modelo_interes">Modelo de Interés</label>
+          <select id="modelo_interes" name="modelo_interes" required>
             <option value="" disabled selected>Seleccione la arquitectura base</option>
             <option value="Landing">Arquitectura Landing (Alta velocidad)</option>
             <option value="Standard">Arquitectura Standard (Corporativa)</option>
@@ -237,8 +238,8 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Situación actual del negocio</label>
-          <textarea name="situacion" rows="4" required placeholder="Describa brevemente qué desea lograr..."></textarea>
+          <label for="situacion">Situación actual del negocio</label>
+          <textarea id="situacion" name="situacion" rows="4" required placeholder="Describa brevemente qué desea lograr..."></textarea>
         </div>
         <button type="submit" class="submit-btn" id="nx-btn">Enviar Solicitud Formal</button>
         <p id="nx-status" style="margin-top: 15px; text-align: center; font-weight: 700; font-size: 0.85rem;"></p>
