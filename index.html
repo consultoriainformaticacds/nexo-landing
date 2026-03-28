@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEXO | Infraestructura Web para Generar Clientes</title>
-  <meta name="description" content="Desarrollamos ecosistemas digitales premium optimizados para generar clientes de alto valor desde Google. Solicita tu diagnóstico.">
+  <title>NEXO | Arquitectura Web & Catálogo de Ecosistemas</title>
+  <meta name="description" content="Explora nuestras arquitecturas web premium. Ecosistemas digitales optimizados para generar clientes de alto valor.">
 
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -17,80 +17,70 @@
       --text: #f8fafc;
       --dim: #94a3b8;
       --border: rgba(255, 255, 255, 0.08);
-      --red: #ef4444;
+      --cds: #00f2ff;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      background: radial-gradient(circle at top center, #0f172a, var(--bg));
-      color: var(--text);
-      font-family: 'Mulish', sans-serif;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+    body { background: radial-gradient(circle at top center, #0f172a, var(--bg)); color: var(--text); font-family: 'Mulish', sans-serif; line-height: 1.6; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 
-    h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; }
-    
-    /* NAV MINIMALISTA */
+    /* NAV */
     nav { position: fixed; width: 100%; top: 0; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(6, 13, 31, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 1000; }
     .logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; }
     .logo span { color: var(--accent); }
+    .btn-nav { color: var(--dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; border: 1px solid var(--border); padding: 8px 16px; border-radius: 4px; transition: 0.3s; }
+    .btn-nav:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* EL ÚNICO CTA DOMINANTE */
-    .cta-button { background: var(--accent); color: #000; padding: 14px 28px; border-radius: 4px; font-weight: 800; font-size: 0.9rem; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; border: 1px solid transparent; display: inline-block; }
+    /* HERO */
+    .hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 150px 5% 80px; position: relative; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; z-index: -1; mask-image: radial-gradient(circle, black, transparent 70%); }
+    .hero-badge { border: 1px solid var(--accent); background: rgba(34, 197, 94, 0.05); padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; color: var(--accent); margin-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+    .hero h1 { font-size: clamp(3rem, 7vw, 4.5rem); margin-bottom: 20px; max-width: 900px; line-height: 1.1; }
+    .hero p { font-size: 1.2rem; color: var(--dim); max-width: 650px; margin-bottom: 40px; font-weight: 300; }
+    
+    .cta-button { background: var(--accent); color: #000; padding: 16px 36px; border-radius: 4px; font-weight: 800; font-size: 0.95rem; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; border: 1px solid transparent; display: inline-block; }
     .cta-button:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3); }
 
-    /* 1. HERO - PROMESA FUERTE */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 5% 60px; position: relative; }
-    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; z-index: -1; mask-image: radial-gradient(circle, black, transparent 70%); }
-    .hero-badge { border: 1px solid var(--border); background: rgba(255,255,255,0.03); padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; color: var(--dim); margin-bottom: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
-    .hero h1 { font-size: clamp(3rem, 8vw, 5rem); margin-bottom: 20px; max-width: 900px; }
-    .hero h1 span { color: var(--accent); }
-    .hero p { font-size: 1.25rem; color: var(--dim); max-width: 650px; margin-bottom: 40px; font-weight: 300; }
+    section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+    .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; }
 
-    section { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
-    .section-header { text-align: center; margin-bottom: 60px; }
-    .section-header h2 { font-size: 2.5rem; margin-bottom: 15px; }
-    .section-header p { color: var(--dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-
-    /* 2. PROBLEMA */
-    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .problem-card { background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.1); padding: 40px; border-radius: 8px; }
-    .problem-card h3 { color: var(--red); margin-bottom: 15px; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
-    .problem-card p { color: var(--dim); font-size: 0.95rem; }
-
-    /* 3. TRANSFORMACIÓN */
-    .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-    .solution-card { background: var(--card); border: 1px solid var(--border); padding: 40px; border-radius: 8px; transition: 0.3s; }
-    .solution-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-    .solution-card h3 { color: #fff; margin-bottom: 15px; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
-    .solution-card h3::before { content: '✓'; color: var(--accent); font-size: 1.5rem; }
-    .solution-card p { color: var(--dim); font-size: 0.95rem; }
-
-    /* 4. PORTFOLIO PREMIUM */
+    /* PORTFOLIO GRID */
+    .rubro-title { color: var(--accent); font-size: 0.8rem; letter-spacing: 3px; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin: 60px 0 30px; display: inline-block; }
     .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-    .portfolio-item { background: #0b1120; border: 1px solid var(--border); padding: 40px 30px; border-radius: 8px; transition: 0.3s; text-align: center; }
-    .portfolio-item:hover { border-color: var(--accent); background: rgba(34, 197, 94, 0.03); }
-    .portfolio-item span { font-size: 0.75rem; color: var(--accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
-    .portfolio-item h3 { font-size: 1.8rem; color: #fff; margin: 15px 0; }
-    .portfolio-item p { color: var(--dim); font-size: 0.9rem; margin-bottom: 25px; }
-    .link-demo { color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 700; border-bottom: 1px solid var(--accent); padding-bottom: 2px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-    .link-demo:hover { color: var(--accent); }
-
-    /* 5. AUTORIDAD (Seguridad) */
-    .authority-banner { background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(0, 242, 255, 0.05)); border: 1px solid rgba(0, 242, 255, 0.2); padding: 60px; border-radius: 12px; text-align: center; margin: 80px auto; max-width: 900px; }
-    .authority-banner h2 { font-size: 2rem; margin-bottom: 20px; color: #fff; }
-    .authority-banner p { color: var(--dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-
-    /* 7. CIERRE Y URGENCIA */
-    .final-cta { text-align: center; padding: 100px 5%; background: #0b1120; border-top: 1px solid var(--border); }
-    .final-cta h2 { font-size: 3rem; margin-bottom: 20px; }
-    .urgency-text { color: var(--dim); font-size: 0.9rem; margin-top: 20px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .pulse-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+    .demo-card { background: var(--card); border: 1px solid var(--border); padding: 35px; border-radius: 8px; transition: 0.3s; display: flex; flex-direction: column; }
+    .demo-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .demo-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+    .demo-header h3 { color: #fff; font-size: 1.4rem; }
+    .demo-badge { font-size: 0.65rem; background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 4px; font-weight: 700; color: var(--dim); }
+    .demo-card p { color: var(--dim); font-size: 0.9rem; flex-grow: 1; margin-bottom: 25px; }
     
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+    .demo-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .btn-arquitectura { border: 1px solid var(--border); color: #fff; text-decoration: none; padding: 12px; text-align: center; font-size: 0.8rem; font-weight: 700; border-radius: 4px; transition: 0.3s; }
+    .btn-arquitectura:hover { background: #fff; color: #000; }
+    .btn-seleccionar { background: rgba(34, 197, 94, 0.1); border: 1px solid var(--accent); color: var(--accent); text-decoration: none; padding: 12px; text-align: center; font-size: 0.8rem; font-weight: 700; border-radius: 4px; transition: 0.3s; }
+    .btn-seleccionar:hover { background: var(--accent); color: #000; }
+
+    /* AUTORIDAD CDS */
+    .authority-banner { background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(0, 242, 255, 0.05)); border: 1px solid rgba(0, 242, 255, 0.2); padding: 50px; border-radius: 8px; text-align: center; margin: 80px auto; max-width: 900px; }
+    .authority-banner h2 { font-size: 1.8rem; margin-bottom: 15px; color: #fff; }
+    
+    /* FORMULARIO DE DIAGNÓSTICO (PREMIUM) */
+    .diagnostico-section { background: #0b1120; border-top: 1px solid var(--border); padding: 100px 5%; margin-top: 50px; }
+    .form-wrapper { max-width: 600px; margin: 0 auto; background: var(--card); padding: 50px; border-radius: 8px; border: 1px solid var(--border); }
+    .form-wrapper h2 { font-size: 2rem; margin-bottom: 10px; text-align: center; }
+    .form-wrapper p { text-align: center; color: var(--dim); margin-bottom: 30px; font-size: 0.95rem; }
+    
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 8px; letter-spacing: 1px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--border); padding: 15px; color: #fff; font-family: inherit; border-radius: 4px; outline: none; transition: 0.3s; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+    .submit-btn { width: 100%; background: var(--accent); color: #000; border: none; padding: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border-radius: 4px; transition: 0.3s; }
+    .submit-btn:hover { background: var(--accent-hover); box-shadow: 0 0 20px rgba(34,197,94,0.3); }
+
+    /* WHATSAPP */
+    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
 
     footer { padding: 40px; text-align: center; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.8rem; }
   </style>
@@ -99,114 +89,197 @@
 
   <nav>
     <a href="#" class="logo">NEXO<span>.</span></a>
-    <!-- CTA DOMINANTE DESDE EL INICIO -->
-    <a href="https://wa.me/5491124632544?text=Hola,%20quisiera%20solicitar%20un%20diagnóstico%20digital%20para%20mi%20negocio." class="cta-button">Solicitar Diagnóstico</a>
+    <a href="https://nexoweb.pages.dev/" class="btn-nav">← Volver a la Agencia</a>
   </nav>
 
-  <!-- 1. HERO -->
+  <!-- HERO -->
   <header class="hero">
-    <div class="hero-badge">Desarrollo Web & Optimización CRO</div>
-    <h1>Convierte tu presencia digital en un <span>Activo Rentable</span></h1>
-    <p>Diseñamos infraestructuras web de alto rendimiento orientadas exclusivamente a posicionar tu marca y capturar clientes de alto valor.</p>
-    <a href="https://wa.me/5491124632544?text=Hola,%20quisiera%20solicitar%20un%20diagnóstico%20digital%20para%20mi%20negocio." class="cta-button" style="padding: 18px 40px; font-size: 1rem;">Solicitar Diagnóstico Gratuito</a>
+    <div class="hero-badge">Arquitectura Digital Elite</div>
+    <h1>Ecosistemas diseñados para <span>Liderar</span></h1>
+    <p>Explora nuestras infraestructuras base. Selecciona el modelo que mejor se adapte a la escala de tu negocio y lo personalizaremos al 100%.</p>
+    <a href="#diagnostico" class="cta-button">Solicitar Diagnóstico Formal</a>
   </header>
 
-  <!-- 2. PROBLEMA (Agitar el dolor) -->
+  <!-- PORTFOLIO -->
   <section>
-    <div class="section-header">
-      <h2>El costo invisible de una web amateur</h2>
-      <p>Tener un sitio web genérico o depender únicamente de redes sociales te está costando posicionamiento y ventas todos los días.</p>
-    </div>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <h3>Fuga de Autoridad</h3>
-        <p>Un diseño obsoleto o lento hace que tus prospectos duden de la calidad de tus servicios antes de contactarte.</p>
-      </div>
-      <div class="problem-card">
-        <h3>Dependencia de Redes</h3>
-        <p>Los algoritmos cambian. Si no tienes un canal de adquisición propio en Google, tu negocio no tiene cimientos sólidos.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. TRANSFORMACIÓN (La Solución) -->
-  <section>
-    <div class="section-header">
-      <h2>Ingeniería enfocada en resultados</h2>
-      <p>No vendemos "páginas lindas". Construimos sistemas digitales diseñados metodológicamente para convertir tráfico en consultas calificadas.</p>
-    </div>
-    <div class="solution-grid">
-      <div class="solution-card">
-        <h3>Estructura de Conversión (CRO)</h3>
-        <p>Diseño basado en el comportamiento del usuario. Eliminamos la fricción para que el contacto por WhatsApp sea inevitable.</p>
-      </div>
-      <div class="solution-card">
-        <h3>Rendimiento y Velocidad</h3>
-        <p>Código limpio y optimizado. Tiempos de carga milimétricos que Google premia posicionándote por encima de tu competencia.</p>
-      </div>
-      <div class="solution-card">
-        <h3>Diseño UI/UX Premium</h3>
-        <p>Interfaces que comunican estatus. Posicionamos tu marca en el segmento de alto valor desde el primer segundo.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. PORTFOLIO (Prueba visual, sin precios) -->
-  <section>
-    <div class="section-header">
-      <h2>Ecosistemas Desarrollados</h2>
-      <p>Soluciones implementadas para marcas que exigen excelencia.</p>
-    </div>
+    
+    <!-- RUBRO 1 -->
+    <h2 class="rubro-title">Estética & Bienestar</h2>
     <div class="portfolio-grid">
-      <div class="portfolio-item">
-        <span>Estética & Bienestar</span>
-        <h3>Lumière Studio</h3>
-        <p>Plataforma orientada a transmitir lujo, con integración directa de agendamiento y servicios.</p>
-        <a href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank" class="link-demo">Ver Arquitectura</a>
+      <div class="demo-card">
+        <div class="demo-header"><h3>Lumière Studio</h3><span class="demo-badge">Landing Page</span></div>
+        <p>Estructura de una sola página enfocada en la captación agresiva de leads y cierre rápido por WhatsApp.</p>
+        <div class="demo-actions">
+          <a href="demo-estetica-landing.html" target="_blank" class="btn-arquitectura">Ver Arquitectura</a>
+          <a href="https://wa.me/5491124632544?text=Me%20interesa%20el%20modelo%20Estética%20Landing" class="btn-seleccionar">Elegir Modelo</a>
+        </div>
       </div>
-      <div class="portfolio-item">
-        <span>Estudios Profesionales</span>
-        <h3>Fernández & Asoc.</h3>
-        <p>Estructura sobria diseñada para generar confianza inmediata y captar consultas corporativas.</p>
-        <a href="https://nexo-landing.pages.dev/modelos/estudio-juridico" target="_blank" class="link-demo">Ver Arquitectura</a>
+      <div class="demo-card">
+        <div class="demo-header"><h3>Lumière Studio</h3><span class="demo-badge" style="color:#38bdf8;">Standard</span></div>
+        <p>Sitio corporativo con detalle profundo de servicios, staff, horarios y formulario de pre-cualificación.</p>
+        <div class="demo-actions">
+          <a href="demo-estetica-standard.html" target="_blank" class="btn-arquitectura">Ver Arquitectura</a>
+          <a href="https://wa.me/5491124632544?text=Me%20interesa%20el%20modelo%20Estética%20Standard" class="btn-seleccionar">Elegir Modelo</a>
+        </div>
       </div>
-      <div class="portfolio-item">
-        <span>Gastronomía</span>
-        <h3>Raíces Resto</h3>
-        <p>Experiencia inmersiva con carta digital de alta conversión y sistema de reservas fluido.</p>
-        <a href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank" class="link-demo">Ver Arquitectura</a>
+      <div class="demo-card">
+        <div class="demo-header"><h3>Lumière Studio</h3><span class="demo-badge" style="color:#a855f7;">Premium</span></div>
+        <p>Experiencia de marca de lujo absoluto. Integración de testimonios, galerías dinámicas y máxima autoridad.</p>
+        <div class="demo-actions">
+          <a href="demo-estetica-premium.html" target="_blank" class="btn-arquitectura">Ver Arquitectura</a>
+          <a href="https://wa.me/5491124632544?text=Me%20interesa%20el%20modelo%20Estética%20Premium" class="btn-seleccionar">Elegir Modelo</a>
+        </div>
       </div>
     </div>
-    <div style="text-align: center; margin-top: 50px;">
-      <a href="https://nexo-landing.pages.dev/" target="_blank" style="color: var(--dim); text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid var(--border);">Ver catálogo completo de modelos →</a>
+
+    <!-- RUBRO 2 -->
+    <h2 class="rubro-title">Gastronomía & Tiendas</h2>
+    <div class="portfolio-grid">
+      <div class="demo-card">
+        <div class="demo-header"><h3>Raíces Resto</h3><span class="demo-badge" style="color:#a855f7;">Premium</span></div>
+        <p>Infraestructura inmersiva para gastronomía. Incluye sistema de reservas y carta digital optimizada.</p>
+        <div class="demo-actions">
+          <a href="demo-restaurante.html" target="_blank" class="btn-arquitectura">Ver Arquitectura</a>
+          <a href="https://wa.me/5491124632544" class="btn-seleccionar">Elegir Modelo</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-header"><h3>RegaloUnico Store</h3><span class="demo-card" style="padding:0; border:none; background:transparent; font-size:0.65rem; font-weight:700; color:#a855f7">Premium E-Commerce</span></div>
+        <p>Tienda catálogo de alta conversión. Experiencia de compra fluida orientada a maximizar el ticket promedio.</p>
+        <div class="demo-actions">
+          <a href="demo-tienda-premium.html" target="_blank" class="btn-arquitectura">Ver Arquitectura</a>
+          <a href="https://wa.me/5491124632544" class="btn-seleccionar">Elegir Modelo</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-header"><h3>Luma Café</h3><span class="demo-badge">Landing Page</span></div>
+        <p>Diseño visual minimalista ideal para cafeterías de especialidad. Atrae clientes locales de forma directa.</p>
+        <div class="demo-actions">
+          <a href="https://web-luma-cafe.netlify.app/" target="_blank" class="btn-arquitectura">Ver Arquitectura</a>
+          <a href="https://wa.me/5491124632544" class="btn-seleccionar">Elegir Modelo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RUBRO 3 -->
+    <h2 class="rubro-title">Estudios Profesionales</h2>
+    <div class="portfolio-grid">
+      <div class="demo-card">
+        <div class="demo-header"><h3>Fernández & Asoc.</h3><span class="demo-badge" style="color:#38bdf8;">Standard</span></div>
+        <p>Ecosistema corporativo para estudios jurídicos. Proyecta confianza y captura leads corporativos B2B.</p>
+        <div class="demo-actions">
+          <a href="modelos/estudio-juridico.html" target="_blank" class="btn-arquitectura">Ver Arquitectura</a>
+          <a href="https://wa.me/5491124632544" class="btn-seleccionar">Elegir Modelo</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-header"><h3>Estudio Contable</h3><span class="demo-badge" style="color:#38bdf8;">Standard</span></div>
+        <p>Claridad y solidez para firmas fiscales. Facilita el primer contacto de empresas buscando asesoría.</p>
+        <div class="demo-actions">
+          <a href="demo-estudio-contable.html" target="_blank" class="btn-arquitectura">Ver Arquitectura</a>
+          <a href="https://wa.me/5491124632544" class="btn-seleccionar">Elegir Modelo</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-header"><h3>Barbería Elite</h3><span class="demo-badge" style="color:#38bdf8;">Standard</span></div>
+        <p>Sistema ágil para negocios de servicios físicos. Destaca el talento visual y facilita la reserva de turnos.</p>
+        <div class="demo-actions">
+          <a href="demo-barberia.html" target="_blank" class="btn-arquitectura">Ver Arquitectura</a>
+          <a href="https://wa.me/5491124632544" class="btn-seleccionar">Elegir Modelo</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- 5. AUTORIDAD (Respaldo) -->
+  <!-- AUTORIDAD CDS -->
   <section>
     <div class="authority-banner">
-      <span style="font-size: 2.5rem; display: block; margin-bottom: 20px;">🛡</span>
-      <h2>Seguridad de Grado Corporativo</h2>
-      <p>Nexo es parte del ecosistema de <strong>Consultoría Informática CDS</strong>. Cada línea de código que entregamos está auditada y blindada contra vulnerabilidades. Tu infraestructura está en manos de especialistas en Ciberdefensa.</p>
+      <h2 style="color:var(--cds);">Seguridad de Grado Corporativo</h2>
+      <p>Nexo es la división de desarrollo de <strong>Consultoría Informática CDS</strong>. Todas nuestras infraestructuras están auditadas y blindadas contra ataques. Tu negocio no solo será estético, será invulnerable.</p>
     </div>
   </section>
 
-  <!-- 6 y 7. CIERRE Y URGENCIA SUAVE -->
-  <div class="final-cta">
-    <h2>Escale la autoridad de su marca hoy</h2>
-    <p style="color: var(--dim); margin-bottom: 40px; font-size: 1.1rem;">Agende una sesión de diagnóstico sin costo. Analizaremos su presencia actual y le propondremos una estrategia técnica de crecimiento.</p>
-    
-    <a href="https://wa.me/5491124632544?text=Hola,%20quisiera%20solicitar%20un%20diagnóstico%20digital%20para%20mi%20negocio." class="cta-button" style="padding: 20px 50px; font-size: 1.1rem;">Solicitar Diagnóstico Estratégico</a>
-    
-    <div class="urgency-text">
-      <span class="pulse-dot"></span>
-      Aceptamos un máximo de 4 proyectos mensuales para garantizar la excelencia.
+  <!-- FORMULARIO DE DIAGNÓSTICO (REINTEGRADO Y OPTIMIZADO) -->
+  <section id="diagnostico" class="diagnostico-section">
+    <div class="form-wrapper">
+      <h2>Solicitud de Diagnóstico</h2>
+      <p>Complete el formulario corporativo. Un especialista evaluará su presencia digital y le enviará una propuesta en menos de 24 horas.</p>
+      
+      <!-- Usé el ID xpqynaqq que usabas para Nexo -->
+      <form id="nexoForm" action="https://formspree.io/f/xpqynaqq" method="POST">
+        <div class="form-group">
+          <label>Nombre del Solicitante</label>
+          <input type="text" name="nombre" required placeholder="Ej: Roberto Pérez">
+        </div>
+        <div class="form-group">
+          <label>Email de Contacto</label>
+          <input type="email" name="email" required placeholder="roberto@empresa.com">
+        </div>
+        <div class="form-group">
+          <label>Modelo de Interés</label>
+          <select name="modelo_interes" required>
+            <option value="" disabled selected>Seleccione la arquitectura base</option>
+            <option value="Landing">Arquitectura Landing (Alta velocidad)</option>
+            <option value="Standard">Arquitectura Standard (Corporativa)</option>
+            <option value="Premium">Arquitectura Premium (High-Ticket)</option>
+            <option value="Asesoria">No estoy seguro, necesito asesoría</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Situación actual del negocio</label>
+          <textarea name="situacion" rows="4" required placeholder="Describa brevemente qué desea lograr con esta infraestructura web..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn" id="nx-btn">Enviar Solicitud Formal</button>
+        <p id="nx-status" style="margin-top: 15px; text-align: center; font-weight: 700; font-size: 0.85rem;"></p>
+      </form>
     </div>
-  </div>
+  </section>
 
   <footer>
     © 2026 NEXO · Infraestructura Digital Premium. Parte del ecosistema CDS. CABA, Argentina.
   </footer>
 
+  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank">
+    <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // FORMSPREE FETCH
+      const form = document.getElementById('nexoForm');
+      const status = document.getElementById('nx-status');
+      const btn = document.getElementById('nx-btn');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        btn.innerText = "PROCESANDO...";
+        btn.disabled = true;
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            status.innerText = "SISTEMA: Solicitud recibida con éxito.";
+            status.style.color = "var(--accent)";
+            form.reset();
+          } else {
+            status.innerText = "ERROR: Hubo un problema. Intente vía WhatsApp.";
+            status.style.color = "var(--red)";
+          }
+        } catch (error) {
+          status.innerText = "ERROR DE CONEXIÓN.";
+          status.style.color = "var(--red)";
+        } finally {
+          btn.innerText = "ENVIAR SOLICITUD FORMAL";
+          btn.disabled = false;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
