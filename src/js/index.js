@@ -3,44 +3,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const status = document.getElementById('form-status');
     const btn = document.getElementById('nexo-btn');
 
-    if (!form) return; // Si no encuentra el formulario, no hace nada
+    if (!form) return;
 
     form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // CRÍTICO: Esto es lo que evita que salte a Formspree
+        e.preventDefault(); // AQUÍ SE FRENA EL SALTO A FORMSPREE
         
         const originalText = btn.innerText;
         btn.innerText = "ENVIANDO...";
         btn.disabled = true;
 
-        const formData = new FormData(form);
-
         try {
             const response = await fetch(form.action, {
                 method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
             });
 
             if (response.ok) {
-                // ÉXITO: Mostramos mensaje en tu propia web
-                status.innerText = "¡Solicitud enviada con éxito! Te contactaremos pronto.";
+                status.innerText = "¡Solicitud enviada con éxito!";
                 status.style.color = "var(--gold)";
                 form.reset();
-                btn.innerText = "¡ENVIADO!";
-                
-                setTimeout(() => {
+                setTimeout(() => { 
                     btn.innerText = originalText;
                     btn.disabled = false;
                     status.innerText = "";
                 }, 5000);
             } else {
-                throw new Error("Error en el servidor");
+                throw new Error();
             }
         } catch (error) {
-            // ERROR: Falló la conexión o el servidor
-            status.innerText = "Error al enviar. Por favor, intenta por WhatsApp.";
+            status.innerText = "Error. Intente por WhatsApp.";
             status.style.color = "#ef4444";
             btn.innerText = originalText;
             btn.disabled = false;
