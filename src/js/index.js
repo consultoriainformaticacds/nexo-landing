@@ -3,40 +3,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const status = document.getElementById('form-status');
     const btn = document.getElementById('nexo-btn');
 
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const originalText = btn.innerText;
-            btn.innerText = "PROCESANDO...";
-            btn.disabled = true;
+    if (!form) return; // Si no encuentra el formulario, no hace nada
 
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: { 'Accept': 'application/json' }
-                });
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // CRÍTICO: Esto es lo que evita que salte a Formspree
+        
+        const originalText = btn.innerText;
+        btn.innerText = "ENVIANDO...";
+        btn.disabled = true;
 
-                if (response.ok) {
-                    status.innerText = "SOLICITUD ENVIADA CON ÉXITO";
-                    status.style.color = "var(--gold)";
-                    form.reset();
-                    setTimeout(() => { 
-                        btn.innerText = originalText;
-                        btn.disabled = false;
-                        status.innerText = "";
-                    }, 5000);
-                } else {
-                    throw new Error();
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
                 }
-            } catch (error) {
-                status.innerText = "ERROR. INTENTE POR WHATSAPP";
-                status.style.color = "#ef4444";
-                setTimeout(() => { 
+            });
+
+            if (response.ok) {
+                // ÉXITO: Mostramos mensaje en tu propia web
+                status.innerText = "¡Solicitud enviada con éxito! Te contactaremos pronto.";
+                status.style.color = "var(--gold)";
+                form.reset();
+                btn.innerText = "¡ENVIADO!";
+                
+                setTimeout(() => {
                     btn.innerText = originalText;
                     btn.disabled = false;
-                }, 4000);
+                    status.innerText = "";
+                }, 5000);
+            } else {
+                throw new Error("Error en el servidor");
             }
-        });
-    }
+        } catch (error) {
+            // ERROR: Falló la conexión o el servidor
+            status.innerText = "Error al enviar. Por favor, intenta por WhatsApp.";
+            status.style.color = "#ef4444";
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+    });
 });

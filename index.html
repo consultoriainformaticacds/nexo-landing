@@ -112,21 +112,18 @@
     <section id="contacto">
         <div class="form-box">
             <h2 style="text-align: center; margin-bottom: 30px;">Solicitud de Diagnóstico</h2>
-            <form action="https://formspree.io/f/mreoeazp" method="POST">
-                <div style="display: flex; gap: 10px;">
-                    <input type="text" name="nombre" placeholder="Tu Nombre" required>
-                    <input type="text" name="empresa" placeholder="Empresa (Opcional)">
-                </div>
-                <input type="email" name="email" placeholder="Correo Electrónico" required>
-                <select name="modelo" required>
-                    <option value="" disabled selected>Seleccione nivel de potencia...</option>
-                    <option value="Landing Pro">Landing Pro</option>
-                    <option value="Standard Pro">Standard Pro</option>
-                    <option value="Premium Max">Premium Max</option>
-                </select>
-                <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto..." rows="4" required></textarea>
-                <button type="submit" class="btn-submit">Enviar Solicitud Formal</button>
-            </form>
+            <form id="nexoForm" action="https://formspree.io/f/mreoeazp" method="POST">
+    
+    <div style="display: flex; gap: 10px;">
+        <input type="text" name="nombre" placeholder="Tu Nombre" required>
+        <input type="text" name="empresa" placeholder="Empresa (Opcional)">
+    </div>
+    <input type="email" name="email" placeholder="Correo Electrónico" required>
+    
+    <button type="submit" id="nexo-btn" class="btn-submit">Enviar Solicitud</button>
+    
+    <div id="form-status" style="text-align: center; margin-top: 15px; font-weight: bold;"></div>
+</form>
         </div>
     </section>
 
