@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inversión y Modelos | NEXO Web</title>
+  <link rel="icon" href="../logo-cds.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --bg: #050505; --card: #0d0d0d; --accent: #22c55e; --premium: #00f2ff; --text: #f8fafc; --dim: #94a3b8; --border: rgba(255,255,255,0.08); }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body { background-color: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; line-height: 1.6; }
+    h1, h2, h3 { font-family: 'Syne', sans-serif; text-transform: uppercase; line-height: 1.1; }
+    
+    nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .nav-logo { font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; font-family: 'Syne'; }
+    .nav-logo span { color: var(--accent); }
+    .nav-cta { border: 1px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.8rem; font-weight: 700; transition: 0.3s; }
+
+    .hero { padding: 150px 5% 60px; text-align: center; max-width: 900px; margin: 0 auto; }
+    .hero h1 span { -webkit-text-stroke: 1px #fff; color: transparent; }
+
+    /* GRID ALINEADO */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 0 5% 80px; max-width: 1400px; margin: 0 auto; }
+    .model-card { 
+      background: var(--card); border: 1px solid var(--border); padding: 40px 30px; border-radius: 4px; 
+      display: flex; flex-direction: column; transition: 0.4s; height: 100%;
+    }
+    .model-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+    .m3 { border-color: rgba(0, 242, 255, 0.3); }
+
+    .price-box { margin-top: auto; padding-top: 30px; border-top: 1px solid var(--border); }
+    .price { font-size: 2.2rem; font-weight: 800; font-family: 'Syne'; color: #fff; }
+    .usd { font-size: 0.9rem; color: var(--accent); font-weight: 700; display: block; margin-bottom: 20px; }
+    
+    .features { list-style: none; margin: 25px 0; flex-grow: 1; }
+    .features li { font-size: 0.85rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: var(--dim); }
+    .check { color: var(--accent); font-weight: bold; }
+
+    .table-section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+    .table-wrapper { overflow-x: auto; background: #0a0a0a; border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; min-width: 750px; }
+    th, td { padding: 18px; border-bottom: 1px solid var(--border); text-align: left; font-size: 0.85rem; }
+    th { font-family: 'Syne'; color: var(--accent); }
+    td:first-child { font-weight: 700; color: #fff; }
+
+    .btn-main { background: var(--accent); color: #000; padding: 18px 30px; border-radius: 4px; font-weight: 800; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; transition: 0.3s; display: block; text-align: center; }
+    .btn-main:hover { box-shadow: 0 0 25px rgba(34,197,94,0.4); }
+    
+    footer { padding: 50px; text-align: center; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="https://nexoweb.pages.dev" class="nav-logo">NEXO<span>.</span></a>
+    <a href="https://wa.me/5491124632544" class="nav-cta">Solicitar Presupuesto PDF</a>
+  </nav>
+
+  <header class="hero">
+    <p style="color:var(--accent); letter-spacing:3px; font-weight:700; margin-bottom:20px;">MATRIZ TÉCNICA 2026</p>
+    <h1>Arquitecturas para <span>Escalar</span></h1>
+    <p style="color:var(--dim); font-size:1.1rem; max-width:700px; margin:20px auto;">Seleccioná el cimiento digital de tu negocio. Todos los modelos son auditados por CDS Consultoría.</p>
+  </header>
+
+  <div class="grid">
+    <article class="model-card">
+      <span style="font-size:0.7rem; color:var(--dim);">MODELO 01</span>
+      <h3 style="margin:10px 0 20px;">Landing Simple</h3>
+      <ul class="features">
+        <li><span class="check">✓</span> 1 Página continua</li>
+        <li><span class="check">✓</span> WhatsApp Business</li>
+        <li><span class="check">✓</span> Hosting incluido</li>
+      </ul>
+      <div class="price-box">
+        <div class="price">$150.000</div>
+        <span class="usd">U$S 100 aprox.</span>
+        <a href="https://wa.me/5491124632544?text=Hola,%20me%20interesa%20iniciar%20con%20el%20Modelo%2001%20(Landing%20Simple)" target="_blank" class="btn-main">Elegir Modelo</a>
+      </div>
+    </article>
+    <article class="model-card">
+      <span style="font-size:0.7rem; color:var(--dim);">MODELO 1.5</span>
+      <h3 style="margin:10px 0 20px;">Landing Pro</h3>
+      <ul class="features">
+        <li><span class="check">✓</span> Catálogo Visual</li>
+        <li><span class="check">✓</span> Múltiples CTAs</li>
+        <li><span class="check">✓</span> UX de Conversión</li>
+      </ul>
+      <div class="price-box">
+        <div class="price">$250.000</div>
+        <span class="usd">U$S 174 aprox.</span>
+        <a href="https://wa.me/5491124632544?text=Hola,%20me%20interesa%20iniciar%20con%20el%20Modelo%201.5%20(Landing%20Pro)" target="_blank" class="btn-main">Elegir Modelo</a>
+      </div>
+    </article>
+    <article class="model-card" style="border-color: var(--accent);">
+      <span style="font-size:0.7rem; color:var(--accent);">MODELO 02</span>
+      <h3 style="margin:10px 0 20px;">Web Standard</h3>
+      <ul class="features">
+        <li><span class="check">✓</span> Nav con 5 Secciones</li>
+        <li><span class="check">✓</span> SEO Estructural</li>
+        <li><span class="check">✓</span> Formulario Corporativo</li>
+      </ul>
+      <div class="price-box">
+        <div class="price">$360.000</div>
+        <span class="usd">U$S 250 aprox.</span>
+        <a href="https://wa.me/5491124632544?text=Hola,%20me%20interesa%20iniciar%20con%20el%20Modelo%2002%20(Web%20Standard)" target="_blank" class="btn-main">Elegir Modelo</a>
+      </div>
+    </article>
+    <article class="model-card m3" style="border-color: var(--premium);">
+      <span style="font-size:0.7rem; color:var(--premium);">MODELO 03</span>
+      <h3 style="margin:10px 0 20px; color:var(--premium);">Web Premium</h3>
+      <ul class="features">
+        <li><span class="check" style="color:var(--premium);">✓</span> Ecosistema a Medida</li>
+        <li><span class="check" style="color:var(--premium);">✓</span> FAQ & Social Proof</li>
+        <li><span class="check" style="color:var(--premium);">✓</span> Seguridad Corporativa</li>
+      </ul>
+      <div class="price-box">
+        <div class="price">$500.000+</div>
+        <span class="usd" style="color:var(--premium);">U$S 350+ aprox.</span>
+        <a href="https://wa.me/5491124632544?text=Hola,%20me%20interesa%20iniciar%20con%20el%20Modelo%2003%20(Web%20Premium)" target="_blank" class="btn-main" style="background:var(--premium)">Elegir Modelo</a>
+      </div>
+    </article>
+  </div>
+
+  <section class="table-section">
+    <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">Especificaciones Técnicas</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Función</th><th>Landing</th><th>Pro</th><th>Standard</th><th>Premium</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Días de Entrega</td><td>5</td><td>7</td><td>7</td><td>10-15</td></tr>
+          <tr><td>Rondas de Cambios</td><td>1</td><td>1</td><td>2</td><td>Ilimitadas</td></tr>
+          <tr><td>Protección CDS</td><td>Básica</td><td>Básica</td><td>Avanzada</td><td>Corporativa</td></tr>
+          <tr><td>SEO</td><td>Local</td><td>Sí</td><td>Sí</td><td>Avanzado</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>© 2026 NEXO WEB · División de Ecosistemas de CDS.</footer>
+</body>
+</html>

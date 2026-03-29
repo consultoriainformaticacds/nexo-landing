@@ -3,14 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEXO | Arquitectura Web & Catálogo de Ecosistemas</title>
-  <meta name="description" content="Explora nuestras arquitecturas web premium. Ecosistemas digitales optimizados para generar clientes de alto valor.">
+  <title>NEXO | Catálogo de Ecosistemas Web — Modelos para cada Negocio</title>
 
-  <meta property="og:title" content="NEXO | Arquitectura Web & Catálogo de Ecosistemas">
-  <meta property="og:description" content="Explora nuestras arquitecturas web premium. Ecosistemas digitales optimizados para generar clientes de alto valor.">
+  <!-- SEO MEJORADO -->
+  <meta name="description" content="Catálogo de sitios web premium para estética, gastronomía, tiendas y estudios profesionales en Argentina. Elegís el modelo y lo personalizamos al 100% para tu negocio.">
+  <meta name="keywords" content="modelos web argentina, página web para estética, web para restaurante, sitio web contable, agencia web CABA, landing page negocio, web para barbería, tienda online argentina, web jurídica">
+  <meta name="author" content="Nexo Web — CDS Consultoría Informática">
+  <meta name="robots" content="index, follow">
+  <meta name="geo.region" content="AR-C">
+  <meta name="geo.placename" content="Buenos Aires, CABA">
+
+  <!-- OPEN GRAPH COMPLETO -->
+  <meta property="og:title" content="NEXO | Catálogo de Ecosistemas Web para tu Negocio">
+  <meta property="og:description" content="Elegí el modelo web de tu rubro y lo personalizamos al 100%. Estética, gastronomía, tiendas, estudios profesionales y más.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nexo-landing.pages.dev/">
   <meta property="og:image" content="https://nexo-landing.pages.dev/logo-cds.png">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="Nexo Web">
+
+  <!-- TWITTER CARDS -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NEXO | Catálogo de Sitios Web para Negocios Argentinos">
+  <meta name="twitter:description" content="Modelos web premium por rubro. Personalizados al 100% para tu negocio en Argentina.">
+  <meta name="twitter:image" content="https://nexo-landing.pages.dev/logo-cds.png">
+
+  <!-- SCHEMA MARKUP -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Nexo Web — Catálogo de Ecosistemas Digitales",
+    "description": "Catálogo de sitios web premium para negocios argentinos. Modelos por rubro: estética, gastronomía, tiendas, estudios profesionales.",
+    "url": "https://nexo-landing.pages.dev/",
+    "telephone": "+5491124632544",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Buenos Aires",
+      "addressRegion": "CABA",
+      "addressCountry": "AR"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Argentina"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Modelos Web por Rubro",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web para Estética y Bienestar" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web para Gastronomía y Restaurantes" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tienda Online" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web para Estudios Jurídicos y Contables" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web para Barberías" } }
+      ]
+    },
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "CDS Consultoría Informática",
+      "url": "https://consultoriainformaticacds.pages.dev/"
+    }
+  }
+  </script>
+
+  <!-- GOOGLE ANALYTICS 4 — Reemplazá G-XXXXXXXXXX con tu ID real -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 
   <link rel="icon" href="logo-cds.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -29,19 +92,16 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    /* MEJORA: scroll-padding-top evita que el menú fijo tape los títulos al hacer clic en enlaces internos */
     html { scroll-behavior: smooth; scroll-padding-top: 100px; }
     body { background: radial-gradient(circle at top center, #0f172a, var(--bg)); color: var(--text); font-family: 'Mulish', sans-serif; line-height: 1.6; overflow-x: hidden; }
     h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; }
 
-    /* NAV */
     nav { position: fixed; width: 100%; top: 0; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(6, 13, 31, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 1000; }
     .logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; }
     .logo span { color: var(--accent); }
     .btn-nav { color: var(--dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; border: 1px solid var(--border); padding: 8px 16px; border-radius: 4px; transition: 0.3s; }
     .btn-nav:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* HERO */
     .hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 150px 5% 80px; position: relative; }
     .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; z-index: -1; mask-image: radial-gradient(circle, black, transparent 70%); }
     .hero-badge { border: 1px solid var(--accent); background: rgba(34, 197, 94, 0.05); padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; color: var(--accent); margin-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
@@ -54,15 +114,12 @@
     section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
     .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; }
 
-    /* PORTFOLIO GRID */
     .rubro-title { color: var(--accent); font-size: 0.8rem; letter-spacing: 3px; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin: 60px 0 30px; display: inline-block; }
-    /* MEJORA: Uso de min() para evitar overflow horizontal en celulares muy pequeños */
     .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 30px; }
     .demo-card { background: var(--card); border: 1px solid var(--border); padding: 35px; border-radius: 8px; transition: 0.3s; display: flex; flex-direction: column; }
     .demo-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     .demo-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
     .demo-header h3 { color: #fff; font-size: 1.4rem; }
-    /* MEJORA: Aumento leve de opacidad de fondo para mejor legibilidad */
     .demo-badge { font-size: 0.65rem; background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px; font-weight: 700; color: var(--text); }
     .demo-card p { color: var(--dim); font-size: 0.9rem; flex-grow: 1; margin-bottom: 25px; }
     
@@ -72,11 +129,9 @@
     .btn-seleccionar { background: rgba(34, 197, 94, 0.1); border: 1px solid var(--accent); color: var(--accent); text-decoration: none; padding: 12px; text-align: center; font-size: 0.8rem; font-weight: 700; border-radius: 4px; transition: 0.3s; }
     .btn-seleccionar:hover { background: var(--accent); color: #000; }
 
-    /* AUTORIDAD CDS */
     .authority-banner { background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(0, 242, 255, 0.05)); border: 1px solid rgba(0, 242, 255, 0.2); padding: 50px; border-radius: 8px; text-align: center; margin: 80px auto; max-width: 900px; }
     .authority-banner h2 { font-size: 1.8rem; margin-bottom: 15px; color: #fff; }
     
-    /* FORMULARIO DE DIAGNÓSTICO */
     .diagnostico-section { background: #0b1120; border-top: 1px solid var(--border); padding: 100px 5%; margin-top: 50px; }
     .form-wrapper { max-width: 600px; margin: 0 auto; background: var(--card); padding: 50px; border-radius: 8px; border: 1px solid var(--border); }
     .form-wrapper h2 { font-size: 2rem; margin-bottom: 10px; text-align: center; }
@@ -90,7 +145,6 @@
     .submit-btn { width: 100%; background: var(--accent); color: #000; border: none; padding: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border-radius: 4px; transition: 0.3s; }
     .submit-btn:hover { background: var(--accent-hover); box-shadow: 0 0 20px rgba(34,197,94,0.3); }
 
-    /* WHATSAPP */
     #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; animation: pulse 2s infinite; }
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
 
@@ -106,7 +160,7 @@
 
   <header class="hero">
     <div class="hero-badge">Arquitectura Digital Elite</div>
-    <h1>Ecosistemas diseñados para <span>Liderar</span></h1>
+    <h1>Ecosistemas diseñados para <span style="color:var(--accent)">Liderar</span></h1>
     <p>Explora nuestras infraestructuras base. Selecciona el modelo que mejor se adapte a tu negocio y lo personalizaremos al 100%.</p>
     <a href="#diagnostico" class="cta-button">Solicitar Diagnóstico Formal</a>
   </header>
@@ -257,7 +311,6 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Formspree Fetch Intercept
       const form = document.getElementById('nexoForm');
       const status = document.getElementById('nx-status');
       const btn = document.getElementById('nx-btn');
