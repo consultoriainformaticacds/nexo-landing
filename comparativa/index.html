@@ -3,80 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inversión 2026 | Nexo Web</title>
+    <title>Matriz de Inversión 2026 | NEXO WEB</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../src/Assets/css/comparativa.css">
+    
+    <style>
+        /* CSS INYECTADO PARA EVITAR ERRORES DE RUTA */
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        :root{
+            --black:#0A0A0A; --off-black:#111110; --dark:#1A1A18; --white:#F8F8F5;
+            --muted:#888880; --accent:#C8F135; --border:rgba(255,255,255,0.08);
+            --m1:#8AB840; --m15:#4090C8; --m2:#C8F135; --m3:#E8A050;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Instrument Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden; line-height: 1.6;}
+
+        /* NAVEGACIÓN */
+        nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(10,10,10,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+        .nav-logo{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:var(--white);text-decoration:none}
+        .nav-logo span{color:var(--accent)}
+        .nav-cta{font-family:'Syne',sans-serif;font-size:0.75rem;font-weight:700;color:var(--black);background:var(--accent);padding:0.7rem 1.4rem;text-decoration:none;border-radius:4px;transition:0.3s}
+        .nav-cta:hover{background:#A8D020; transform: scale(1.05);}
+
+        /* HERO */
+        .hero{padding:5rem 5% 3rem;background:var(--off-black);border-bottom:1px solid var(--border)}
+        .hero-tag{font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+        .hero-title{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem; line-height: 1.1;}
+        .hero-title span{-webkit-text-stroke: 1px #fff; color: transparent;}
+        .hero-desc{font-size:1rem;font-weight:300;color:var(--muted);max-width:650px}
+
+        /* GRID DE MODELOS */
+        .models-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1px;background:var(--border)}
+        .model-card{background:var(--off-black);padding:2.5rem 2rem;position:relative;display:flex;flex-direction:column;min-height: 500px;}
+        .model-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+        .m1::before{background:var(--m1)} .m15::before{background:var(--m15)} .m2::before{background:var(--m2)} .m3::before{background:var(--m3)}
+
+        .model-num{font-family:'Syne',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;margin-bottom:1rem}
+        .m1 .model-num{color:var(--m1)} .m15 .model-num{color:var(--m15)} .m2 .model-num{color:var(--m2)} .m3 .model-num{color:var(--m3)}
+        
+        .model-name{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:0.5rem}
+        .model-price{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;margin-bottom:0.2rem; margin-top: auto;}
+        .m1 .model-price{color:var(--m1)} .m15 .model-price{color:var(--m15)} .m2 .model-price{color:var(--m2)} .m3 .model-price{color:var(--m3)}
+        .model-usd{font-size:0.8rem;color:var(--muted);margin-bottom:1.5rem}
+
+        .model-features{list-style:none;margin-bottom:2rem; flex-grow: 1;}
+        .feature-item{display:flex;align-items:center;gap:0.8rem;font-size:0.85rem;color:var(--white);margin-bottom:8px}
+        .check{color:var(--accent); font-weight: 800;}
+
+        /* BOTONES DE SELECCIÓN */
+        .btn-select{display:block; width:100%; padding:1rem; text-align:center; text-decoration:none; font-family:'Syne'; font-weight:800; font-size:0.8rem; border-radius:4px; transition:0.3s; margin-top: 15px;}
+        .m1 .btn-select{border:1px solid var(--m1); color:var(--m1)} .m1 .btn-select:hover{background:var(--m1); color:black}
+        .m15 .btn-select{border:1px solid var(--m15); color:var(--m15)} .m15 .btn-select:hover{background:var(--m15); color:white}
+        .m2 .btn-select{border:1px solid var(--m2); color:var(--m2)} .m2 .btn-select:hover{background:var(--m2); color:black}
+        .m3 .btn-select{background:var(--m3); color:black} .m3 .btn-select:hover{filter: brightness(1.2);}
+
+        /* TABLA */
+        .table-section{padding:4rem 5%;background:var(--dark)}
+        .compare-table{width:100%;border-collapse:collapse;font-size:0.85rem; min-width: 600px;}
+        .compare-table th{padding:1rem; text-align:center; font-family:'Syne'; font-size:0.7rem; letter-spacing:0.1em; border-bottom:1px solid var(--border)}
+        .compare-table td{padding:1rem; border-bottom:1px solid rgba(255,255,255,0.03); text-align:center; color:var(--muted)}
+        .compare-table td:first-child{text-align:left; color:var(--white); font-weight:600}
+        
+        footer{padding:3rem 5%; text-align:center; border-top:1px solid var(--border); font-size:0.8rem; color:var(--muted)}
+
+        @media(max-width:768px){ .models-grid{grid-template-columns:1fr} .hero-title{font-size: 2.5rem;} }
+    </style>
 </head>
 <body>
 
     <nav>
         <a href="../index.html" class="nav-logo">NEXO<span>.</span>WEB</a>
-        <div class="nav-sub">Matriz de Inversión 2026</div>
-        <a href="https://wa.me/5491124632544" class="nav-cta">SOLICITAR PDF</a>
+        <div class="nav-sub">MATRIZ TÉCNICA 2026</div>
+        <a href="https://wa.me/5491124632544" class="nav-cta">PRESUPUESTO PDF</a>
     </nav>
 
     <header class="hero">
-        <div class="hero-tag">Catálogo de Ecosistemas</div>
+        <p class="hero-tag">// INVERSIÓN Y ESCALABILIDAD</p>
         <h1 class="hero-title">Arquitecturas para<br><span>Escalar</span></h1>
-        <p class="hero-desc">Compara los alcances de nuestras infraestructuras base. Cada modelo es un activo digital auditado por CDS.</p>
+        <p class="hero-desc">Seleccioná el cimiento digital de tu negocio. Todos los modelos son auditados por CDS para garantizar seguridad y rendimiento.</p>
     </header>
 
     <main class="models-grid">
         <article class="model-card m1">
-            <div class="model-num">v1.0 LANDING</div>
-            <h2 class="model-name">Captación</h2>
+            <div class="model-num">MODELO 1.0</div>
+            <h2 class="model-name">Landing Simple</h2>
+            <ul class="model-features">
+                <li class="feature-item"><span class="check">✓</span> 1 Página continua</li>
+                <li class="feature-item"><span class="check">✓</span> WhatsApp Business</li>
+                <li class="feature-item"><span class="check">✓</span> Hosting Incluido</li>
+            </ul>
             <div class="model-price">$150.000</div>
             <div class="model-usd">U$S 100 aprox.</div>
-            <ul class="model-features">
-                <li class="feature-item"><span class="feature-dot yes c1">✔</span>1 Sección Impacto</li>
-                <li class="feature-item"><span class="feature-dot yes c1">✔</span>WhatsApp Directo</li>
-            </ul>
-            <div class="model-ideal"><strong>Perfil Ideal</strong> Negocios que necesitan presencia hoy.</div>
-            <a href="https://wa.me/5491124632544?text=Me%20interesa%20v1.0" class="btn-dark" style="margin-top:auto; background:var(--m1); color:black; text-align:center;">ELEGIR</a>
+            <a href="https://wa.me/5491124632544?text=Hola%20Nexo!%20Me%20interesa%20el%20Modelo%201.0%20Landing%20Simple" class="btn-select">ELEGIR MODELO</a>
         </article>
 
         <article class="model-card m15">
-            <div class="model-num">v1.5 PRO</div>
-            <h2 class="model-name">Conversión</h2>
+            <div class="model-num">MODELO 1.5</div>
+            <h2 class="model-name">Landing Pro</h2>
+            <ul class="model-features">
+                <li class="feature-item"><span class="check">✓</span> Catálogo Visual</li>
+                <li class="feature-item"><span class="check">✓</span> UX de Conversión</li>
+                <li class="feature-item"><span class="check">✓</span> Multi-CTA</li>
+            </ul>
             <div class="model-price">$250.000</div>
             <div class="model-usd">U$S 174 aprox.</div>
-            <ul class="model-features">
-                <li class="feature-item"><span class="feature-dot yes c15">✔</span>Catálogo Visual</li>
-                <li class="feature-item"><span class="feature-dot yes c15">✔</span>UX de Conversión</li>
-            </ul>
-            <div class="model-ideal"><strong>Perfil Ideal</strong> Profesionales escalando ventas.</div>
-            <a href="https://wa.me/5491124632544?text=Me%20interesa%20v1.5" class="btn-dark" style="margin-top:auto; background:var(--m15); color:white; text-align:center;">ELEGIR</a>
+            <a href="https://wa.me/5491124632544?text=Hola%20Nexo!%20Me%20interesa%20el%20Modelo%201.5%20Landing%20Pro" class="btn-select">ELEGIR MODELO</a>
         </article>
 
         <article class="model-card m2">
-            <div class="model-num">v2.0 BUSINESS</div>
-            <h2 class="model-name">Autoridad</h2>
+            <div class="model-num">MODELO 2.0</div>
+            <h2 class="model-name">Web Standard</h2>
+            <ul class="model-features">
+                <li class="feature-item"><span class="check">✓</span> Nav con 5 Secciones</li>
+                <li class="feature-item"><span class="check">✓</span> SEO Estructural</li>
+                <li class="feature-item"><span class="check">✓</span> Hardening CDS</li>
+            </ul>
             <div class="model-price">$360.000</div>
             <div class="model-usd">U$S 250 aprox.</div>
-            <ul class="model-features">
-                <li class="feature-item"><span class="feature-dot yes c2">✔</span>5 Secciones Premium</li>
-                <li class="feature-item"><span class="feature-dot yes c2">✔</span>Hardening de Servidor</li>
-            </ul>
-            <div class="model-ideal"><strong>Perfil Ideal</strong> Empresas que requieren solidez B2B.</div>
-            <a href="https://wa.me/5491124632544?text=Me%20interesa%20v2.0" class="btn-dark" style="margin-top:auto; background:var(--m2); color:black; text-align:center;">ELEGIR</a>
+            <a href="https://wa.me/5491124632544?text=Hola%20Nexo!%20Me%20interesa%20el%20Modelo%202.0%20Web%20Standard" class="btn-select">ELEGIR MODELO</a>
         </article>
 
         <article class="model-card m3">
-            <div class="model-num">v3.0 ELITE</div>
-            <h2 class="model-name">Ecosistema</h2>
+            <div class="model-num">MODELO 3.0</div>
+            <h2 class="model-name" style="color:var(--m3)">Web Elite</h2>
+            <ul class="model-features">
+                <li class="feature-item"><span class="check" style="color:var(--m3)">✓</span> Ecosistema a medida</li>
+                <li class="feature-item"><span class="check" style="color:var(--m3)">✓</span> Animaciones High-End</li>
+                <li class="feature-item"><span class="check" style="color:var(--m3)">✓</span> Blindaje Total CDS</li>
+            </ul>
             <div class="model-price">$500.000+</div>
             <div class="model-usd">U$S 350+ aprox.</div>
-            <ul class="model-features">
-                <li class="feature-item"><span class="feature-dot yes c3">✔</span>Blindaje CDS Full</li>
-                <li class="feature-item"><span class="feature-dot yes c3">✔</span>Animaciones High-End</li>
-            </ul>
-            <div class="model-ideal"><strong>Perfil Ideal</strong> Marcas de lujo y corporativos.</div>
-            <a href="https://wa.me/5491124632544?text=Me%20interesa%20v3.0" class="btn-dark" style="margin-top:auto; background:var(--m3); color:black; text-align:center;">ELITE</a>
+            <a href="https://wa.me/5491124632544?text=Hola%20Nexo!%20Deseo%20informaci%C3%B3n%20para%20el%20Modelo%203.0%20Elite" class="btn-select">ELITE PRE-QUALIFY</a>
         </article>
     </main>
 
-    <footer style="padding: 40px; text-align: center; border-top: 1px solid var(--border);">
-        <p>© 2026 Nexo Web | Una división de CDS</p>
+    <section class="table-section">
+        <div style="overflow-x: auto;">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>FUNCIÓN</th>
+                        <th>v1.0</th>
+                        <th>v1.5</th>
+                        <th>v2.0</th>
+                        <th>v3.0</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Entrega (Días)</td><td>5</td><td>7</td><td>7</td><td>10-15</td></tr>
+                    <tr><td>Rondas de Cambio</td><td>1</td><td>1</td><td>2</td><td>Ilimitadas</td></tr>
+                    <tr><td>Protección CDS</td><td>Básica</td><td>Básica</td><td>Avanzada</td><td>Corporativa</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 NEXO WEB | División de Ecosistemas de CDS. CABA, Argentina.
     </footer>
 
 </body>
