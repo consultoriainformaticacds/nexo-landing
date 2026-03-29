@@ -1,164 +1,136 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Comparativa de Arquitecturas | NEXO Web</title>
-  <meta name="description" content="Guía técnica de inversión para ecosistemas digitales Nexo. Compara alcances, tiempos y niveles de seguridad." />
-  
-  <meta property="og:title" content="Inversión y Arquitectura Web | NEXO" />
-  <meta property="og:description" content="Comparativa detallada de modelos de negocio digital para empresas y profesionales." />
-  <meta property="og:image" content="https://nexo-landing.pages.dev/logo-cds.png" />
-
-  <link rel="icon" href="../logo-cds.png" type="image/png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
-
-  <style>
-    :root {
-      --bg: #050505;
-      --card: #0a0a0a;
-      --accent: #22c55e;
-      --accent-cds: #00f2ff;
-      --text: #ffffff;
-      --dim: #888888;
-      --border: rgba(255,255,255,0.08);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
-    body { background-color: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; line-height: 1.6; overflow-x: hidden; }
-    h1, h2, h3 { font-family: 'Syne', sans-serif; text-transform: uppercase; line-height: 1; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz de Inversión 2026 | Nexo Web</title>
     
-    nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
-    .nav-logo { font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; font-family: 'Syne'; }
-    .nav-logo span { color: var(--accent); }
-    .nav-cta { border: 1px solid var(--accent); color: var(--accent); padding: 8px 20px; border-radius: 4px; text-decoration: none; font-size: 0.8rem; font-weight: 700; transition: 0.3s; }
-    .nav-cta:hover { background: var(--accent); color: #000; }
-
-    .hero { padding: 160px 5% 60px; text-align: center; max-width: 900px; margin: 0 auto; }
-    .hero-tag { color: var(--accent); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; font-weight: 700; display: block; }
-    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 20px; }
-    .hero h1 span { -webkit-text-stroke: 1px #fff; color: transparent; }
-    .hero p { font-size: 1.2rem; color: var(--dim); font-weight: 300; }
-
-    .models-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px; padding: 0 5% 80px; max-width: 1400px; margin: 0 auto; }
-    .model-card { background: var(--card); border: 1px solid var(--border); padding: 40px 30px; border-radius: 4px; transition: 0.4s; position: relative; }
-    .model-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     
-    .model-num { font-size: 0.7rem; color: var(--dim); letter-spacing: 2px; margin-bottom: 15px; display: block; }
-    .model-name { font-size: 1.8rem; margin-bottom: 20px; }
-    .model-price { font-size: 2.2rem; font-weight: 800; font-family: 'Syne'; color: #fff; margin-bottom: 5px; }
-    .model-usd { font-size: 0.85rem; color: var(--accent); font-weight: 700; margin-bottom: 20px; }
-    
-    .feature-list { list-style: none; margin: 30px 0; border-top: 1px solid var(--border); padding-top: 20px; }
-    .feature-item { font-size: 0.9rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: var(--dim); }
-    .check { color: var(--accent); font-weight: 800; }
-
-    .table-section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
-    .table-wrapper { overflow-x: auto; background: #0a0a0a; border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
-    table { width: 100%; border-collapse: collapse; min-width: 700px; }
-    th, td { padding: 18px; border-bottom: 1px solid var(--border); text-align: left; font-size: 0.9rem; }
-    th { font-family: 'Syne'; color: var(--accent); }
-    td:first-child { font-weight: 700; color: #fff; width: 30%; }
-
-    .cta-final { text-align: center; padding: 120px 5%; background: linear-gradient(180deg, transparent, rgba(34,197,94,0.05)); }
-    .btn-main { background: var(--accent); color: #000; padding: 20px 40px; border-radius: 4px; font-weight: 800; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; display: inline-block; }
-    .btn-main:hover { box-shadow: 0 0 30px rgba(34,197,94,0.4); transform: translateY(-3px); }
-
-    footer { padding: 50px 5%; text-align: center; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--dim); }
-  </style>
+    <link rel="stylesheet" href="comparativa.css">
 </head>
 <body>
 
-  <nav>
-    <a href="https://nexoweb.pages.dev" class="nav-logo">NEXO<span>.</span></a>
-    <a href="https://wa.me/5491124632544" class="nav-cta">Solicitar Propuesta PDF</a>
-  </nav>
+    <nav>
+        <a href="../index.html" class="nav-logo">NEXO<span>.</span>WEB</a>
+        <div class="nav-sub">División de Arquitectura Digital</div>
+        <a href="https://wa.me/5491124632544?text=Hola!%20Solicito%20diagn%C3%B3stico%20y%20presupuesto%20formal%20en%20PDF." class="nav-cta">SOLICITAR PDF</a>
+    </nav>
 
-  <header class="hero">
-    <span class="hero-tag">Matriz de Inversión Técnica</span>
-    <h1>Arquitecturas <span>Diseñadas</span> para Escalar</h1>
-    <p>Compare los alcances de nuestras infraestructuras base. Cada modelo es un activo digital auditado por CDS para garantizar seguridad y rendimiento.</p>
-  </header>
+    <header class="hero">
+        <div class="hero-tag">Matriz de Inversión Técnica</div>
+        <h1 class="hero-title">Infraestructuras para<br><span>Escalar</span></h1>
+        <p class="hero-desc">Compara los alcances de nuestras arquitecturas base. Cada modelo es un activo digital auditado por CDS para garantizar seguridad y rendimiento.</p>
+    </header>
 
-  <div class="models-grid">
-    <!-- M1 -->
-    <article class="model-card">
-      <span class="model-num">MODELO 01</span>
-      <h2 class="model-name">Landing Page</h2>
-      <div class="model-price">$150.000</div>
-      <p class="model-usd">U$S 100 aprox.</p>
-      <ul class="feature-list">
-        <li class="feature-item"><span class="check">✓</span> 1 Página de alto impacto</li>
-        <li class="feature-item"><span class="check">✓</span> Foco en conversión directa</li>
-        <li class="feature-item"><span class="check">✓</span> Botón WhatsApp Flotante</li>
-        <li class="feature-item"><span class="check">✓</span> Blindaje de Seguridad Nivel 1</li>
-      </ul>
-    </article>
+    <main class="models-grid">
+        <article class="model-card m1">
+            <div class="model-num">v1.0 LANDING</div>
+            <h2 class="model-name">Captación</h2>
+            <div class="model-niche">Ideal para lanzamientos rápidos</div>
+            <div class="model-price">$150.000</div>
+            <div class="model-usd">U$S 100 aprox.</div>
+            <div class="model-entrega">Entrega 48hs</div>
+            <ul class="model-features">
+                <li class="feature-item"><span class="feature-dot yes c1">✔</span>1 Sección de Impacto</li>
+                <li class="feature-item"><span class="feature-dot yes c1">✔</span>WhatsApp Business</li>
+                <li class="feature-item no"><span class="feature-dot no">✘</span>SEO Estructural</li>
+            </ul>
+            <div class="model-ideal"><strong>Perfil Ideal</strong> Negocios que necesitan presencia validada hoy mismo.</div>
+            <a href="https://wa.me/5491124632544?text=Hola!%20Me%20interesa%20iniciar%20con%20el%20Modelo%20v1.0%20Landing." class="btn-dark" style="margin-top:20px; width:100%; text-align:center;">ELEGIR v1.0</a>
+        </article>
 
-    <!-- M2 -->
-    <article class="model-card" style="border-color: var(--accent);">
-      <span class="model-num">MODELO 02</span>
-      <h2 class="model-name">Standard Web</h2>
-      <div class="model-price">$360.000</div>
-      <p class="model-usd">U$S 250 aprox.</p>
-      <ul class="feature-list">
-        <li class="feature-item"><span class="check">✓</span> Multi-sección (Nav fija)</li>
-        <li class="feature-item"><span class="check">✓</span> Posicionamiento SEO Estructural</li>
-        <li class="feature-item"><span class="check">✓</span> Formulario de Pre-cualificación</li>
-        <li class="feature-item"><span class="check">✓</span> Blindaje de Seguridad Nivel 2</li>
-      </ul>
-    </article>
+        <article class="model-card m15">
+            <div class="model-num">v1.5 PRO</div>
+            <h2 class="model-name">Conversión</h2>
+            <div class="model-niche">Optimizado para servicios</div>
+            <div class="model-price">$250.000</div>
+            <div class="model-usd">U$S 174 aprox.</div>
+            <div class="model-entrega">Entrega 5 días</div>
+            <ul class="model-features">
+                <li class="feature-item"><span class="feature-dot yes c15">✔</span>Catálogo Visual</li>
+                <li class="feature-item"><span class="feature-dot yes c15">✔</span>Múltiples CTAs</li>
+                <li class="feature-item"><span class="feature-dot yes c15">✔</span>UX de Conversión</li>
+            </ul>
+            <div class="model-ideal"><strong>Perfil Ideal</strong> Profesionales que buscan escalar sus ventas.</div>
+            <a href="https://wa.me/5491124632544?text=Hola!%20Me%20interesa%20iniciar%20con%20el%20Modelo%20v1.5%20Pro." class="btn-dark" style="margin-top:20px; width:100%; text-align:center; background: var(--m15); color: white;">ELEGIR v1.5</a>
+        </article>
 
-    <!-- M3 -->
-    <article class="model-card" style="border-color: var(--accent-cds);">
-      <span class="model-num">MODELO 03</span>
-      <h2 class="model-name">Premium Elite</h2>
-      <div class="model-price">$500.000+</div>
-      <p class="model-usd" style="color:var(--accent-cds)">U$S 350+ aprox.</p>
-      <ul class="feature-list">
-        <li class="feature-item"><span class="check" style="color:var(--accent-cds)">✓</span> Ecosistema total a medida</li>
-        <li class="feature-item"><span class="check" style="color:var(--accent-cds)">✓</span> Sistema de Reservas / Catálogo</li>
-        <li class="feature-item"><span class="check" style="color:var(--accent-cds)">✓</span> FAQ Acordeón & Social Proof</li>
-        <li class="feature-item"><span class="check" style="color:var(--accent-cds)">✓</span> Seguridad Grado Corporativo</li>
-      </ul>
-    </article>
-  </div>
+        <article class="model-card m2">
+            <div class="model-num">v2.0 BUSINESS</div>
+            <h2 class="model-name">Autoridad</h2>
+            <div class="model-niche">Estructura Corporativa</div>
+            <div class="model-price">$360.000</div>
+            <div class="model-usd">U$S 250 aprox.</div>
+            <div class="model-entrega">Entrega 7-10 días</div>
+            <ul class="model-features">
+                <li class="feature-item"><span class="feature-dot yes c2">✔</span>Nav con 5 Secciones</li>
+                <li class="feature-item"><span class="feature-dot yes c2">✔</span>Formulario de Pre-cualificación</li>
+                <li class="feature-item"><span class="feature-dot yes c2">✔</span>Hardening de Servidor</li>
+            </ul>
+            <div class="model-ideal"><strong>Perfil Ideal</strong> Empresas que requieren solidez y confianza B2B.</div>
+            <a href="https://wa.me/5491124632544?text=Hola!%20Me%20interesa%20iniciar%20con%20el%20Modelo%20v2.0%20Business." class="btn-dark" style="margin-top:20px; width:100%; text-align:center; background: var(--m2);">ELEGIR v2.0</a>
+        </article>
 
-  <section class="table-section">
-    <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">Especificaciones Técnicas</h2>
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>CARACTERÍSTICA</th>
-            <th>LANDING</th>
-            <th>STANDARD</th>
-            <th>PREMIUM</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Entrega Estimada</td><td>5 días</td><td>7 días</td><td>10-15 días</td></tr>
-          <tr><td>Rondas de Ajustes</td><td>1</td><td>2</td><td>Ilimitadas</td></tr>
-          <tr><td>Navegación</td><td>Scroll continuo</td><td>Anclas / Secciones</td><td>Jerarquía Avanzada</td></tr>
-          <tr><td>Protección CDS</td><td>SSL + Filtro básico</td><td>Hardening Servidor</td><td>Monitoreo 24/7</td></tr>
-          <tr><td>Optimización SEO</td><td>Local</td><td>Estructural</td><td>Contenido & Autoridad</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+        <article class="model-card m3">
+            <div class="model-num">v3.0 ELITE</div>
+            <h2 class="model-name">Ecosistema</h2>
+            <div class="model-niche">Blindaje y Lujo Digital</div>
+            <div class="model-price">$500.000+</div>
+            <div class="model-usd">U$S 350+ aprox.</div>
+            <div class="model-entrega">Entrega 15-20 días</div>
+            <ul class="model-features">
+                <li class="feature-item"><span class="feature-dot yes c3">✔</span>Blindaje CDS Full</li>
+                <li class="feature-item"><span class="feature-dot yes c3">✔</span>FAQ & Social Proof</li>
+                <li class="feature-item"><span class="feature-dot yes c3">✔</span>Animaciones High-End</li>
+            </ul>
+            <div class="model-ideal"><strong>Perfil Ideal</strong> Marcas High-Ticket que no aceptan menos que la perfección.</div>
+            <a href="https://wa.me/5491124632544?text=Hola!%20Solicito%20presupuesto%20formal%20para%20un%20Ecosistema%20v3.0%20Elite." class="btn-dark" style="margin-top:20px; width:100%; text-align:center; background: var(--m3);">SOLICITAR ELITE</a>
+        </article>
+    </main>
 
-  <section class="cta-final">
-    <h2>¿Listo para formalizar su proyecto?</h2>
-    <p style="margin: 20px 0 40px; color: var(--dim);">Analizaremos su requerimiento técnico para enviarle una propuesta comercial formal en PDF.</p>
-    <a href="https://wa.me/5491124632544?text=Hola,%20solicito%20diagnóstico%20y%20presupuesto%20formal" class="btn-main">Hablar con un consultor ahora</a>
-  </section>
+    <section class="table-section">
+        <h2 class="section-title">Especificaciones Técnicas</h2>
+        <div style="overflow-x: auto;">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th class="h1">v1.0</th>
+                        <th class="h15">v1.5</th>
+                        <th class="h2">v2.0</th>
+                        <th class="h3">v3.0</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Rondas de Ajustes</td><td>1</td><td>1</td><td>2</td><td>Ilimitadas</td></tr>
+                    <tr><td>Protección CDS</td><td>Básica</td><td>Avanzada</td><td>Hardening</td><td>Blindaje Total</td></tr>
+                    <tr><td>SEO Estructural</td><td class="no-val">✘</td><td class="yes15">✔</td><td class="yes2">✔</td><td class="yes3">Full Authority</td></tr>
+                    <tr><td>Soporte Prioritario</td><td class="no-val">✘</td><td class="no-val">✘</td><td class="yes2">✔</td><td class="yes3">24/7 Dedicado</td></tr>
+                    <tr class="price-row">
+                        <td>Inversión Total</td>
+                        <td class="yes1">$150k</td>
+                        <td class="yes15">$250k</td>
+                        <td class="yes2">$360k</td>
+                        <td class="yes3">$500k+</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-  <footer>
-    <p>© 2026 NEXO WEB · División de Arquitectura Digital de CDS · CABA, Argentina.</p>
-  </footer>
+    <section class="cta-section">
+        <h2>¿Listo para escalar?</h2>
+        <p>Analizaremos tu requerimiento técnico para enviarte una propuesta comercial formal en PDF.</p>
+        <a href="https://wa.me/5491124632544?text=Hola!%20Deseo%20agendar%20una%20llamada%20de%20diagn%C3%B3stico%20formal." class="btn-dark">AGENDAR LLAMADA</a>
+    </section>
+
+    <footer>
+        <div class="footer-logo">NEXO<span>.</span>WEB</div>
+        <p>© 2026 Nexo Web | Una división de CDS Consultoría Informática</p>
+    </footer>
 
 </body>
 </html>
