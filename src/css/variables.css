@@ -1,0 +1,16 @@
+:root {
+  /* Paleta Luxury Showroom */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #161616;
+  --accent-gold: #d4af37;
+  --accent-silver: #e2e8f0;
+  --text-main: #ffffff;
+  --text-muted: #888888;
+  
+  /* Glassmorphism Luxury */
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(212, 175, 55, 0.2);
+  --nav-bg: rgba(10, 10, 10, 0.9);
+  
+  --transition-smooth: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
