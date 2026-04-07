@@ -10,10 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* RESET Y VARIABLES */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
-            --nexo-dark: #050505; --nexo-accent: #C8F135; /* Barra Nexo */
+            --nexo-dark: #050505; --nexo-accent: #C8F135; 
             --lumiere-bg: #0a0a0a; --lumiere-card: #141414;
             --lumiere-gold: #D4AF37; --lumiere-text: #F8F8F5; --lumiere-muted: #888888;
         }
@@ -21,9 +20,7 @@
         body { font-family: 'Instrument Sans', sans-serif; background: var(--lumiere-bg); color: var(--lumiere-text); overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 800; text-transform: uppercase; }
 
-        /* ==========================================
-           BARRA DE NAVEGACIÓN NEXO (El "Marco")
-           ========================================== */
+        /* BARRA NEXO */
         .nexo-frame {
             position: fixed; top: 0; width: 100%; z-index: 9999;
             background: var(--nexo-dark); border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -36,26 +33,23 @@
         .nexo-actions { display: flex; gap: 15px; }
         .nexo-btn-back { color: #fff; text-decoration: none; padding: 5px 10px; opacity: 0.7; transition: 0.3s; }
         .nexo-btn-back:hover { opacity: 1; }
-        .nexo-btn-buy { background: var(--nexo-accent); color: #000; text-decoration: none; padding: 5px 15px; font-weight: 800; border-radius: 3px; font-family: 'Syne'; }
+        .nexo-btn-buy { background: var(--nexo-accent); color: #000; text-decoration: none; padding: 5px 15px; font-weight: 800; border-radius: 3px; font-family: 'Syne'; transition: 0.3s;}
+        .nexo-btn-buy:hover { transform: scale(1.05); }
 
-        /* ==========================================
-           DISEÑO DE LA DEMO (LUMIÈRE STUDIO)
-           ========================================== */
-        /* NAVEGACIÓN INTERNA */
+        /* NAVEGACIÓN LUMIÈRE */
         .demo-nav {
-            margin-top: 45px; /* Deja espacio para la barra Nexo */
-            padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center;
+            margin-top: 45px; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center;
             position: absolute; width: 100%; z-index: 100;
         }
-        .demo-logo { font-size: 1.5rem; letter-spacing: 3px; color: var(--lumiere-gold); }
+        .demo-logo { font-size: 1.5rem; letter-spacing: 3px; color: var(--lumiere-gold); font-family: 'Syne';}
         .demo-menu { display: flex; gap: 30px; list-style: none; }
         .demo-menu a { color: #fff; text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
         .demo-menu a:hover { color: var(--lumiere-gold); }
 
-        /* HERO SECTION */
+        /* HERO */
         .demo-hero {
             height: 100vh; min-height: 700px;
-            background: linear-gradient(rgba(10,10,10,0.4), rgba(10,10,10,1)), url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop') center/cover;
+            background: linear-gradient(rgba(10,10,10,0.6), rgba(10,10,10,1)), url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop') center/cover;
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
             padding: 0 5%;
         }
@@ -64,11 +58,21 @@
         .btn-gold {
             display: inline-block; border: 1px solid var(--lumiere-gold); color: var(--lumiere-gold);
             padding: 15px 40px; text-decoration: none; font-family: 'Syne'; font-weight: 700;
-            letter-spacing: 2px; transition: 0.4s; background: transparent;
+            letter-spacing: 2px; transition: 0.4s; background: transparent; cursor: pointer;
         }
         .btn-gold:hover { background: var(--lumiere-gold); color: #000; }
 
-        /* SECCIÓN SERVICIOS */
+        /* SECCIÓN: EL ESTUDIO */
+        .studio {
+            padding: 100px 5%; text-align: center; background: var(--lumiere-bg);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .studio-content { max-width: 800px; margin: 0 auto; }
+        .studio-title { font-size: 2.5rem; margin-bottom: 20px; color: var(--lumiere-text); }
+        .studio-text { color: var(--lumiere-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; }
+        .studio-image { width: 100%; height: 400px; object-fit: cover; border-radius: 4px; opacity: 0.8; border: 1px solid rgba(212, 175, 55, 0.2); }
+
+        /* SECCIÓN: SERVICIOS */
         .services { padding: 100px 5%; max-width: 1300px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 80px; }
         .section-title { font-size: 2.5rem; margin-bottom: 15px; }
@@ -79,19 +83,19 @@
             background: var(--lumiere-card); padding: 50px 30px; border-top: 1px solid rgba(212, 175, 55, 0.1);
             transition: 0.4s; text-align: center;
         }
-        .service-card:hover { transform: translateY(-10px); border-color: var(--lumiere-gold); }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--lumiere-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .service-num { font-family: 'Syne'; color: var(--lumiere-gold); font-size: 2rem; opacity: 0.5; margin-bottom: 20px; }
         .service-title { font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 1px; }
         .service-desc { color: var(--lumiere-muted); font-size: 0.9rem; margin-bottom: 30px; }
         .service-price { font-family: 'Syne'; font-weight: 700; color: #fff; border-bottom: 1px solid var(--lumiere-muted); display: inline-block; padding-bottom: 5px; }
 
-        /* SECCIÓN CITA (Reserva) */
-        .booking { background: var(--lumiere-card); padding: 100px 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
-        .booking h2 { font-size: 3rem; margin-bottom: 20px; }
-        .booking p { color: var(--lumiere-muted); margin-bottom: 40px; }
+        /* SECCIÓN: RESERVA */
+        .booking { background: var(--lumiere-card); padding: 120px 5%; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.1); }
+        .booking h2 { font-size: 3rem; margin-bottom: 20px; color: var(--lumiere-gold); }
+        .booking p { color: var(--lumiere-muted); margin-bottom: 40px; font-size: 1.1rem; }
 
-        /* FOOTER DE LA DEMO */
-        .demo-footer { text-align: center; padding: 40px; font-size: 0.8rem; color: var(--lumiere-muted); }
+        /* FOOTER */
+        .demo-footer { text-align: center; padding: 40px; font-size: 0.8rem; color: var(--lumiere-muted); background: var(--lumiere-bg); }
     </style>
 </head>
 <body>
@@ -101,15 +105,15 @@
         <div class="nexo-badge">VISTA PREVIA: PREMIUM MAX</div>
         <div class="nexo-actions">
             <a href="index.html" class="nexo-btn-back">Cerrar Demo</a>
-            <a href="https://wa.me/5491124632544?text=Hola!%20Estaba%20viendo%20la%20demo%20de%20Lumiere%20Studio%20y%20quiero%20este%20modelo%20para%20mi%20negocio." class="nexo-btn-buy">USAR ESTE MODELO</a>
+            <a href="https://wa.me/5491124632544?text=Hola!%20Estaba%20viendo%20la%20demo%20de%20Lumiere%20Studio%20y%20quiero%20este%20modelo%20para%20mi%20negocio." class="nexo-btn-buy" target="_blank">USAR ESTE MODELO</a>
         </div>
     </div>
 
     <nav class="demo-nav">
         <div class="demo-logo">LUMIÈRE</div>
         <ul class="demo-menu">
-            <li><a href="#servicios">Tratamientos</a></li>
             <li><a href="#estudio">El Estudio</a></li>
+            <li><a href="#servicios">Tratamientos</a></li>
             <li><a href="#reserva">Reservas</a></li>
         </ul>
     </nav>
@@ -117,8 +121,16 @@
     <header class="demo-hero">
         <div class="hero-subtitle">Estética Avanzada & Spa</div>
         <h1 class="hero-title">Tu cuerpo,<br>tu obra de arte.</h1>
-        <a href="#servicios" class="btn-gold">DESCUBRIR EXPERIENCIAS</a>
+        <a href="#estudio" class="btn-gold">DESCUBRIR EL ESTUDIO</a>
     </header>
+
+    <section id="estudio" class="studio">
+        <div class="studio-content">
+            <h2 class="studio-title">Un Santuario de Belleza</h2>
+            <p class="studio-text">Diseñado milimétricamente para tu desconexión y renovación absoluta. En Lumière, la ciencia estética se encuentra con el lujo sensorial. Nuestro equipo de profesionales utiliza tecnología de vanguardia en un ambiente de total exclusividad.</p>
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop" alt="Interior de Lumiere Studio" class="studio-image">
+        </div>
+    </section>
 
     <section id="servicios" class="services">
         <div class="section-header">
@@ -153,7 +165,7 @@
     <section id="reserva" class="booking">
         <h2>Eleva tu estándar.</h2>
         <p>Agenda tu cita de diagnóstico sin cargo. Nuestros especialistas están listos para asesorarte.</p>
-        <a href="#" class="btn-gold" style="background: var(--lumiere-gold); color: #000;">AGENDAR TURNO AHORA</a>
+        <a href="https://wa.me/5491124632544?text=Hola!%20Quiero%20agendar%20un%20turno%20en%20Lumiere%20Studio." class="btn-gold" style="background: var(--lumiere-gold); color: #000;" target="_blank">AGENDAR TURNO AHORA</a>
     </section>
 
     <footer class="demo-footer">
