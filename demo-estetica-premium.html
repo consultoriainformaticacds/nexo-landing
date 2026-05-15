@@ -3,52 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lumière — Spa de Lujo (Premium Max)</title>
+  <title>Lumière VIP — Spa & Medical (Premium Max)</title>
   <link rel="stylesheet" href="src/css/demo-premium-core.css">
   <style>
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      padding: 0 5%;
-      position: relative;
-    }
-    .hero-video-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      opacity: 0.4;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, var(--bg-dark) 100%);
-      z-index: -1;
+    :root { --lumiere-champagne: #F7E7CE; --lumiere-dark: #050505; }
+    body { background: var(--lumiere-dark); color: var(--lumiere-champagne); }
+    
+    .nav-brand span { color: var(--lumiere-champagne); }
+    .btn-gold { background: var(--lumiere-champagne); color: var(--lumiere-dark); border-color: var(--lumiere-champagne); }
+    .btn-gold:hover { background: transparent; color: var(--lumiere-champagne); }
+    .btn-outline:hover { border-color: var(--lumiere-champagne); color: var(--lumiere-champagne); }
+    
+    .hero-vip {
+      height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
+      background: linear-gradient(rgba(5,5,5,0.4), rgba(5,5,5,1)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2000&q=80') center/cover fixed;
     }
     
-    .feature-banner {
-      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px;
-      padding: 40px 5%; background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    .masonry-gallery {
+      display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 300px; gap: 20px; padding: 0 5%; margin-top: 50px;
     }
-    .feature-item { text-align: center; }
-    .feature-item h4 { font-family: var(--font-sans); color: var(--gold); font-size: 1.5rem; margin-bottom: 5px; }
+    .m-item { width: 100%; height: 100%; object-fit: cover; filter: sepia(0.3) brightness(0.8); transition: var(--t-smooth); }
+    .m-item:hover { filter: sepia(0) brightness(1.1); transform: scale(1.02); z-index: 10; position: relative; }
+    .m-tall { grid-row: span 2; }
     
-    .luxury-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: center;
+    .membership-table {
+      width: 100%; max-width: 1000px; margin: 50px auto 0; border-collapse: collapse; text-align: left;
     }
-    .luxury-text { padding: 80px 10%; }
-    .luxury-img { height: 600px; background: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1000&q=80') center/cover; }
-    .luxury-img-2 { height: 600px; background: url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1000&q=80') center/cover; }
-
+    .membership-table th, .membership-table td {
+      padding: 25px; border-bottom: 1px solid rgba(247, 231, 206, 0.2); font-family: var(--font-sans);
+    }
+    .membership-table th { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; color: #fff; }
+    .check { color: var(--lumiere-champagne); font-weight: bold; }
+    
     @media (max-width: 900px) {
-      .luxury-grid { grid-template-columns: 1fr; }
-      .luxury-img, .luxury-img-2 { height: 400px; order: -1; }
-      .luxury-text { padding: 60px 5%; }
+      .masonry-gallery { grid-template-columns: 1fr; grid-auto-rows: 250px; }
+      .m-tall { grid-row: span 1; }
+      .membership-table { display: block; overflow-x: auto; }
     }
   </style>
 </head>
@@ -56,65 +46,80 @@
 
   <nav>
     <a href="#" class="nav-brand">Lumière<span>.</span> VIP</a>
-    <a href="#vip" class="btn-gold" style="padding: 10px 20px;">Membresía</a>
+    <a href="#membership" class="btn-outline" style="padding: 10px 20px;">The Black Card</a>
   </nav>
 
-  <header class="hero">
-    <!-- Un video background sutil o imagen premium -->
-    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2000&q=80" class="hero-video-bg" alt="Spa bg">
-    <div class="hero-overlay"></div>
-    
+  <header class="hero-vip">
     <div class="reveal">
-      <p style="text-transform:uppercase; letter-spacing:6px; color:var(--gold); margin-bottom:20px; font-size:0.85rem;">Exclusividad & Relajación Absoluta</p>
-      <h1 style="font-size:clamp(4rem, 10vw, 7rem); margin-bottom:20px; font-weight: 700;">Santuario de<br><em>Bienestar</em></h1>
-      <p style="font-size:1.2rem; color:var(--text-main); max-width:600px; margin:0 auto 50px;">Donde el tiempo se detiene y la máxima expresión del lujo se encuentra con tu cuerpo.</p>
-      <a href="#experiencias" class="btn-outline">Explorar Experiencias</a>
+      <p style="text-transform:uppercase; letter-spacing:6px; color:var(--lumiere-champagne); margin-bottom:20px; font-size:0.85rem;">Exclusividad absoluta</p>
+      <h1 style="font-size:clamp(4rem, 8vw, 7rem); margin-bottom:20px;">Santuario de<br><em>Lujo</em></h1>
+      <p style="font-size:1.2rem; color:rgba(255,255,255,0.7); max-width:600px; margin:0 auto 50px;">Un oasis privado diseñado para la restauración celular y el equilibrio mental en el corazón de la ciudad.</p>
     </div>
   </header>
 
-  <div class="feature-banner">
-    <div class="feature-item reveal"><h4 style="font-size: 2rem;">5</h4><p>Estrellas Forbes</p></div>
-    <div class="feature-item reveal delay-1"><h4 style="font-size: 2rem;">12</h4><p>Cabinas Privadas</p></div>
-    <div class="feature-item reveal delay-2"><h4 style="font-size: 2rem;">24/7</h4><p>Concierge Service</p></div>
-  </div>
-
-  <section id="experiencias" style="padding: 0; max-width: 100%;">
-    <div class="luxury-grid">
-        <div class="luxury-img reveal"></div>
-        <div class="luxury-text reveal delay-1">
-            <h2 style="font-size: 3rem; margin-bottom: 20px;">Ritual del <em>Oro</em></h2>
-            <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem;">Nuestra experiencia insignia. Un tratamiento corporal y facial completo utilizando partículas de oro de 24k para iluminar, nutrir y rejuvenecer la piel a nivel celular.</p>
-            <p style="color: var(--gold); font-size: 1.5rem; margin-bottom: 40px; font-family: var(--font-serif);">$ 85.000 ARS <span style="font-size:0.8rem; font-family:var(--font-sans); color:var(--text-muted);">/ 120 MIN</span></p>
-            <a href="https://wa.me/5491124632544?text=Quiero%20reservar%20el%20Ritual%20del%20Oro." class="btn-gold" target="_blank">Reservar Experiencia</a>
-        </div>
-    </div>
-    <div class="luxury-grid">
-        <div class="luxury-text reveal">
-            <h2 style="font-size: 3rem; margin-bottom: 20px;">Terapia de <em>Diamante</em></h2>
-            <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem;">Exfoliación profunda con polvo de diamante puro seguida de una infusión de colágeno marino en nuestra cabina VIP con vista panorámica.</p>
-            <p style="color: var(--gold); font-size: 1.5rem; margin-bottom: 40px; font-family: var(--font-serif);">$ 65.000 ARS <span style="font-size:0.8rem; font-family:var(--font-sans); color:var(--text-muted);">/ 90 MIN</span></p>
-            <a href="https://wa.me/5491124632544?text=Quiero%20reservar%20la%20Terapia%20de%20Diamante." class="btn-gold" target="_blank">Reservar Experiencia</a>
-        </div>
-        <div class="luxury-img-2 reveal delay-1"></div>
+  <section id="instalaciones" style="padding-top: 50px;">
+    <h2 class="section-title reveal" style="margin-bottom: 20px;">Nuestras <em>Instalaciones</em></h2>
+    <div class="masonry-gallery">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80" class="m-item reveal" alt="Spa 1">
+        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=80" class="m-item m-tall reveal delay-1" alt="Spa 2">
+        <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=800&q=80" class="m-item reveal delay-2" alt="Spa 3">
+        <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=800&q=80" class="m-item reveal" alt="Spa 4">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80" class="m-item reveal delay-2" alt="Spa 5">
     </div>
   </section>
 
-  <section id="vip" style="text-align: center; padding: 120px 5%;">
-    <div class="reveal">
-        <h2 style="font-size: 3.5rem; margin-bottom: 20px;"><em>The Black Card</em> Membresía</h2>
-        <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px;">Acceso prioritario a todas nuestras instalaciones, valet parking, y tratamientos ilimitados seleccionados por una tarifa mensual exclusiva.</p>
-        <a href="https://wa.me/5491124632544?text=Quiero%20info%20sobre%20The%20Black%20Card." class="btn-outline" target="_blank">Solicitar Invitación</a>
+  <section id="membership">
+    <div class="reveal text-center" style="text-align: center;">
+        <h2 style="font-size:3.5rem; margin-bottom:20px;"><em>The Black Card</em></h2>
+        <p style="color:rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto;">Membresías anuales estrictamente por invitación o solicitud aprobada.</p>
+    </div>
+    
+    <div class="reveal delay-1">
+        <table class="membership-table">
+            <thead>
+                <tr>
+                    <th>Beneficios Exclusivos</th>
+                    <th style="text-align:center;">Gold Tier</th>
+                    <th style="text-align:center;">Black Tier</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Masajes 90 min mensuales</td>
+                    <td style="text-align:center; color:rgba(255,255,255,0.7);">2 Sesiones</td>
+                    <td style="text-align:center;" class="check">Ilimitados</td>
+                </tr>
+                <tr>
+                    <td>Cabina de Oro 24K Privada</td>
+                    <td style="text-align:center; color:rgba(255,255,255,0.7);">-</td>
+                    <td style="text-align:center;" class="check">Acceso Total</td>
+                </tr>
+                <tr>
+                    <td>Valet Parking & Concierge</td>
+                    <td style="text-align:center;" class="check">Sí</td>
+                    <td style="text-align:center;" class="check">Sí</td>
+                </tr>
+                <tr>
+                    <td>Tarifa Anual</td>
+                    <td style="text-align:center; font-family:var(--font-serif); font-size:1.2rem;">USD 2.500</td>
+                    <td style="text-align:center; font-family:var(--font-serif); font-size:1.5rem; color:var(--lumiere-champagne);">USD 5.000</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div style="text-align:center; margin-top:50px;">
+            <a href="https://wa.me/5491124632544?text=Quiero%20solicitar%20aplicación%20para%20The%20Black%20Card." class="btn-gold" target="_blank">Solicitar Aplicación</a>
+        </div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2026 Lumière VIP Spa. Demo Premium Max by Nexo Web.</p>
+  <footer style="text-align: center; padding: 60px 5%; border-top: 1px solid rgba(247, 231, 206, 0.2);">
+    <p>© 2026 Lumière VIP. Premium Max (Nivel 3) by Nexo Web.</p>
   </footer>
 
-  <a href="https://wa.me/5491124632544?text=Hola%20Lumière!%20Quisiera%20reservar%20un%20turno." class="wa-fab" target="_blank">
-    <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <a href="https://wa.me/5491124632544?text=Hola%20Lumière%20VIP." class="wa-fab" style="background: var(--lumiere-champagne);" target="_blank">
+    <svg viewBox="0 0 24 24" fill="var(--lumiere-dark)" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
-
   <script src="src/js/demo-core.js"></script>
 </body>
 </html>

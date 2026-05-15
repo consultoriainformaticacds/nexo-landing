@@ -3,184 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RegaloUnico — E-Commerce (Premium Max)</title>
+  <title>RegaloUnico — Alta Joyería (Premium Max)</title>
   <link rel="stylesheet" href="src/css/demo-premium-core.css">
   <style>
-    :root {
-      --brand-color: #e5b382; /* Un dorado rosado para joyería/regalos de lujo */
-    }
-    .hero {
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      padding: 0 5%;
-      background: linear-gradient(90deg, rgba(7,7,7,0.95) 40%, rgba(7,7,7,0.2)), url('https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=2000&q=80') center right/cover;
-    }
+    :root { --brand-color: #e5b382; --store-bg: #030303; }
+    body { background: var(--store-bg); }
     
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+    .hero-cartier {
+      height: 100vh; position: relative; display: flex; align-items: flex-end; padding: 100px 5%;
+      background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=2000&q=80') center/cover;
     }
-    .cat-card {
-      height: 400px;
-      display: flex;
-      align-items: flex-end;
-      padding: 30px;
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-      border-radius: 4px;
-    }
-    .cat-card::before {
-      content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index: 1; transition: var(--t-smooth);
-    }
-    .cat-card:hover::before { background: rgba(0,0,0,0.2); }
-    .cat-card img {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transition: var(--t-smooth);
-    }
-    .cat-card:hover img { transform: scale(1.05); }
-    .cat-title {
-      position: relative; z-index: 2; font-family: var(--font-serif); font-size: 2rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-    }
-    .product {
-      background: transparent;
-      group: product;
-      cursor: pointer;
-    }
-    .product-img-wrapper {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4/5;
-      overflow: hidden;
-      margin-bottom: 15px;
-      border-radius: 4px;
-    }
-    .product-img-wrapper img {
-      width: 100%; height: 100%; object-fit: cover; transition: var(--t-smooth);
-    }
-    .product:hover .product-img-wrapper img { transform: scale(1.05); }
+    .hero-content { width: 100%; max-width: 600px; }
     
-    .add-to-cart {
-      position: absolute;
-      bottom: -50px; left: 0; right: 0;
-      background: var(--brand-color);
-      color: #000;
-      text-align: center;
-      padding: 15px;
-      font-family: var(--font-sans);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: var(--t-smooth);
-    }
-    .product:hover .add-to-cart { bottom: 0; }
+    .featured-collection { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 50px; }
+    .col-text { padding: 100px 10%; display: flex; flex-direction: column; justify-content: center; background: #0a0a0a; }
+    .col-img { height: 100%; min-height: 500px; object-fit: cover; width: 100%; }
     
-    .product-title { font-family: var(--font-sans); font-size: 1rem; color: var(--text-main); margin-bottom: 5px; font-weight: 400; }
-    .product-price { color: var(--brand-color); font-family: var(--font-sans); font-size: 1.1rem; }
-
+    .products-carousel {
+      display: flex; gap: 30px; overflow-x: auto; padding: 20px 5%; scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .products-carousel::-webkit-scrollbar { display: none; }
+    .p-card { min-width: 300px; scroll-snap-align: start; position: relative; group: product; cursor: pointer; }
+    .p-img-box { position: relative; overflow: hidden; aspect-ratio: 3/4; margin-bottom: 20px; }
+    .p-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s ease; filter: brightness(0.8); }
+    .p-card:hover .p-img-box img { transform: scale(1.05); filter: brightness(1); }
+    .quick-add { position: absolute; bottom: -50px; left: 0; right: 0; background: var(--brand-color); color: #000; text-align: center; padding: 15px; font-weight: 600; text-transform: uppercase; transition: bottom 0.3s ease; }
+    .p-card:hover .quick-add { bottom: 0; }
+    .p-title { font-size: 1.1rem; color: #fff; margin-bottom: 5px; font-weight: 300; }
+    .p-price { color: var(--text-muted); font-family: var(--font-serif); }
+    
+    .newsletter { text-align: center; padding: 100px 5%; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-top: 100px; }
+    .nl-input { background: transparent; border: none; border-bottom: 1px solid var(--border); color: #fff; padding: 15px 0; width: 300px; outline: none; margin-right: 20px; font-family: var(--font-sans); }
+    .nl-input:focus { border-bottom-color: var(--brand-color); }
+    
     @media (max-width: 900px) {
-      .category-grid { grid-template-columns: 1fr; }
-      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .featured-collection { grid-template-columns: 1fr; }
+      .col-img { height: 400px; order: -1; }
+      .nl-input { width: 100%; margin-bottom: 20px; margin-right: 0; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="#" class="nav-brand">Regalo<span>Unico.</span></a>
-    <div style="display:flex; gap:20px; align-items:center;">
-        <a href="#shop" style="color:#fff; text-decoration:none; font-size:0.9rem;">Catálogo</a>
-        <a href="#contacto" class="btn-outline" style="padding: 10px 20px; border-color: var(--brand-color); color: var(--brand-color);">🛒 Mi Carrito (0)</a>
+    <a href="#" class="nav-brand" style="font-family: var(--font-serif); font-style: italic; font-size: 1.8rem; text-transform: none; letter-spacing: 0;">RegaloUnico</a>
+    <div style="display:flex; gap:30px; align-items:center;">
+        <a href="#coleccion" style="color:#fff; text-decoration:none; font-size:0.8rem; text-transform:uppercase; letter-spacing:2px;">Boutique</a>
+        <a href="#" style="color:#fff; text-decoration:none;">🛒 (0)</a>
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="reveal" style="max-width: 600px;">
-      <p style="text-transform:uppercase; letter-spacing:4px; color:var(--brand-color); margin-bottom:20px; font-size:0.85rem;">Colección Limitada 2026</p>
-      <h1 style="font-size:clamp(3.5rem, 8vw, 5rem); margin-bottom:20px;">El arte de<br><em>Regalar</em></h1>
-      <p style="font-size:1.1rem; color:var(--text-muted); margin-bottom:40px;">Alta joyería y accesorios personalizados elaborados a mano. Cada pieza cuenta una historia única.</p>
-      <a href="#shop" class="btn-gold" style="background: var(--brand-color); border-color: var(--brand-color);">Explorar Colección</a>
+  <header class="hero-cartier">
+    <div class="hero-content reveal">
+      <h1 style="font-size:clamp(4rem, 8vw, 6rem); margin-bottom:20px; line-height: 1;">La Colección<br><em>Heritage</em></h1>
+      <p style="font-size:1.1rem; color:rgba(255,255,255,0.8); margin-bottom:40px;">Piezas icónicas atemporales diseñadas para trascender generaciones.</p>
+      <a href="#coleccion" class="btn-outline" style="border-color: #fff; color: #fff;">Descubrir Heritage</a>
     </div>
   </header>
 
-  <section id="categorias" style="padding-top: 100px; padding-bottom: 50px;">
-    <div class="category-grid">
-        <a href="#shop" class="cat-card reveal">
-            <img src="https://images.unsplash.com/photo-1599643478524-fb66f72400ae?auto=format&fit=crop&w=600&q=80" alt="Anillos">
-            <h3 class="cat-title">Anillos</h3>
-        </a>
-        <a href="#shop" class="cat-card reveal delay-1">
-            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" alt="Collares">
-            <h3 class="cat-title">Collares</h3>
-        </a>
-        <a href="#shop" class="cat-card reveal delay-2">
-            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80" alt="Relojes">
-            <h3 class="cat-title">Relojes</h3>
-        </a>
+  <section class="featured-collection" id="coleccion" style="padding: 0; max-width: 100%;">
+    <div class="col-text reveal">
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">Alta <em>Relojería</em></h2>
+        <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; max-width: 400px;">Precisión suiza y diseño vanguardista. Cada reloj es ensamblado a mano por maestros artesanos.</p>
+        <a href="#" class="btn-gold" style="background: var(--brand-color); border-color: var(--brand-color); align-self: flex-start;">Ver Relojes</a>
     </div>
+    <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1000&q=80" alt="Relojes" class="col-img reveal delay-1">
   </section>
 
-  <section id="shop">
-    <h2 class="section-title reveal">Nuevos <em>Ingresos</em></h2>
+  <section id="novedades" style="padding-top: 100px;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px; padding: 0 5%;" class="reveal">
+        <h2 style="font-size: 2.5rem;">Nuevas <em>Creaciones</em></h2>
+        <a href="#" style="color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; font-size:0.8rem;">Ver Todo →</a>
+    </div>
     
-    <div class="products-grid">
-        <!-- Producto 1 -->
-        <div class="product reveal">
-            <div class="product-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1605100804763-247f67b8548e?auto=format&fit=crop&w=500&q=80" alt="Anillo Diamante">
-                <div class="add-to-cart">Añadir al Carrito</div>
-            </div>
-            <h3 class="product-title">Anillo Solitario Esmeralda</h3>
-            <div class="product-price">$120.000 ARS</div>
+    <div class="products-carousel reveal delay-1">
+        <div class="p-card">
+            <div class="p-img-box"><img src="https://images.unsplash.com/photo-1605100804763-247f67b8548e?auto=format&fit=crop&w=500&q=80" alt="Anillo"><div class="quick-add">Añadir al Carrito</div></div>
+            <h3 class="p-title">Anillo Solitario Diamante</h3>
+            <div class="p-price">$450.000 ARS</div>
         </div>
-        
-        <!-- Producto 2 -->
-        <div class="product reveal delay-1">
-            <div class="product-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=500&q=80" alt="Collar Oro">
-                <div class="add-to-cart">Añadir al Carrito</div>
-            </div>
-            <h3 class="product-title">Gargantilla Oro 18k</h3>
-            <div class="product-price">$85.000 ARS</div>
+        <div class="p-card">
+            <div class="p-img-box"><img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=500&q=80" alt="Collar"><div class="quick-add">Añadir al Carrito</div></div>
+            <h3 class="p-title">Gargantilla Oro Rosé</h3>
+            <div class="p-price">$280.000 ARS</div>
         </div>
-
-        <!-- Producto 3 -->
-        <div class="product reveal delay-2">
-            <div class="product-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=500&q=80" alt="Reloj">
-                <div class="add-to-cart">Añadir al Carrito</div>
-            </div>
-            <h3 class="product-title">Reloj Automático Noir</h3>
-            <div class="product-price">$210.000 ARS</div>
+        <div class="p-card">
+            <div class="p-img-box"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=500&q=80" alt="Pulsera"><div class="quick-add">Añadir al Carrito</div></div>
+            <h3 class="p-title">Brazalete Tenis Zafiro</h3>
+            <div class="p-price">$310.000 ARS</div>
         </div>
-
-        <!-- Producto 4 -->
-        <div class="product reveal delay-1">
-            <div class="product-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=500&q=80" alt="Pulsera">
-                <div class="add-to-cart">Añadir al Carrito</div>
-            </div>
-            <h3 class="product-title">Pulsera Tenis Zafiro</h3>
-            <div class="product-price">$150.000 ARS</div>
+        <div class="p-card">
+            <div class="p-img-box"><img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=80" alt="Pendientes"><div class="quick-add">Añadir al Carrito</div></div>
+            <h3 class="p-title">Pendientes Perla Tahití</h3>
+            <div class="p-price">$195.000 ARS</div>
         </div>
     </div>
   </section>
 
-  <footer style="margin-top: 50px;">
-    <p>© 2026 RegaloUnico. Demo Premium Max by Nexo Web.</p>
+  <div class="newsletter reveal">
+    <h3 style="font-size: 2rem; margin-bottom: 20px;"><em>The Inner Circle</em></h3>
+    <p style="color:var(--text-muted); margin-bottom: 40px;">Suscribite para recibir invitaciones a ventas privadas y novedades de nuestras colecciones.</p>
+    <form onsubmit="event.preventDefault(); alert('Suscrito correctamente.');">
+        <input type="email" class="nl-input" placeholder="Tu correo electrónico" required>
+        <button type="submit" class="btn-outline" style="border-color: var(--brand-color); color: var(--brand-color);">Suscribirse</button>
+    </form>
+  </div>
+
+  <footer style="text-align:center; padding: 60px 5%; border:none;">
+    <p>© 2026 RegaloUnico Boutique. Demo Premium Max by Nexo Web.</p>
   </footer>
 
-  <a href="https://wa.me/5491124632544?text=Hola!%20Tengo%20una%20consulta%20sobre%20sus%20productos." class="wa-fab" style="background: var(--brand-color);" target="_blank">
+  <a href="https://wa.me/5491124632544?text=Hola!%20Busco%20asesoría%20sobre%20alta%20joyería." class="wa-fab" style="background: var(--brand-color);" target="_blank">
     <svg viewBox="0 0 24 24" fill="black" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
-
   <script src="src/js/demo-core.js"></script>
 </body>
 </html>

@@ -3,90 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lumière — Studio de Estética (Landing)</title>
+  <title>Lumière — Studio de Estética (Landing Pro)</title>
   <link rel="stylesheet" href="src/css/demo-premium-core.css">
   <style>
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: linear-gradient(rgba(7,7,7,0.6), rgba(7,7,7,0.9)), url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=2000&q=80') center/cover;
+    /* Estilos Nivel 1 Específicos */
+    :root {
+      --lumiere-gold: #c5a059;
+      --lumiere-bg: #0a0a0a;
     }
-    .services-grid {
+    body { background: var(--lumiere-bg); }
+    
+    .landing-hero {
+      min-height: 100vh;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
     }
-    .service-card {
-      background: var(--bg-card);
+    .hero-image-half {
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1000&q=80') center/cover;
+      position: relative;
+    }
+    .hero-image-half::after {
+      content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--lumiere-bg) 0%, transparent 20%);
+    }
+    .hero-content {
+      padding: 100px 10%;
+    }
+    .top-badge {
+      display: inline-block; padding: 6px 15px; border: 1px solid var(--border);
+      border-radius: 30px; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--lumiere-gold); margin-bottom: 30px; background: rgba(255,255,255,0.03);
+    }
+    .booking-card {
+      background: rgba(20,20,20,0.8);
+      backdrop-filter: blur(20px);
       border: 1px solid var(--border);
-      padding: 40px 30px;
-      text-align: center;
-      transition: var(--t-smooth);
+      padding: 40px;
+      margin-top: 50px;
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
     }
-    .service-card:hover { border-color: var(--gold); }
-    .service-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
-    .service-price { color: var(--gold); font-family: var(--font-sans); font-weight: 600; margin-top: 20px; font-size: 1.2rem; }
+    .booking-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--lumiere-gold), transparent);
+    }
+    
+    .benefits-bar {
+      display: flex; justify-content: space-around; padding: 40px 5%;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.01);
+    }
+    .b-item { display: flex; align-items: center; gap: 15px; font-family: var(--font-serif); font-size: 1.2rem; }
+    .b-icon { color: var(--lumiere-gold); font-size: 1.5rem; }
+
+    @media (max-width: 900px) {
+      .landing-hero { grid-template-columns: 1fr; }
+      .hero-image-half { display: none; }
+      .hero-content { padding: 150px 5%; text-align: center; background: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.9)), url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80') center/cover; }
+      .benefits-bar { flex-direction: column; gap: 30px; align-items: center; }
+    }
   </style>
 </head>
 <body>
 
   <nav>
     <a href="#" class="nav-brand">Lumière<span>.</span></a>
-    <a href="#contacto" class="btn-outline" style="padding: 10px 20px;">Reservar</a>
   </nav>
 
-  <header class="hero">
-    <div class="reveal">
-      <p style="text-transform:uppercase; letter-spacing:4px; color:var(--gold); margin-bottom:20px; font-size:0.85rem;">Studio de Estética · Palermo</p>
-      <h1 style="font-size:clamp(3rem, 8vw, 6rem); margin-bottom:30px;">Tu momento de<br><em>belleza</em> te espera</h1>
-      <p style="font-size:1.1rem; color:var(--text-muted); max-width:600px; margin:0 auto 40px;">Tratamientos personalizados en un espacio exclusivo. Diseñado para realzar tu mejor versión.</p>
-      <a href="#contacto" class="btn-gold">Agendar Cita</a>
+  <main class="landing-hero">
+    <div class="hero-content reveal">
+      <div class="top-badge">Resultados Visibles desde la Sesión 1</div>
+      <h1 style="font-size:clamp(3.5rem, 6vw, 5rem); line-height: 1; margin-bottom:20px;">Piel <em>Perfecta</em>,<br>Sin Filtros.</h1>
+      <p style="color:var(--text-muted); font-size:1.1rem; margin-bottom:40px; max-width: 450px;">Tratamientos faciales exclusivos en CABA. Limpieza profunda, hidratación y lifting no invasivo.</p>
+      
+      <div class="booking-card">
+        <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Obtené un Diagnóstico</h3>
+        <p style="color:var(--text-muted); margin-bottom: 25px; font-family:var(--font-sans); font-size: 0.95rem;">Reserva tu turno por WhatsApp. Cupos limitados.</p>
+        <a href="https://wa.me/5491124632544?text=Hola%20Lumière!%20Me%20gustaría%20solicitar%20un%20diagnóstico%20facial." class="btn-gold" style="width: 100%; text-align: center; padding: 18px; border-radius: 4px;" target="_blank">Contactar a Especialista</a>
+      </div>
     </div>
-  </header>
+    <div class="hero-image-half"></div>
+  </main>
 
-  <section id="servicios">
-    <h2 class="section-title reveal">Tratamientos <em>Exclusivos</em></h2>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <span class="service-icon">✨</span>
-        <h3 style="font-size:1.5rem; margin-bottom:10px;">Skin Care Profundo</h3>
-        <p style="color:var(--text-muted); font-size:0.95rem;">Limpieza facial profunda con hidratación hialurónica y máscara LED.</p>
-        <div class="service-price">$25.000 ARS</div>
-      </div>
-      <div class="service-card reveal delay-1">
-        <span class="service-icon">🌸</span>
-        <h3 style="font-size:1.5rem; margin-bottom:10px;">Lifting de Pestañas</h3>
-        <p style="color:var(--text-muted); font-size:0.95rem;">Curvatura natural y tinte para una mirada de impacto durante semanas.</p>
-        <div class="service-price">$18.000 ARS</div>
-      </div>
-      <div class="service-card reveal delay-2">
-        <span class="service-icon">💆‍♀️</span>
-        <h3 style="font-size:1.5rem; margin-bottom:10px;">Masaje Relax Spa</h3>
-        <p style="color:var(--text-muted); font-size:0.95rem;">90 minutos de desconexión total con aromaterapia y piedras calientes.</p>
-        <div class="service-price">$35.000 ARS</div>
-      </div>
-    </div>
+  <section class="benefits-bar">
+    <div class="b-item reveal"><span class="b-icon">✦</span> Tecnología Aprobada FDA</div>
+    <div class="b-item reveal delay-1"><span class="b-icon">✦</span> Dermatólogas Especialistas</div>
+    <div class="b-item reveal delay-2"><span class="b-icon">✦</span> Protocolos Franceses</div>
   </section>
 
-  <section id="contacto" style="background: var(--bg-card); text-align: center;">
-    <div class="reveal">
-      <h2 style="font-size:3rem; margin-bottom:20px;">Reservá tu <em>Turno</em></h2>
-      <p style="color:var(--text-muted); margin-bottom:40px; font-size:1.1rem;">Comunicate directamente por WhatsApp para coordinar día y horario.</p>
-      <a href="https://wa.me/5491124632544?text=Hola%20Lumière!%20Quisiera%20reservar%20un%20turno." class="btn-gold" style="font-size: 1.1rem; padding: 20px 40px;" target="_blank">Contactar por WhatsApp</a>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2026 Lumière Studio. Demo by Nexo Web.</p>
+  <footer style="border: none; padding: 40px 5%;">
+    <p>© 2026 Lumière Studio. Landing Pro (Nivel 1) by Nexo Web.</p>
   </footer>
 
-  <a href="https://wa.me/5491124632544?text=Hola%20Lumière!%20Quisiera%20reservar%20un%20turno." class="wa-fab" target="_blank">
+  <a href="https://wa.me/5491124632544?text=Hola%20Lumière!%20Me%20interesa%20un%20diagnóstico." class="wa-fab" target="_blank">
     <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
-
   <script src="src/js/demo-core.js"></script>
 </body>
 </html>
