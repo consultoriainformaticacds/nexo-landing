@@ -1,108 +1,92 @@
-<!-- Last Updated: 2026-03-24 -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lumière — Studio de Estética</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/demo-estetica-landing.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumière — Studio de Estética (Landing)</title>
+  <link rel="stylesheet" href="src/css/demo-premium-core.css">
+  <style>
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(7,7,7,0.6), rgba(7,7,7,0.9)), url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=2000&q=80') center/cover;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 40px 30px;
+      text-align: center;
+      transition: var(--t-smooth);
+    }
+    .service-card:hover { border-color: var(--gold); }
+    .service-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+    .service-price { color: var(--gold); font-family: var(--font-sans); font-weight: 600; margin-top: 20px; font-size: 1.2rem; }
+  </style>
 </head>
 <body>
 
-  <div class="top-badge">✦ Turnos disponibles esta semana — <span>Reservá ahora</span> ✦</div>
-
   <nav>
-    <a class="nav-logo" href="#">Lumière<span>.</span></a>
-    <a href="#contacto" class="nav-cta">Reservar turno</a>
+    <a href="#" class="nav-brand">Lumière<span>.</span></a>
+    <a href="#contacto" class="btn-outline" style="padding: 10px 20px;">Reservar</a>
   </nav>
 
-  <section id="hero">
-    <div class="hero-bg-text">L</div>
-    <p class="hero-eyebrow">Studio de Estética · Palermo, CABA</p>
-    <h1 class="hero-title">Tu momento<br/>de <em>belleza</em><br/>te espera</h1>
-    <p class="hero-desc">Tratamientos personalizados en un espacio cálido y profesional. Porque merecés sentirte bien.</p>
-    <div class="hero-cta-group">
-      <a href="#contacto" class="btn-primary">Reservar turno</a>
-      <a href="#servicios" class="btn-ghost">Ver servicios</a>
+  <header class="hero">
+    <div class="reveal">
+      <p style="text-transform:uppercase; letter-spacing:4px; color:var(--gold); margin-bottom:20px; font-size:0.85rem;">Studio de Estética · Palermo</p>
+      <h1 style="font-size:clamp(3rem, 8vw, 6rem); margin-bottom:30px;">Tu momento de<br><em>belleza</em> te espera</h1>
+      <p style="font-size:1.1rem; color:var(--text-muted); max-width:600px; margin:0 auto 40px;">Tratamientos personalizados en un espacio exclusivo. Diseñado para realzar tu mejor versión.</p>
+      <a href="#contacto" class="btn-gold">Agendar Cita</a>
     </div>
-  </section>
+  </header>
 
   <section id="servicios">
-    <h2 class="section-title">Nuestros <em>servicios</em></h2>
-    <div class="servicios-simple">
-      <div class="servicio-row">
-        <div class="servicio-row-left"><span class="servicio-row-icon">✨</span><div><div class="servicio-row-name">Limpieza facial profunda</div><div class="servicio-row-dur">60 min</div></div></div>
-        <div class="servicio-row-price">$18.000</div>
+    <h2 class="section-title reveal">Tratamientos <em>Exclusivos</em></h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-icon">✨</span>
+        <h3 style="font-size:1.5rem; margin-bottom:10px;">Skin Care Profundo</h3>
+        <p style="color:var(--text-muted); font-size:0.95rem;">Limpieza facial profunda con hidratación hialurónica y máscara LED.</p>
+        <div class="service-price">$25.000 ARS</div>
       </div>
-      <div class="servicio-row">
-        <div class="servicio-row-left"><span class="servicio-row-icon">💆</span><div><div class="servicio-row-name">Tratamiento hidratante</div><div class="servicio-row-dur">45 min</div></div></div>
-        <div class="servicio-row-price">$15.000</div>
+      <div class="service-card reveal delay-1">
+        <span class="service-icon">🌸</span>
+        <h3 style="font-size:1.5rem; margin-bottom:10px;">Lifting de Pestañas</h3>
+        <p style="color:var(--text-muted); font-size:0.95rem;">Curvatura natural y tinte para una mirada de impacto durante semanas.</p>
+        <div class="service-price">$18.000 ARS</div>
       </div>
-      <div class="servicio-row">
-        <div class="servicio-row-left"><span class="servicio-row-icon">🌸</span><div><div class="servicio-row-name">Diseño de cejas</div><div class="servicio-row-dur">30 min</div></div></div>
-        <div class="servicio-row-price">$8.000</div>
-      </div>
-      <div class="servicio-row">
-        <div class="servicio-row-left"><span class="servicio-row-icon">💅</span><div><div class="servicio-row-name">Manicura y pedicura</div><div class="servicio-row-dur">75 min</div></div></div>
-        <div class="servicio-row-price">$12.000</div>
-      </div>
-      <div class="servicio-row">
-        <div class="servicio-row-left"><span class="servicio-row-icon">🕯</span><div><div class="servicio-row-name">Ritual de relajación</div><div class="servicio-row-dur">90 min</div></div></div>
-        <div class="servicio-row-price">$25.000</div>
-      </div>
-      <div class="servicio-row">
-        <div class="servicio-row-left"><span class="servicio-row-icon">⚡</span><div><div class="servicio-row-name">Depilación láser</div><div class="servicio-row-dur">Según zona</div></div></div>
-        <div class="servicio-row-price">Desde $10.000</div>
+      <div class="service-card reveal delay-2">
+        <span class="service-icon">💆‍♀️</span>
+        <h3 style="font-size:1.5rem; margin-bottom:10px;">Masaje Relax Spa</h3>
+        <p style="color:var(--text-muted); font-size:0.95rem;">90 minutos de desconexión total con aromaterapia y piedras calientes.</p>
+        <div class="service-price">$35.000 ARS</div>
       </div>
     </div>
   </section>
 
-  <section id="cta">
-    <h2>¿Lista para tu <em>transformación</em>?</h2>
-    <p>Turnos disponibles de lunes a sábado. Reservá en menos de 2 minutos.</p>
-    <a href="#contacto" class="btn-light">Quiero mi turno →</a>
-  </section>
-
-  <section id="contacto">
-    <div class="contacto-simple">
-      <h2>Reservá tu <em>turno</em></h2>
-      <p>Completá el formulario y te confirmamos en menos de 24 horas.</p>
-      <form id="lumForm" onsubmit="return false;" class="form-simple">
-        <input type="text" id="lum-nombre" placeholder="Tu nombre" />
-        <input type="text" id="lum-contacto" placeholder="WhatsApp o email" />
-        <select id="lum-servicio">
-          <option value="">¿Qué servicio te interesa?</option>
-          <option value="Limpieza facial">Limpieza facial profunda</option>
-          <option value="Hidratante">Tratamiento hidratante</option>
-          <option value="Cejas">Diseño de cejas</option>
-          <option value="Manicura">Manicura y pedicura</option>
-          <option value="Ritual">Ritual de relajación</option>
-          <option value="Laser">Depilación láser</option>
-        </select>
-        <textarea id="lum-mensaje" placeholder="¿Cuándo te viene bien? Cualquier consulta..."></textarea>
-        <button type="button" class="btn-submit" id="lum-btn" onclick="enviarLum()">Reservar turno →</button>
-        <p id="form-status"></p>
-      </form>
+  <section id="contacto" style="background: var(--bg-card); text-align: center;">
+    <div class="reveal">
+      <h2 style="font-size:3rem; margin-bottom:20px;">Reservá tu <em>Turno</em></h2>
+      <p style="color:var(--text-muted); margin-bottom:40px; font-size:1.1rem;">Comunicate directamente por WhatsApp para coordinar día y horario.</p>
+      <a href="https://wa.me/5491124632544?text=Hola%20Lumière!%20Quisiera%20reservar%20un%20turno." class="btn-gold" style="font-size: 1.1rem; padding: 20px 40px;" target="_blank">Contactar por WhatsApp</a>
     </div>
   </section>
 
   <footer>
-    <div class="footer-logo">Lumière<span>.</span></div>
-    <p>© 2025 Lumière Studio. CABA, Argentina.</p>
-    <div class="footer-links">
-      <a href="#">Instagram</a>
-      <a href="#">WhatsApp</a>
-    </div>
+    <p>© 2026 Lumière Studio. Demo by Nexo Web.</p>
   </footer>
 
-  <a href="https://wa.me/5491100000000" target="_blank" id="wa-float" aria-label="WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <a href="https://wa.me/5491124632544?text=Hola%20Lumière!%20Quisiera%20reservar%20un%20turno." class="wa-fab" target="_blank">
+    <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
-  <script src="src/js/demo-estetica-landing.js"></script>
+  <script src="src/js/demo-core.js"></script>
 </body>
-<!-- v1.0.0 -->
 </html>

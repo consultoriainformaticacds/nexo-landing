@@ -1,176 +1,120 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumière Studio | Demo Premium Max - NEXO WEB</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumière — Spa de Lujo (Premium Max)</title>
+  <link rel="stylesheet" href="src/css/demo-premium-core.css">
+  <style>
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 0 5%;
+      position: relative;
+    }
+    .hero-video-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      opacity: 0.4;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, var(--bg-dark) 100%);
+      z-index: -1;
+    }
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    .feature-banner {
+      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px;
+      padding: 40px 5%; background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .feature-item { text-align: center; }
+    .feature-item h4 { font-family: var(--font-sans); color: var(--gold); font-size: 1.5rem; margin-bottom: 5px; }
     
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --nexo-dark: #050505; --nexo-accent: #C8F135; 
-            --lumiere-bg: #0a0a0a; --lumiere-card: #141414;
-            --lumiere-gold: #D4AF37; --lumiere-text: #F8F8F5; --lumiere-muted: #888888;
-        }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Instrument Sans', sans-serif; background: var(--lumiere-bg); color: var(--lumiere-text); overflow-x: hidden; }
-        h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 800; text-transform: uppercase; }
+    .luxury-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: center;
+    }
+    .luxury-text { padding: 80px 10%; }
+    .luxury-img { height: 600px; background: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1000&q=80') center/cover; }
+    .luxury-img-2 { height: 600px; background: url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1000&q=80') center/cover; }
 
-        /* BARRA NEXO */
-        .nexo-frame {
-            position: fixed; top: 0; width: 100%; z-index: 9999;
-            background: var(--nexo-dark); border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 5%; font-size: 0.8rem;
-        }
-        .nexo-brand { color: #fff; font-family: 'Syne'; font-weight: 800; text-decoration: none; }
-        .nexo-brand span { color: var(--nexo-accent); }
-        .nexo-badge { background: rgba(200, 241, 53, 0.1); color: var(--nexo-accent); padding: 4px 10px; border-radius: 20px; font-weight: 600; letter-spacing: 1px; }
-        .nexo-actions { display: flex; gap: 15px; }
-        .nexo-btn-back { color: #fff; text-decoration: none; padding: 5px 10px; opacity: 0.7; transition: 0.3s; }
-        .nexo-btn-back:hover { opacity: 1; }
-        .nexo-btn-buy { background: var(--nexo-accent); color: #000; text-decoration: none; padding: 5px 15px; font-weight: 800; border-radius: 3px; font-family: 'Syne'; transition: 0.3s;}
-        .nexo-btn-buy:hover { transform: scale(1.05); }
-
-        /* NAVEGACIÓN LUMIÈRE */
-        .demo-nav {
-            margin-top: 45px; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center;
-            position: absolute; width: 100%; z-index: 100;
-        }
-        .demo-logo { font-size: 1.5rem; letter-spacing: 3px; color: var(--lumiere-gold); font-family: 'Syne';}
-        .demo-menu { display: flex; gap: 30px; list-style: none; }
-        .demo-menu a { color: #fff; text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
-        .demo-menu a:hover { color: var(--lumiere-gold); }
-
-        /* HERO */
-        .demo-hero {
-            height: 100vh; min-height: 700px;
-            background: linear-gradient(rgba(10,10,10,0.6), rgba(10,10,10,1)), url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop') center/cover;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-            padding: 0 5%;
-        }
-        .hero-subtitle { color: var(--lumiere-gold); font-size: 0.8rem; letter-spacing: 5px; margin-bottom: 20px; text-transform: uppercase; }
-        .hero-title { font-size: clamp(3rem, 8vw, 6rem); line-height: 1; margin-bottom: 30px; letter-spacing: -2px; }
-        .btn-gold {
-            display: inline-block; border: 1px solid var(--lumiere-gold); color: var(--lumiere-gold);
-            padding: 15px 40px; text-decoration: none; font-family: 'Syne'; font-weight: 700;
-            letter-spacing: 2px; transition: 0.4s; background: transparent; cursor: pointer;
-        }
-        .btn-gold:hover { background: var(--lumiere-gold); color: #000; }
-
-        /* SECCIÓN: EL ESTUDIO */
-        .studio {
-            padding: 100px 5%; text-align: center; background: var(--lumiere-bg);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-        }
-        .studio-content { max-width: 800px; margin: 0 auto; }
-        .studio-title { font-size: 2.5rem; margin-bottom: 20px; color: var(--lumiere-text); }
-        .studio-text { color: var(--lumiere-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; }
-        .studio-image { width: 100%; height: 400px; object-fit: cover; border-radius: 4px; opacity: 0.8; border: 1px solid rgba(212, 175, 55, 0.2); }
-
-        /* SECCIÓN: SERVICIOS */
-        .services { padding: 100px 5%; max-width: 1300px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 80px; }
-        .section-title { font-size: 2.5rem; margin-bottom: 15px; }
-        .section-desc { color: var(--lumiere-muted); max-width: 500px; margin: 0 auto; }
-        
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .service-card {
-            background: var(--lumiere-card); padding: 50px 30px; border-top: 1px solid rgba(212, 175, 55, 0.1);
-            transition: 0.4s; text-align: center;
-        }
-        .service-card:hover { transform: translateY(-10px); border-color: var(--lumiere-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .service-num { font-family: 'Syne'; color: var(--lumiere-gold); font-size: 2rem; opacity: 0.5; margin-bottom: 20px; }
-        .service-title { font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 1px; }
-        .service-desc { color: var(--lumiere-muted); font-size: 0.9rem; margin-bottom: 30px; }
-        .service-price { font-family: 'Syne'; font-weight: 700; color: #fff; border-bottom: 1px solid var(--lumiere-muted); display: inline-block; padding-bottom: 5px; }
-
-        /* SECCIÓN: RESERVA */
-        .booking { background: var(--lumiere-card); padding: 120px 5%; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.1); }
-        .booking h2 { font-size: 3rem; margin-bottom: 20px; color: var(--lumiere-gold); }
-        .booking p { color: var(--lumiere-muted); margin-bottom: 40px; font-size: 1.1rem; }
-
-        /* FOOTER */
-        .demo-footer { text-align: center; padding: 40px; font-size: 0.8rem; color: var(--lumiere-muted); background: var(--lumiere-bg); }
-    </style>
+    @media (max-width: 900px) {
+      .luxury-grid { grid-template-columns: 1fr; }
+      .luxury-img, .luxury-img-2 { height: 400px; order: -1; }
+      .luxury-text { padding: 60px 5%; }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="nexo-frame">
-        <a href="index.html" class="nexo-brand">NEXO<span>.</span></a>
-        <div class="nexo-badge">VISTA PREVIA: PREMIUM MAX</div>
-        <div class="nexo-actions">
-            <a href="index.html" class="nexo-btn-back">Cerrar Demo</a>
-            <a href="https://wa.me/5491124632544?text=Hola!%20Estaba%20viendo%20la%20demo%20de%20Lumiere%20Studio%20y%20quiero%20este%20modelo%20para%20mi%20negocio." class="nexo-btn-buy" target="_blank">USAR ESTE MODELO</a>
+  <nav>
+    <a href="#" class="nav-brand">Lumière<span>.</span> VIP</a>
+    <a href="#vip" class="btn-gold" style="padding: 10px 20px;">Membresía</a>
+  </nav>
+
+  <header class="hero">
+    <!-- Un video background sutil o imagen premium -->
+    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2000&q=80" class="hero-video-bg" alt="Spa bg">
+    <div class="hero-overlay"></div>
+    
+    <div class="reveal">
+      <p style="text-transform:uppercase; letter-spacing:6px; color:var(--gold); margin-bottom:20px; font-size:0.85rem;">Exclusividad & Relajación Absoluta</p>
+      <h1 style="font-size:clamp(4rem, 10vw, 7rem); margin-bottom:20px; font-weight: 700;">Santuario de<br><em>Bienestar</em></h1>
+      <p style="font-size:1.2rem; color:var(--text-main); max-width:600px; margin:0 auto 50px;">Donde el tiempo se detiene y la máxima expresión del lujo se encuentra con tu cuerpo.</p>
+      <a href="#experiencias" class="btn-outline">Explorar Experiencias</a>
+    </div>
+  </header>
+
+  <div class="feature-banner">
+    <div class="feature-item reveal"><h4 style="font-size: 2rem;">5</h4><p>Estrellas Forbes</p></div>
+    <div class="feature-item reveal delay-1"><h4 style="font-size: 2rem;">12</h4><p>Cabinas Privadas</p></div>
+    <div class="feature-item reveal delay-2"><h4 style="font-size: 2rem;">24/7</h4><p>Concierge Service</p></div>
+  </div>
+
+  <section id="experiencias" style="padding: 0; max-width: 100%;">
+    <div class="luxury-grid">
+        <div class="luxury-img reveal"></div>
+        <div class="luxury-text reveal delay-1">
+            <h2 style="font-size: 3rem; margin-bottom: 20px;">Ritual del <em>Oro</em></h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem;">Nuestra experiencia insignia. Un tratamiento corporal y facial completo utilizando partículas de oro de 24k para iluminar, nutrir y rejuvenecer la piel a nivel celular.</p>
+            <p style="color: var(--gold); font-size: 1.5rem; margin-bottom: 40px; font-family: var(--font-serif);">$ 85.000 ARS <span style="font-size:0.8rem; font-family:var(--font-sans); color:var(--text-muted);">/ 120 MIN</span></p>
+            <a href="https://wa.me/5491124632544?text=Quiero%20reservar%20el%20Ritual%20del%20Oro." class="btn-gold" target="_blank">Reservar Experiencia</a>
         </div>
     </div>
-
-    <nav class="demo-nav">
-        <div class="demo-logo">LUMIÈRE</div>
-        <ul class="demo-menu">
-            <li><a href="#estudio">El Estudio</a></li>
-            <li><a href="#servicios">Tratamientos</a></li>
-            <li><a href="#reserva">Reservas</a></li>
-        </ul>
-    </nav>
-
-    <header class="demo-hero">
-        <div class="hero-subtitle">Estética Avanzada & Spa</div>
-        <h1 class="hero-title">Tu cuerpo,<br>tu obra de arte.</h1>
-        <a href="#estudio" class="btn-gold">DESCUBRIR EL ESTUDIO</a>
-    </header>
-
-    <section id="estudio" class="studio">
-        <div class="studio-content">
-            <h2 class="studio-title">Un Santuario de Belleza</h2>
-            <p class="studio-text">Diseñado milimétricamente para tu desconexión y renovación absoluta. En Lumière, la ciencia estética se encuentra con el lujo sensorial. Nuestro equipo de profesionales utiliza tecnología de vanguardia en un ambiente de total exclusividad.</p>
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop" alt="Interior de Lumiere Studio" class="studio-image">
+    <div class="luxury-grid">
+        <div class="luxury-text reveal">
+            <h2 style="font-size: 3rem; margin-bottom: 20px;">Terapia de <em>Diamante</em></h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem;">Exfoliación profunda con polvo de diamante puro seguida de una infusión de colágeno marino en nuestra cabina VIP con vista panorámica.</p>
+            <p style="color: var(--gold); font-size: 1.5rem; margin-bottom: 40px; font-family: var(--font-serif);">$ 65.000 ARS <span style="font-size:0.8rem; font-family:var(--font-sans); color:var(--text-muted);">/ 90 MIN</span></p>
+            <a href="https://wa.me/5491124632544?text=Quiero%20reservar%20la%20Terapia%20de%20Diamante." class="btn-gold" target="_blank">Reservar Experiencia</a>
         </div>
-    </section>
+        <div class="luxury-img-2 reveal delay-1"></div>
+    </div>
+  </section>
 
-    <section id="servicios" class="services">
-        <div class="section-header">
-            <h2 class="section-title">Protocolos de Lujo</h2>
-            <p class="section-desc">Tratamientos no invasivos diseñados con tecnología de vanguardia para resultados inmediatos.</p>
-        </div>
-        
-        <div class="services-grid">
-            <article class="service-card">
-                <div class="service-num">01</div>
-                <h3 class="service-title">Facial Glow Elite</h3>
-                <p class="service-desc">Limpieza profunda con punta de diamante, hidratación con ácido hialurónico y máscara LED regenerativa.</p>
-                <div class="service-price">Desde $45.000</div>
-            </article>
-            
-            <article class="service-card">
-                <div class="service-num">02</div>
-                <h3 class="service-title">Body Sculpt 360</h3>
-                <p class="service-desc">Reducción de medidas y tonificación muscular mediante tecnología de ondas electromagnéticas de alta intensidad.</p>
-                <div class="service-price">Pack $120.000</div>
-            </article>
-            
-            <article class="service-card">
-                <div class="service-num">03</div>
-                <h3 class="service-title">Spa Relax Signature</h3>
-                <p class="service-desc">Circuito de aguas, masajes descontracturantes con piedras calientes y aromaterapia personalizada.</p>
-                <div class="service-price">Sesión $60.000</div>
-            </article>
-        </div>
-    </section>
+  <section id="vip" style="text-align: center; padding: 120px 5%;">
+    <div class="reveal">
+        <h2 style="font-size: 3.5rem; margin-bottom: 20px;"><em>The Black Card</em> Membresía</h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px;">Acceso prioritario a todas nuestras instalaciones, valet parking, y tratamientos ilimitados seleccionados por una tarifa mensual exclusiva.</p>
+        <a href="https://wa.me/5491124632544?text=Quiero%20info%20sobre%20The%20Black%20Card." class="btn-outline" target="_blank">Solicitar Invitación</a>
+    </div>
+  </section>
 
-    <section id="reserva" class="booking">
-        <h2>Eleva tu estándar.</h2>
-        <p>Agenda tu cita de diagnóstico sin cargo. Nuestros especialistas están listos para asesorarte.</p>
-        <a href="https://wa.me/5491124632544?text=Hola!%20Quiero%20agendar%20un%20turno%20en%20Lumiere%20Studio." class="btn-gold" style="background: var(--lumiere-gold); color: #000;" target="_blank">AGENDAR TURNO AHORA</a>
-    </section>
+  <footer>
+    <p>© 2026 Lumière VIP Spa. Demo Premium Max by Nexo Web.</p>
+  </footer>
 
-    <footer class="demo-footer">
-        © 2026 Lumière Studio. Modelo de diseño propiedad de Nexo Web.
-    </footer>
+  <a href="https://wa.me/5491124632544?text=Hola%20Lumière!%20Quisiera%20reservar%20un%20turno." class="wa-fab" target="_blank">
+    <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 
+  <script src="src/js/demo-core.js"></script>
 </body>
 </html>
