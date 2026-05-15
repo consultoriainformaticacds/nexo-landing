@@ -1,28 +1,288 @@
+/* ===========================
+   BOTONES
+=========================== */
+.btn-gold-hero {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 16px 36px;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: var(--t-smooth);
+}
+.btn-gold-hero:hover {
+  background: var(--gold);
+  color: var(--bg-primary);
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-ver {
+  display: inline-block;
+  border: 1px solid var(--border-faint);
+  color: var(--text-main);
+  text-align: center;
+  padding: 14px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--t-smooth);
+}
+.btn-ver:hover {
+  background: var(--text-main);
+  color: var(--bg-primary);
+}
+
+.btn-quiero {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--bg-primary);
+  text-align: center;
+  padding: 14px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--t-smooth);
+}
+.btn-quiero:hover {
+  background: var(--gold-hover);
+  box-shadow: var(--shadow-gold);
+}
+
+/* ===========================
+   GRILLA Y CARDS (SHOWROOM)
+=========================== */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
 .demo-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 15px;
-  overflow: hidden;
-  transition: var(--transition-smooth);
+  background: var(--bg-card);
+  border: 1px solid var(--border-faint);
+  padding: 35px;
+  border-radius: 8px;
+  transition: var(--t-smooth);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   position: relative;
+  overflow: hidden;
+}
+.demo-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: var(--t-smooth);
 }
 .demo-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--accent-gold);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  transform: translateY(-6px);
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-card);
 }
-.demo-card img {
-  width: 100%; height: 200px; object-fit: cover;
-  opacity: 0.7; transition: var(--transition-smooth);
+.demo-card:hover::before { opacity: 1; }
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
 }
-.demo-card:hover img { opacity: 1; }
-.demo-info { padding: 25px; }
+.card-top h3 {
+  font-size: 1.4rem;
+  color: #fff;
+  margin: 0;
+}
+.demo-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+/* BADGES */
 .badge {
-  font-size: 0.7rem; padding: 4px 12px; border-radius: 50px;
-  background: var(--accent-gold); color: #000; font-weight: 800;
+  font-size: 0.65rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
 }
-.btn-gold {
-  display: inline-block; padding: 12px 25px; background: var(--accent-gold);
-  color: #000; font-weight: 700; border-radius: 5px; transition: var(--transition-smooth);
+.b-landing  { background: var(--badge-landing-bg);  color: var(--badge-landing-fg); }
+.b-standard { background: var(--badge-standard-bg); color: var(--badge-standard-fg); }
+.b-premium  { background: var(--badge-premium-bg);  color: var(--badge-premium-fg); }
+
+.demo-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 10px;
 }
-.btn-gold:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+/* ===========================
+   BANNER COMPARATIVA
+=========================== */
+.banner-comparativa {
+  text-align: center;
+  margin-top: 80px;
+  padding: 60px 40px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(10, 10, 10, 0.8));
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+}
+.banner-comparativa h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+.banner-comparativa p {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+/* ===========================
+   FORMULARIO
+=========================== */
+.form-section {
+  padding: 100px var(--pad-x);
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-faint);
+}
+.form-box {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-gold);
+  padding: 50px;
+  border-radius: 8px;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+.form-box h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.form-box input, 
+.form-box select, 
+.form-box textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-faint);
+  color: var(--text-main);
+  padding: 16px 20px;
+  border-radius: 4px;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: var(--t-smooth);
+}
+.form-box input:focus, 
+.form-box select:focus, 
+.form-box textarea:focus {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.05);
+}
+.form-box select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23d4af37' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px) center;
+}
+.form-box select option { background: var(--bg-card); }
+.form-box textarea { resize: vertical; min-height: 120px; }
+
+.btn-submit {
+  width: 100%;
+  background: var(--gold);
+  color: var(--bg-primary);
+  border: none;
+  padding: 20px;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: var(--t-smooth);
+  margin-top: 10px;
+}
+.btn-submit:hover {
+  background: var(--gold-hover);
+  box-shadow: var(--shadow-gold);
+}
+#form-status { text-align: center; margin-top: 15px; font-weight: bold; min-height: 24px; }
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+  padding: 60px var(--pad-x);
+  text-align: center;
+  border-top: 1px solid var(--border-faint);
+  color: var(--text-faint);
+  font-size: 0.85rem;
+}
+footer a {
+  color: var(--gold);
+  font-weight: 700;
+  transition: var(--t-smooth);
+}
+footer a:hover { color: var(--gold-hover); }
+
+/* ===========================
+   WHATSAPP FAB
+=========================== */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 30px; right: 30px;
+  background: #25d366;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+  transition: transform 0.3s ease;
+}
+.whatsapp-fab:hover { transform: scale(1.1); }
+.whatsapp-fab::before {
+  content: '';
+  position: absolute; inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(37, 211, 102, 0.4);
+  animation: waPulse 2s infinite ease-out;
+}
+@keyframes waPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  .form-box { padding: 30px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .demo-actions { grid-template-columns: 1fr; }
+}

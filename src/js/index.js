@@ -1,41 +1,82 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('nexoForm');
-    const status = document.getElementById('form-status');
-    const btn = document.getElementById('nexo-btn');
+// ===========================
+// SCROLL REVEAL
+// ===========================
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
 
-    if (!form) return;
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // AQUÍ SE FRENA EL SALTO A FORMSPREE
-        
-        const originalText = btn.innerText;
-        btn.innerText = "ENVIANDO...";
-        btn.disabled = true;
+// ===========================
+// NAVBAR SCROLL EFFECT
+// ===========================
+const navbar = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  navbar?.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
 
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
+// ===========================
+// FORMSPREE AJAX (DIAGNÓSTICO)
+// ===========================
+const form = document.getElementById('nexoForm');
+const status = document.getElementById('form-status');
+const btn = document.getElementById('nexo-btn');
 
-            if (response.ok) {
-                status.innerText = "¡Solicitud enviada con éxito!";
-                status.style.color = "var(--gold)";
-                form.reset();
-                setTimeout(() => { 
-                    btn.innerText = originalText;
-                    btn.disabled = false;
-                    status.innerText = "";
-                }, 5000);
-            } else {
-                throw new Error();
-            }
-        } catch (error) {
-            status.innerText = "Error. Intente por WhatsApp.";
-            status.style.color = "#ef4444";
-            btn.innerText = originalText;
-            btn.disabled = false;
-        }
+form?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const originalText = btn.textContent;
+  btn.textContent = 'Procesando Solicitud...';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+  if (status) status.textContent = '';
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
     });
+
+    if (response.ok) {
+      btn.textContent = '¡Diagnóstico Solicitado!';
+      btn.style.opacity = '1';
+      btn.style.background = '#fff';
+      btn.style.color = '#000';
+      if (status) {
+        status.textContent = 'Tu solicitud formal ha sido enviada. Un especialista te contactará a la brevedad.';
+        status.style.color = 'var(--gold)';
+      }
+      form.reset();
+
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.cssText = '';
+        btn.disabled = false;
+        if (status) status.textContent = '';
+      }, 6000);
+
+    } else {
+      const result = await response.json();
+      const msg = result?.errors?.[0]?.message ?? 'Error desconocido';
+      if (status) { status.textContent = 'Error: ' + msg; status.style.color = '#ff4444'; }
+      btn.textContent = originalText;
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    }
+
+  } catch {
+    if (status) {
+      status.textContent = 'Error de conexión. Por favor, comunícate por WhatsApp.';
+      status.style.color = '#ff4444';
+    }
+    btn.textContent = originalText;
+    btn.disabled = false;
+    btn.style.opacity = '1';
+  }
 });
