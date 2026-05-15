@@ -3,119 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matriz de Inversión 2026 | NEXO WEB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <title>NEXO | Matriz de Inversión 2026</title>
+    <meta name="description" content="Comparativa técnica de planes de Arquitectura Digital Elite.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&family=Rajdhani:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Utilizo los mismos tokens del showroom para cohesión total -->
     <style>
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
         :root{
-            --black:#050505; --off-black:#0d0d0d; --gold:#d4af37; --accent:#C8F135; 
-            --white:#f1f5f9; --muted:#94a3b8; --border:rgba(255,255,255,0.06);
-            --m1:#8AB840; --m15:#4090C8; --m2:#C8F135; --m3:#E8A050;
+            --bg-primary: #050505; --bg-card: #0a0a0a; 
+            --gold: #d4af37; --gold-hover: #fcd34d; --gold-dim: rgba(212, 175, 55, 0.1);
+            --text-main: #f1f5f9; --text-muted: #94a3b8; 
+            --border-faint: rgba(255,255,255,0.06); --border-gold: rgba(212, 175, 55, 0.3);
+            
+            /* Tiers colors */
+            --tier1: #94a3b8; /* Plata/Standard */
+            --tier2: #e2e8f0; /* Platino/Pro */
+            --tier3: #d4af37; /* Oro/Elite */
+            
+            --font-display: 'Rajdhani', sans-serif;
+            --font-body: 'Mulish', sans-serif;
         }
-        body{background:var(--black); color:var(--white); font-family:'Instrument Sans',sans-serif; overflow-x:hidden;}
         
-        nav{position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.5rem 5%; background:rgba(5,5,5,0.8); backdrop-filter:blur(20px); border-bottom:1px solid var(--border)}
-        .nav-logo{font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; text-decoration:none; color:#fff}
-        .nav-logo span{color:var(--accent)}
+        body{
+            background-color: var(--bg-primary); 
+            color: var(--text-main); 
+            font-family: var(--font-body); 
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
         
-        .hero{padding:120px 5% 60px; text-align:center; background:radial-gradient(circle at top, #111 0%, var(--black) 100%)}
-        .hero-tag{color:var(--accent); font-size:0.7rem; font-weight:700; letter-spacing:4px; text-transform:uppercase; margin-bottom:15px}
-        .hero-title{font-family:'Syne',sans-serif; font-size:clamp(2.5rem, 8vw, 5rem); line-height:1; margin-bottom:20px}
-        .hero-title span{-webkit-text-stroke:1px #fff; color:transparent}
-
-        /* GRID MEJORADO CON HOVER GLOW */
-        .models-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1px; background:var(--border)}
-        .model-card{background:var(--black); padding:60px 30px; position:relative; transition:0.5s ease; cursor:default}
-        .model-card:hover{background:rgba(255,255,255,0.02); z-index:2}
-        .model-card::before{content:''; position:absolute; top:0; left:0; right:0; height:4px; opacity:0.6}
-        .m1::before{background:var(--m1)} .m15::before{background:var(--m15)} .m2::before{background:var(--m2)} .m3::before{background:var(--m3)}
-
-        .model-num{font-family:'Syne',sans-serif; font-size:0.65rem; color:var(--muted); margin-bottom:20px; display:block}
-        .model-name{font-family:'Syne',sans-serif; font-size:2rem; margin-bottom:10px}
-        .model-price{font-family:'Syne',sans-serif; font-size:2.5rem; font-weight:800; margin-top:40px}
-        .m1 .model-price{color:var(--m1)} .m15 .model-price{color:var(--m15)} .m2 .model-price{color:var(--m2)} .m3 .model-price{color:var(--m3)}
+        body::before {
+            content: ''; position: fixed; inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.04), transparent 70%);
+            z-index: -1; pointer-events: none;
+        }
         
-        /* TABLA DE AUTORIDAD TÉCNICA */
-        .table-section{padding:100px 5%; max-width:1200px; margin:0 auto}
-        .table-title{font-family:'Syne'; font-size:1.5rem; margin-bottom:40px; text-align:center}
-        .compare-table{width:100%; border-collapse:collapse; font-size:0.9rem}
-        .compare-table th{padding:20px; text-align:center; border-bottom:2px solid var(--border); font-family:'Syne'; color:var(--muted); font-size:0.7rem}
-        .compare-table td{padding:20px; border-bottom:1px solid var(--border); text-align:center; color:var(--muted)}
-        .compare-table td:first-child{text-align:left; color:#fff; font-weight:600}
-        .check-gold{color:var(--accent); font-weight:bold}
+        nav{
+            position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; 
+            padding: 20px 5%; background: rgba(5,5,5,0.85); backdrop-filter: blur(12px); 
+            border-bottom: 1px solid var(--border-faint);
+        }
+        .nav-logo{font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; text-decoration: none; color: #fff; letter-spacing: 1px;}
+        .nav-logo span{color: var(--gold);}
+        .btn-nav{
+            color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 700; 
+            text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--border-gold); 
+            padding: 10px 20px; border-radius: 4px; transition: 0.3s;
+        }
+        .btn-nav:hover{background: var(--gold); color: var(--bg-primary);}
+        
+        .hero{padding: 120px 5% 60px; text-align: center;}
+        .hero-tag{color: var(--gold); font-size: 0.75rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px;}
+        .hero-title{font-family: var(--font-display); font-size: clamp(2.5rem, 7vw, 4.5rem); line-height: 1; margin-bottom: 25px; font-weight: 800;}
+        .hero-title span{color: var(--gold); text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);}
+        .hero-desc{color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.1rem;}
 
-        .btn-buy{display:block; margin-top:30px; padding:18px; text-align:center; text-decoration:none; font-family:'Syne'; font-weight:800; font-size:0.8rem; border-radius:5px; transition:0.3s}
-        .m1 .btn-buy{border:1px solid var(--m1); color:var(--m1)} .m1 .btn-buy:hover{background:var(--m1); color:#000}
-        .m3 .btn-buy{background:var(--m3); color:#000} .m3 .btn-buy:hover{transform:scale(1.05)}
+        /* MATRIX GRID */
+        .matrix-container{padding: 20px 5% 80px; max-width: 1200px; margin: 0 auto;}
+        .models-grid{
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; margin-bottom: 80px;
+        }
+        
+        .model-card{
+            background: var(--bg-card); padding: 50px 35px; border-radius: 8px; 
+            border: 1px solid var(--border-faint); position: relative; transition: 0.4s ease;
+            display: flex; flex-direction: column;
+        }
+        .model-card:hover{transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.6);}
+        .model-card::before{
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; 
+            background: linear-gradient(90deg, transparent, var(--tier-color), transparent);
+        }
+        
+        .tier1{--tier-color: var(--tier1);} .tier1:hover{border-color: rgba(148, 163, 184, 0.4);}
+        .tier2{--tier-color: var(--tier2);} .tier2:hover{border-color: rgba(226, 232, 240, 0.4);}
+        .tier3{--tier-color: var(--tier3);} .tier3:hover{border-color: var(--border-gold);}
+        .tier3{background: linear-gradient(180deg, rgba(212, 175, 55, 0.05), var(--bg-card));}
 
-        footer{padding:60px; text-align:center; color:var(--muted); font-size:0.8rem; border-top:1px solid var(--border)}
+        .model-num{font-family: var(--font-display); font-size: 0.8rem; font-weight: 700; color: var(--tier-color); letter-spacing: 2px; margin-bottom: 15px; display: block;}
+        .model-name{font-family: var(--font-display); font-size: 2.2rem; margin-bottom: 15px; font-weight: 800;}
+        .model-desc{color: var(--text-muted); font-size: 0.95rem; margin-bottom: 30px; flex: 1;}
+        .model-price{font-family: var(--font-display); font-size: 3rem; font-weight: 800; color: #fff; margin-bottom: 30px;}
+        .model-price span{font-size: 1rem; color: var(--text-muted); font-weight: 400;}
+        
+        .btn-buy{
+            display: block; width: 100%; padding: 18px; text-align: center; text-decoration: none; 
+            font-family: var(--font-display); font-weight: 800; font-size: 0.9rem; text-transform: uppercase; 
+            letter-spacing: 1px; border-radius: 4px; transition: 0.3s; border: 1px solid var(--tier-color); color: var(--text-main);
+        }
+        .btn-buy:hover{background: var(--text-main); color: var(--bg-primary);}
+        .tier3 .btn-buy{background: var(--gold); border-color: var(--gold); color: var(--bg-primary);}
+        .tier3 .btn-buy:hover{background: var(--gold-hover); box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);}
+
+        /* TABLE */
+        .table-title{font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 40px; text-align: center; text-transform: uppercase; letter-spacing: 2px;}
+        .table-wrapper{overflow-x: auto; background: var(--bg-card); border: 1px solid var(--border-faint); border-radius: 8px;}
+        .compare-table{width: 100%; border-collapse: collapse; min-width: 700px;}
+        .compare-table th{
+            padding: 25px; text-align: center; border-bottom: 1px solid var(--border-faint); 
+            font-family: var(--font-display); color: var(--text-main); font-size: 1rem; font-weight: 700;
+            background: rgba(255,255,255,0.02);
+        }
+        .compare-table th:first-child{text-align: left;}
+        .compare-table td{padding: 20px 25px; border-bottom: 1px solid var(--border-faint); text-align: center; color: var(--text-muted); font-size: 0.95rem;}
+        .compare-table td:first-child{text-align: left; color: #fff; font-weight: 600;}
+        .compare-table tr:last-child td{border-bottom: none;}
+        .compare-table tr:hover td{background: rgba(255,255,255,0.02);}
+        
+        .check-gold{color: var(--gold); font-weight: 700;}
+        .check-yes{color: #fff;}
+        .check-no{color: #333;}
+
+        footer{padding: 60px 5%; text-align: center; color: var(--text-faint); font-size: 0.85rem; border-top: 1px solid var(--border-faint); margin-top: 50px;}
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="../index.html" class="nav-logo">NEXO<span>.</span>WEB</a>
-        <a href="https://wa.me/5491124632544" style="text-decoration:none; color:var(--accent); font-weight:700; font-size:0.8rem; border:1px solid var(--accent); padding:10px 20px; border-radius:4px">ASESORÍA DIRECTA</a>
+        <a href="../index.html" class="nav-logo">NEXO<span>.</span>SHOWROOM</a>
+        <a href="https://wa.me/5491124632544" class="btn-nav" target="_blank" rel="noopener">Contactar Asesor</a>
     </nav>
 
     <header class="hero">
-        <p class="hero-tag">// ARQUITECTURA DIGITAL 2026</p>
-        <h1 class="hero-title">Inversión y <span>Escalabilidad</span></h1>
-        <p style="color:var(--muted); max-width:600px; margin:0 auto">Auditado por CDS Consultoría Informática. Blindaje corporativo y alto rendimiento garantizado.</p>
+        <p class="hero-tag">Matriz de Inversión</p>
+        <h1 class="hero-title">Infraestructura <span>Escalable</span></h1>
+        <p class="hero-desc">Auditoría de seguridad CDS incluida. Seleccioná el nivel de rendimiento que tu negocio exige para el ecosistema digital 2026.</p>
     </header>
 
-    <main class="models-grid">
-        <article class="model-card m1">
-            <span class="model-num">V1.0 LANDING</span>
-            <h2 class="model-name">Captación</h2>
-            <p style="color:var(--muted); font-size:0.9rem">Presencia rápida y efectiva para campañas de venta directa.</p>
-            <div class="model-price">$150.000</div>
-            <a href="https://wa.me/5491124632544?text=Quiero%20el%20Modelo%20V1.0" class="btn-buy">SELECCIONAR</a>
-        </article>
+    <main class="matrix-container">
+        <div class="models-grid">
+            <article class="model-card tier1">
+                <span class="model-num">NIVEL 1</span>
+                <h2 class="model-name">Landing Pro</h2>
+                <p class="model-desc">Presencia ágil de una sola página. Máxima velocidad de carga, ideal para captación de leads en campañas de marketing.</p>
+                <div class="model-price">$150.000 <span>ARS</span></div>
+                <a href="https://wa.me/5491124632544?text=Hola%20Nexo.%20Quiero%20solicitar%20el%20Modelo%20Landing%20Pro." class="btn-buy" target="_blank" rel="noopener">Seleccionar</a>
+            </article>
 
-        <article class="model-card m2">
-            <span class="model-num">V2.0 STANDARD</span>
-            <h2 class="model-name">Autoridad</h2>
-            <p style="color:var(--muted); font-size:0.9rem">Estructura multi-sección diseñada para pymes que buscan confianza.</p>
-            <div class="model-price">$360.000</div>
-            <a href="https://wa.me/5491124632544?text=Quiero%20el%20Modelo%20V2.0" class="btn-buy">SELECCIONAR</a>
-        </article>
+            <article class="model-card tier2">
+                <span class="model-num">NIVEL 2</span>
+                <h2 class="model-name">Standard Pro</h2>
+                <p class="model-desc">Estructura multi-sección corporativa. Diseñada para generar autoridad B2B, exhibir servicios y transmitir confianza.</p>
+                <div class="model-price">$360.000 <span>ARS</span></div>
+                <a href="https://wa.me/5491124632544?text=Hola%20Nexo.%20Quiero%20solicitar%20el%20Modelo%20Standard%20Pro." class="btn-buy" target="_blank" rel="noopener">Seleccionar</a>
+            </article>
 
-        <article class="model-card m3">
-            <span class="model-num">V3.0 ELITE</span>
-            <h2 class="model-name">Ecosistema</h2>
-            <p style="color:var(--muted); font-size:0.9rem">Máximo nivel de lujo digital y seguridad corporativa total.</p>
-            <div class="model-price">$500.000+</div>
-            <a href="https://wa.me/5491124632544?text=Quiero%20el%20Modelo%20V3.0" class="btn-buy">SOLICITAR ELITE</a>
-        </article>
-    </main>
+            <article class="model-card tier3">
+                <span class="model-num">NIVEL 3</span>
+                <h2 class="model-name">Premium Max</h2>
+                <p class="model-desc">El ecosistema definitivo. Lujo visual, transacciones E-Commerce, sistemas de reserva y blindaje total de seguridad.</p>
+                <div class="model-price">$500.000+ <span>ARS</span></div>
+                <a href="https://wa.me/5491124632544?text=Hola%20Nexo.%20Quiero%20solicitar%20asesoría%20sobre%20el%20Modelo%20Premium%20Max." class="btn-buy" target="_blank" rel="noopener">Solicitar Élite</a>
+            </article>
+        </div>
 
-    <section class="table-section">
-        <h2 class="table-title">Matriz de Especificaciones Tácticas</h2>
-        <div style="overflow-x:auto">
+        <h2 class="table-title">Especificaciones Tácticas</h2>
+        <div class="table-wrapper">
             <table class="compare-table">
                 <thead>
                     <tr>
-                        <th>CARACTERÍSTICA</th>
-                        <th>V1.0</th>
-                        <th>V2.0</th>
-                        <th>V3.0</th>
+                        <th>CARACTERÍSTICA B2B</th>
+                        <th>NIVEL 1 (Landing)</th>
+                        <th>NIVEL 2 (Standard)</th>
+                        <th>NIVEL 3 (Premium)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Auditoría CDS</td><td class="check-gold">Parcial</td><td class="check-gold">Completa</td><td class="check-gold">Full Blindaje</td></tr>
-                    <tr><td>Optimización Core Web Vitals</td><td>✔</td><td>✔</td><td>✔ (Score 95+)</td></tr>
-                    <tr><td>Gestión de Reservas</td><td>✘</td><td>✔</td><td>✔</td></tr>
-                    <tr><td>Backup Real-Time</td><td>✘</td><td>✘</td><td>✔</td></tr>
-                    <tr><td>Rondas de Ajustes</td><td>1</td><td>2</td><td>Ilimitadas</td></tr>
+                    <tr><td>Estructura de Navegación</td><td>Single-Page</td><td>Multi-Page</td><td>Ilimitada</td></tr>
+                    <tr><td>Auditoría Ciberseguridad CDS</td><td>Básica</td><td class="check-gold">Avanzada</td><td class="check-gold">Full Blindaje</td></tr>
+                    <tr><td>Performance Core Web Vitals</td><td class="check-yes">Score 90+</td><td class="check-yes">Score 90+</td><td class="check-gold">Score 98+ Extreme</td></tr>
+                    <tr><td>Animaciones Scroll Reveal</td><td class="check-no">Limitadas</td><td class="check-yes">Incluidas</td><td class="check-gold">GSAP Premium</td></tr>
+                    <tr><td>Sistemas (Reservas / E-Comm)</td><td class="check-no">—</td><td class="check-no">—</td><td class="check-gold">Incluido Custom</td></tr>
+                    <tr><td>Rondas de Revisiones de Diseño</td><td>1 Ronda</td><td>2 Rondas</td><td class="check-gold">Prioridad Ilimitada</td></tr>
+                    <tr><td>Tiempo de Entrega Estimado</td><td>7 Días</td><td>15 Días</td><td>30+ Días</td></tr>
                 </tbody>
             </table>
         </div>
-    </section>
+    </main>
 
     <footer>
-        © 2026 NEXO WEB | CABA, Argentina.
+        <p>© 2026 NEXO WEB | División Arquitectura Digital de CDS.</p>
     </footer>
 
 </body>
